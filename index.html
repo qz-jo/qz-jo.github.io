@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Seif Elmughrabi — Artificial Intelligence & Data Science student building backend systems, APIs, automation workflows, and practical software projects." />
+  <meta name="description" content="Seif Elmughrabi — Artificial Intelligence & Data Science student at Tafila Technical University focused on backend development, APIs, automation, databases, and secure software." />
   <meta name="theme-color" content="#06080d" />
   <meta property="og:title" content="Seif Elmughrabi | AI & Data Science, Backend & Automation" />
-  <meta property="og:description" content="Portfolio of Seif Elmughrabi — Artificial Intelligence & Data Science student focused on backend development, automation, and practical software." />
+  <meta property="og:description" content="Portfolio of Seif Elmughrabi — AI & Data Science student building secure backend systems, APIs, automation workflows, and practical software projects." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://qz-jo.github.io/" />
   <meta property="og:image" content="https://github.com/qz-jo.png" />
@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20260816-6" />
+  <link rel="stylesheet" href="styles.css?v=20260816-7" />
 
   <style>
     .language-toggle { width:48px; height:40px; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:12px; cursor:pointer; font:800 12px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em; }
@@ -31,130 +31,84 @@
     html[dir="rtl"] .hero-stage { text-align:right; }
     html[dir="rtl"] .hero-text { margin-left:auto; margin-right:0; }
 
-    /* Refined opening-title scale */
     .ai-hero h1 { font-size:clamp(3.9rem,8.7vw,7.9rem); }
 
-    /* Lightweight AI portal: GPU/CSS only, no 4K decoding and no canvas loop */
+    /* Progressive cinematic name entrance */
+    .name-first,
+    .name-last {
+      opacity:0;
+      filter:blur(9px);
+      transform:translateY(24px) scale(.985);
+      will-change:opacity,transform,filter;
+    }
+    .name-first { animation:nameReveal .9s cubic-bezier(.16,.8,.22,1) .55s forwards; }
+    .name-last { animation:nameReveal 1.05s cubic-bezier(.16,.8,.22,1) .88s forwards; }
+    .name-rule { opacity:0; animation:fadeRule .7s ease 1.2s forwards; }
+    @keyframes nameReveal {
+      0% { opacity:0; filter:blur(9px); transform:translateY(24px) scale(.985); letter-spacing:-.02em; }
+      65% { opacity:1; filter:blur(0); }
+      100% { opacity:1; filter:blur(0); transform:translateY(0) scale(1); letter-spacing:inherit; }
+    }
+    @keyframes fadeRule { to { opacity:1; } }
+
+    /* Temporary lightweight AI portal while the final video is selected */
     .ai-tunnel {
-      position:absolute;
-      inset:-12%;
-      overflow:hidden;
+      position:absolute; inset:-12%; overflow:hidden;
       background:
         radial-gradient(circle at 72% 48%, rgba(124,242,197,.14) 0 2%, rgba(76,129,255,.16) 6%, transparent 24%),
         radial-gradient(circle at 72% 48%, #112a48 0, #07111d 28%, #04070c 62%, #020305 100%);
-      transform:translateZ(0);
-      will-change:transform;
+      transform:translateZ(0); will-change:transform;
     }
-
     .ai-tunnel::before {
-      content:"";
-      position:absolute;
-      left:72%;
-      top:48%;
-      width:120vmax;
-      height:120vmax;
-      transform:translate(-50%,-50%);
-      border-radius:50%;
-      background:repeating-conic-gradient(
-        from 0deg,
-        rgba(124,242,197,.22) 0deg 1deg,
-        transparent 1.2deg 8deg,
-        rgba(126,164,255,.13) 8.2deg 9deg,
-        transparent 9.2deg 15deg
-      );
-      -webkit-mask:radial-gradient(circle at center, transparent 0 8%, #000 11% 54%, transparent 72%);
-      mask:radial-gradient(circle at center, transparent 0 8%, #000 11% 54%, transparent 72%);
-      opacity:.7;
-      animation:portalSpin 22s linear infinite;
-      will-change:transform;
+      content:""; position:absolute; left:72%; top:48%; width:120vmax; height:120vmax;
+      transform:translate(-50%,-50%); border-radius:50%;
+      background:repeating-conic-gradient(from 0deg,rgba(124,242,197,.22) 0deg 1deg,transparent 1.2deg 8deg,rgba(126,164,255,.13) 8.2deg 9deg,transparent 9.2deg 15deg);
+      -webkit-mask:radial-gradient(circle at center,transparent 0 8%,#000 11% 54%,transparent 72%);
+      mask:radial-gradient(circle at center,transparent 0 8%,#000 11% 54%,transparent 72%);
+      opacity:.7; animation:portalSpin 22s linear infinite; will-change:transform;
     }
-
     .ai-tunnel::after {
-      content:"";
-      position:absolute;
-      left:72%;
-      top:48%;
-      width:108vmax;
-      height:108vmax;
-      transform:translate(-50%,-50%) scale(.45);
-      border-radius:50%;
-      background:repeating-radial-gradient(
-        circle at center,
-        transparent 0 4.6%,
-        rgba(124,242,197,.18) 4.8% 5%,
-        transparent 5.2% 9.2%,
-        rgba(126,164,255,.12) 9.4% 9.7%,
-        transparent 9.9% 14%
-      );
-      filter:drop-shadow(0 0 12px rgba(88,158,255,.18));
-      opacity:.82;
-      animation:portalZoom 4.8s linear infinite;
-      will-change:transform,opacity;
+      content:""; position:absolute; left:72%; top:48%; width:108vmax; height:108vmax;
+      transform:translate(-50%,-50%) scale(.45); border-radius:50%;
+      background:repeating-radial-gradient(circle at center,transparent 0 4.6%,rgba(124,242,197,.18) 4.8% 5%,transparent 5.2% 9.2%,rgba(126,164,255,.12) 9.4% 9.7%,transparent 9.9% 14%);
+      filter:drop-shadow(0 0 12px rgba(88,158,255,.18)); opacity:.82;
+      animation:portalZoom 4.8s linear infinite; will-change:transform,opacity;
     }
-
     .tunnel-core {
-      position:absolute;
-      left:72%;
-      top:48%;
-      width:15vmin;
-      aspect-ratio:1;
-      transform:translate(-50%,-50%);
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,.92) 0 1%, #91e9ff 3%, #477cff 11%, rgba(46,89,182,.34) 24%, transparent 68%);
+      position:absolute; left:72%; top:48%; width:15vmin; aspect-ratio:1;
+      transform:translate(-50%,-50%); border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,.92) 0 1%,#91e9ff 3%,#477cff 11%,rgba(46,89,182,.34) 24%,transparent 68%);
       box-shadow:0 0 45px rgba(117,214,255,.46),0 0 130px rgba(66,106,255,.28);
       animation:corePulse 3.2s ease-in-out infinite;
     }
-
     .data-streaks {
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
       background:
-        linear-gradient(112deg, transparent 0 58%, rgba(124,242,197,.13) 59% 59.2%, transparent 59.4% 100%),
-        linear-gradient(105deg, transparent 0 68%, rgba(126,164,255,.12) 68.4% 68.6%, transparent 69% 100%),
-        linear-gradient(98deg, transparent 0 79%, rgba(255,255,255,.08) 79.2% 79.35%, transparent 79.7% 100%);
-      background-size:180% 180%, 165% 165%, 150% 150%;
-      animation:streakFlow 6s linear infinite;
-      opacity:.72;
-      mix-blend-mode:screen;
-      will-change:background-position;
+        linear-gradient(112deg,transparent 0 58%,rgba(124,242,197,.13) 59% 59.2%,transparent 59.4% 100%),
+        linear-gradient(105deg,transparent 0 68%,rgba(126,164,255,.12) 68.4% 68.6%,transparent 69% 100%),
+        linear-gradient(98deg,transparent 0 79%,rgba(255,255,255,.08) 79.2% 79.35%,transparent 79.7% 100%);
+      background-size:180% 180%,165% 165%,150% 150%; animation:streakFlow 6s linear infinite;
+      opacity:.72; mix-blend-mode:screen; will-change:background-position;
     }
-
-    @keyframes portalSpin {
-      to { transform:translate(-50%,-50%) rotate(360deg); }
-    }
-
-    @keyframes portalZoom {
-      0% { transform:translate(-50%,-50%) scale(.35); opacity:.12; }
-      55% { opacity:.8; }
-      100% { transform:translate(-50%,-50%) scale(1.12); opacity:0; }
-    }
-
-    @keyframes corePulse {
-      0%,100% { transform:translate(-50%,-50%) scale(.9); filter:brightness(.92); }
-      50% { transform:translate(-50%,-50%) scale(1.08); filter:brightness(1.18); }
-    }
-
-    @keyframes streakFlow {
-      from { background-position:80% 50%, 76% 45%, 72% 55%; }
-      to { background-position:-80% 50%, -76% 45%, -72% 55%; }
-    }
+    @keyframes portalSpin { to { transform:translate(-50%,-50%) rotate(360deg); } }
+    @keyframes portalZoom { 0%{transform:translate(-50%,-50%) scale(.35);opacity:.12}55%{opacity:.8}100%{transform:translate(-50%,-50%) scale(1.12);opacity:0} }
+    @keyframes corePulse { 0%,100%{transform:translate(-50%,-50%) scale(.9);filter:brightness(.92)}50%{transform:translate(-50%,-50%) scale(1.08);filter:brightness(1.18)} }
+    @keyframes streakFlow { from{background-position:80% 50%,76% 45%,72% 55%}to{background-position:-80% 50%,-76% 45%,-72% 55%} }
 
     @media (max-width:1000px) {
       .ai-hero h1 { font-size:clamp(3.8rem,11.5vw,6.8rem); }
-      .ai-tunnel::before, .ai-tunnel::after, .tunnel-core { left:68%; top:42%; }
+      .ai-tunnel::before,.ai-tunnel::after,.tunnel-core { left:68%; top:42%; }
     }
-
     @media (max-width:700px) {
       .language-toggle { width:44px; height:40px; }
       html[dir="rtl"] .nav-links { margin:0; }
       .ai-hero h1 { font-size:clamp(3rem,15vw,4.7rem); }
-      .ai-tunnel::before, .ai-tunnel::after, .tunnel-core { left:74%; top:34%; }
+      .ai-tunnel::before,.ai-tunnel::after,.tunnel-core { left:74%; top:34%; }
       .ai-tunnel::before { opacity:.48; }
       .data-streaks { opacity:.42; }
     }
-
     @media (prefers-reduced-motion:reduce) {
-      .ai-tunnel::before, .ai-tunnel::after, .tunnel-core, .data-streaks { animation:none !important; }
+      .ai-tunnel::before,.ai-tunnel::after,.tunnel-core,.data-streaks,.name-first,.name-last,.name-rule { animation:none !important; opacity:1; filter:none; transform:none; }
     }
   </style>
 </head>
@@ -166,7 +120,10 @@
       <a class="brand" href="#home" aria-label="Seif Elmughrabi home"><span class="brand-mark">S</span><span>SEIF</span></a>
       <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <div class="nav-links">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
       <button class="language-toggle" type="button" aria-label="Switch to Arabic" title="العربية">AR</button>
       <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle theme"><span class="theme-icon">☼</span></button>
@@ -176,10 +133,7 @@
   <main>
     <section class="hero ai-hero" id="home">
       <div class="hero-media" aria-hidden="true">
-        <div class="ai-tunnel">
-          <div class="tunnel-core"></div>
-          <div class="data-streaks"></div>
-        </div>
+        <div class="ai-tunnel"><div class="tunnel-core"></div><div class="data-streaks"></div></div>
         <div class="hero-grid"></div>
         <div class="hero-vignette"></div>
         <div class="hero-scan"></div>
@@ -189,7 +143,6 @@
         <div class="hero-deck">
           <div class="eyebrow hero-step step-1"><span class="status-dot"></span> Open to internships & collaborations</div>
           <p class="intro hero-step step-2">Hi, I'm</p>
-
           <div class="name-frame hero-step step-3">
             <span class="name-index">01 / INTRO</span>
             <h1><span class="name-first">SEIF</span><span class="name-last">ELMUGHRABI</span></h1>
@@ -197,29 +150,24 @@
           </div>
 
           <div class="discipline-track hero-step step-4" aria-label="Areas of focus">
-            <span>ARTIFICIAL INTELLIGENCE</span>
-            <i></i>
-            <span>DATA SCIENCE</span>
-            <i></i>
-            <span>BACKEND</span>
-            <i></i>
-            <span>AUTOMATION</span>
+            <span>ARTIFICIAL INTELLIGENCE</span><i></i><span>DATA SCIENCE</span><i></i><span>BACKEND</span><i></i><span>AUTOMATION</span>
           </div>
 
-          <p class="hero-text hero-step step-5">Artificial Intelligence & Data Science student building <strong>backend systems</strong>, <strong>APIs</strong>, and <strong>automation workflows</strong> that solve real problems.</p>
+          <p class="hero-text hero-step step-5">Artificial Intelligence & Data Science student at <strong>Tafila Technical University</strong>, building <strong>secure backend systems</strong>, <strong>REST APIs</strong>, database-backed applications, and <strong>automation workflows</strong>.</p>
 
           <div class="hero-actions hero-step step-6">
             <a class="button primary" href="#projects">Explore my work <span>↗</span></a>
             <a class="button ghost" href="https://github.com/qz-jo" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+            <a class="button ghost" href="https://www.linkedin.com/in/saif-almograbe-8847723aa" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
           </div>
         </div>
 
         <aside class="ai-console hero-step step-5" aria-label="AI profile summary">
           <div class="console-head"><span>AI_PROFILE</span><span class="console-live">LIVE</span></div>
           <div class="console-row"><span>FIELD</span><strong>AI + DATA SCIENCE</strong></div>
-          <div class="console-row"><span>BUILD</span><strong>BACKEND SYSTEMS</strong></div>
-          <div class="console-row"><span>AUTOMATE</span><strong>n8n WORKFLOWS</strong></div>
-          <div class="console-row"><span>SHIP</span><strong>REAL PROJECTS</strong></div>
+          <div class="console-row"><span>UNIVERSITY</span><strong>TAFILA TECHNICAL</strong></div>
+          <div class="console-row"><span>GRAD</span><strong>EXPECTED 2027</strong></div>
+          <div class="console-row"><span>FOCUS</span><strong>BACKEND + AUTOMATION</strong></div>
           <div class="console-wave"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
         </aside>
 
@@ -231,10 +179,11 @@
       <div class="section-heading reveal"><span class="section-index">01</span><h2>About me</h2></div>
       <div class="about-grid">
         <div class="about-copy reveal">
-          <p class="lead">I like turning ideas into working software — especially when the project combines logic, automation, data, and useful user experiences.</p>
-          <p>I'm studying Artificial Intelligence & Data Science and building hands-on experience through full-stack and backend projects, REST APIs, database-backed applications, and workflow automation. I care about clean structure, security fundamentals, and shipping projects that can actually be used.</p>
-          <p>My current direction is the intersection of <strong>backend engineering, AI integrations, automation, and cloud deployment</strong>.</p>
+          <p class="lead">I turn ideas into practical software, with a focus on backend engineering, automation, data, and secure API design.</p>
+          <p>I'm pursuing a B.Sc. in Artificial Intelligence & Data Science at Tafila Technical University, with expected graduation in 2027. I'm building hands-on experience through backend and full-stack projects, REST APIs, PostgreSQL-backed applications, workflow automation, debugging, and API testing.</p>
+          <p>My current direction is the intersection of <strong>backend engineering, AI integrations, data-driven systems, automation, application security, and cloud deployment</strong>.</p>
         </div>
+
         <div class="about-card reveal">
           <div class="profile-line">
             <img src="https://github.com/qz-jo.png" alt="Seif Elmughrabi GitHub profile" loading="lazy" />
@@ -242,9 +191,12 @@
           </div>
           <dl class="quick-facts">
             <div><dt>Field</dt><dd>Artificial Intelligence & Data Science</dd></div>
+            <div><dt>University</dt><dd>Tafila Technical University</dd></div>
             <div><dt>Graduation</dt><dd>Expected 2027</dd></div>
-            <div><dt>Focus</dt><dd>Backend · Automation · AI</dd></div>
+            <div><dt>Languages</dt><dd>Arabic · Native / English · Excellent</dd></div>
+            <div><dt>Focus</dt><dd>Backend · APIs · Automation · AI</dd></div>
             <div><dt>GitHub</dt><dd><a href="https://github.com/qz-jo" target="_blank" rel="noreferrer">@qz-jo ↗</a></dd></div>
+            <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/saif-almograbe-8847723aa" target="_blank" rel="noreferrer">Connect ↗</a></dd></div>
           </dl>
         </div>
       </div>
@@ -253,10 +205,12 @@
     <section class="section container" id="skills">
       <div class="section-heading reveal"><span class="section-index">02</span><h2>Tools & technologies</h2></div>
       <div class="skills-grid">
-        <article class="skill-card reveal"><span class="skill-number">01</span><h3>Backend</h3><p>Building APIs, authentication flows, server logic, and database-backed applications.</p><div class="tags"><span>Node.js</span><span>Express</span><span>REST APIs</span><span>JWT</span></div></article>
-        <article class="skill-card reveal"><span class="skill-number">02</span><h3>Data</h3><p>Working with relational data, persistence, queries, and application data models.</p><div class="tags"><span>PostgreSQL</span><span>SQL</span><span>Neon</span></div></article>
-        <article class="skill-card reveal"><span class="skill-number">03</span><h3>Automation</h3><p>Designing repeatable workflows that connect systems and reduce manual work.</p><div class="tags"><span>n8n</span><span>Webhooks</span><span>APIs</span><span>JSON</span></div></article>
-        <article class="skill-card reveal"><span class="skill-number">04</span><h3>Development</h3><p>Shipping practical projects with version control, responsive interfaces, and AI-assisted workflows.</p><div class="tags"><span>JavaScript</span><span>Python</span><span>Git</span><span>GitHub</span><span>HTML/CSS</span></div></article>
+        <article class="skill-card reveal"><span class="skill-number">01</span><h3>Backend</h3><p>Building REST APIs, authentication and authorization flows, server logic, and maintainable backend services.</p><div class="tags"><span>Node.js</span><span>Express.js</span><span>REST APIs</span><span>JWT</span><span>RBAC</span></div></article>
+        <article class="skill-card reveal"><span class="skill-number">02</span><h3>Data & Databases</h3><p>Designing and working with relational databases, SQL queries, persistence, and application data models.</p><div class="tags"><span>PostgreSQL</span><span>SQL</span><span>Neon</span><span>Database Design</span></div></article>
+        <article class="skill-card reveal"><span class="skill-number">03</span><h3>Automation</h3><p>Creating workflow automations that connect services, process structured data, and reduce repetitive manual work.</p><div class="tags"><span>n8n</span><span>Webhooks</span><span>APIs</span><span>JSON</span></div></article>
+        <article class="skill-card reveal"><span class="skill-number">04</span><h3>Programming</h3><p>Using multiple languages to solve problems, build web applications, automate tasks, and explore AI and data-oriented development.</p><div class="tags"><span>Python</span><span>JavaScript</span><span>C++</span></div></article>
+        <article class="skill-card reveal"><span class="skill-number">05</span><h3>API Security</h3><p>Applying security fundamentals to APIs with validation, access control, safe database queries, headers, and traffic protection.</p><div class="tags"><span>Input Validation</span><span>Parameterized SQL</span><span>Helmet</span><span>CORS</span><span>Rate Limiting</span><span>IDOR Protection</span></div></article>
+        <article class="skill-card reveal"><span class="skill-number">06</span><h3>Tools & Frontend</h3><p>Testing APIs, debugging applications, using version control, and building clean responsive interfaces for practical projects.</p><div class="tags"><span>Git</span><span>GitHub</span><span>Postman</span><span>HTML5</span><span>CSS3</span><span>Responsive Design</span></div></article>
       </div>
     </section>
 
@@ -265,7 +219,7 @@
       <div class="projects-list">
         <article class="project reveal">
           <div class="project-meta"><span>01</span><span>Backend · Security</span></div>
-          <div class="project-body"><div><h3>E-commerce REST API</h3><p>Secure Node.js and Express API with authentication, authorization, input validation, rate limiting, IDOR protection, and PostgreSQL persistence.</p><div class="tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>JWT</span></div></div><a class="project-link" href="https://github.com/qz-jo/ecommerce-api" target="_blank" rel="noreferrer" aria-label="View E-commerce REST API on GitHub">↗</a></div>
+          <div class="project-body"><div><h3>E-commerce REST API</h3><p>Secure Node.js and Express API with authentication, authorization, validation, rate limiting, IDOR protection, and PostgreSQL persistence.</p><div class="tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>JWT</span></div></div><a class="project-link" href="https://github.com/qz-jo/ecommerce-api" target="_blank" rel="noreferrer" aria-label="View E-commerce REST API on GitHub">↗</a></div>
         </article>
         <article class="project reveal">
           <div class="project-meta"><span>02</span><span>Full-stack</span></div>
@@ -285,24 +239,27 @@
     <section class="section journey container">
       <div class="section-heading reveal"><span class="section-index">04</span><h2>Currently building toward</h2></div>
       <div class="journey-grid">
-        <div class="journey-item reveal"><span>Cloud</span><p>Deploying reliable applications and understanding production infrastructure.</p></div>
-        <div class="journey-item reveal"><span>Security</span><p>Strengthening application security, authentication, authorization, and safe API design.</p></div>
-        <div class="journey-item reveal"><span>AI + Automation</span><p>Connecting AI capabilities to practical workflows and real software products.</p></div>
+        <div class="journey-item reveal"><span>Cloud</span><p>Deploying reliable applications and learning production infrastructure, hosting, and cloud workflows.</p></div>
+        <div class="journey-item reveal"><span>Security</span><p>Strengthening authentication, authorization, secure database access, and defensive API design.</p></div>
+        <div class="journey-item reveal"><span>AI + Automation</span><p>Connecting AI capabilities, data, and automation to useful workflows and real software products.</p></div>
       </div>
     </section>
 
     <section class="contact section container" id="contact">
       <div class="contact-card reveal">
         <span class="section-index">05</span>
-        <p class="contact-kicker">Have a project, internship, or collaboration in mind?</p>
+        <p class="contact-kicker">Internship, backend project, automation workflow, or technical collaboration?</p>
         <h2>Let's build something useful.</h2>
-        <p>I'm interested in opportunities where I can learn fast, contribute technically, and ship real work.</p>
-        <div class="contact-actions"><a class="button primary" href="https://github.com/qz-jo" target="_blank" rel="noreferrer">Connect on GitHub <span>↗</span></a></div>
+        <p>I'm open to opportunities where I can contribute technically, learn from real engineering work, and continue building experience in AI, data, backend development, and automation.</p>
+        <div class="contact-actions">
+          <a class="button primary" href="https://github.com/qz-jo" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+          <a class="button ghost" href="https://www.linkedin.com/in/saif-almograbe-8847723aa" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer container"><p>Designed & built by Seif Elmughrabi.</p><p>© <span id="year"></span></p></footer>
-  <script src="script.js?v=20260816-5"></script>
+  <script src="script.js?v=20260816-7"></script>
 </body>
 </html>
