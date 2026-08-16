@@ -6,6 +6,10 @@ const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const header = document.querySelector('.site-header');
 const year = document.querySelector('#year');
+const hero = document.querySelector('.ai-hero');
+const heroVideo = document.querySelector('.hero-video');
+const heroGrid = document.querySelector('.hero-grid');
+const neuralCanvas = document.querySelector('#neural-canvas');
 
 const savedTheme = localStorage.getItem('portfolio-theme');
 if (savedTheme === 'light') root.classList.add('light');
@@ -17,8 +21,18 @@ const copy = {
     nav: ['About', 'Skills', 'Projects', 'Contact'],
     eyebrow: 'Open to internships & collaborations',
     intro: "Hi, I'm",
+    introIndex: '01 / INTRO',
+    disciplines: ['ARTIFICIAL INTELLIGENCE', 'DATA SCIENCE', 'BACKEND', 'AUTOMATION'],
     heroText: 'Artificial Intelligence & Data Science student building <strong>backend systems</strong>, <strong>APIs</strong>, and <strong>automation workflows</strong> that solve real problems.',
     explore: 'Explore my work <span>↗</span>',
+    consoleHead: 'AI_PROFILE',
+    consoleLive: 'LIVE',
+    consoleRows: [
+      ['FIELD', 'AI + DATA SCIENCE'],
+      ['BUILD', 'BACKEND SYSTEMS'],
+      ['AUTOMATE', 'n8n WORKFLOWS'],
+      ['SHIP', 'REAL PROJECTS']
+    ],
     aboutHeading: 'About me',
     aboutLead: 'I like turning ideas into working software — especially when the project combines logic, automation, data, and useful user experiences.',
     aboutP2: "I'm studying Artificial Intelligence & Data Science and building hands-on experience through full-stack and backend projects, REST APIs, database-backed applications, and workflow automation. I care about clean structure, security fundamentals, and shipping projects that can actually be used.",
@@ -68,8 +82,18 @@ const copy = {
     nav: ['عني', 'المهارات', 'المشاريع', 'تواصل'],
     eyebrow: 'متاح للتدريب والتعاون على المشاريع',
     intro: 'مرحباً، أنا',
+    introIndex: '01 / البداية',
+    disciplines: ['الذكاء الاصطناعي', 'علم البيانات', 'BACKEND', 'الأتمتة'],
     heroText: 'طالب في تخصص <strong>الذكاء الاصطناعي وعلم البيانات</strong>، أبني <strong>أنظمة Backend</strong> و<strong>واجهات API</strong> و<strong>حلول أتمتة</strong> لحل مشاكل حقيقية.',
     explore: 'شاهد مشاريعي <span>↗</span>',
+    consoleHead: 'ملف_تقني',
+    consoleLive: 'مباشر',
+    consoleRows: [
+      ['التخصص', 'AI + DATA SCIENCE'],
+      ['أبني', 'BACKEND SYSTEMS'],
+      ['أؤتمت', 'n8n WORKFLOWS'],
+      ['الهدف', 'REAL PROJECTS']
+    ],
     aboutHeading: 'عني',
     aboutLead: 'أحب تحويل الأفكار إلى برامج تعمل فعلياً، خصوصاً عندما يجمع المشروع بين المنطق والأتمتة والبيانات وتجربة مستخدم مفيدة.',
     aboutP2: 'أدرس تخصص الذكاء الاصطناعي وعلم البيانات، وأبني خبرة عملية من خلال مشاريع Full-stack وBackend وواجهات REST API وتطبيقات تعتمد على قواعد البيانات وأتمتة سير العمل. أهتم ببنية الكود النظيفة وأساسيات الأمان وإنهاء مشاريع قابلة للاستخدام فعلياً.',
@@ -155,8 +179,21 @@ function applyLanguage(lang) {
 
   setHTML('.eyebrow', `<span class="status-dot"></span> ${t.eyebrow}`);
   setText('.intro', t.intro);
+  setText('.name-index', t.introIndex);
+  document.querySelectorAll('.discipline-track > span').forEach((item, i) => {
+    if (t.disciplines[i]) item.textContent = t.disciplines[i];
+  });
   setHTML('.hero-text', t.heroText);
   setHTML('.hero-actions .primary', t.explore);
+  setText('.console-head > span:first-child', t.consoleHead);
+  setText('.console-live', t.consoleLive);
+  document.querySelectorAll('.console-row').forEach((row, i) => {
+    if (!t.consoleRows[i]) return;
+    const label = row.querySelector('span');
+    const value = row.querySelector('strong');
+    if (label) label.textContent = t.consoleRows[i][0];
+    if (value) value.textContent = t.consoleRows[i][1];
+  });
 
   setText('#about .section-heading h2', t.aboutHeading);
   setText('.about-copy .lead', t.aboutLead);
@@ -260,3 +297,127 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 
 year.textContent = new Date().getFullYear();
+
+// Cinematic background video
+if (heroVideo) {
+  heroVideo.muted = true;
+  heroVideo.play().catch(() => {});
+}
+
+// Lightweight pointer parallax for the hero media.
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (hero && !reducedMotion.matches) {
+  hero.addEventListener('pointermove', (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    if (heroGrid) heroGrid.style.transform = `translate(${x * -12}px, ${y * -9}px)`;
+    if (heroVideo) heroVideo.style.transform = `scale(1.055) translate(${x * -5}px, ${y * -4}px)`;
+  });
+
+  hero.addEventListener('pointerleave', () => {
+    if (heroGrid) heroGrid.style.transform = 'translate(0, 0)';
+    if (heroVideo) heroVideo.style.transform = 'scale(1.03) translate(0, 0)';
+  });
+}
+
+// Neural-network particle layer.
+if (neuralCanvas && !reducedMotion.matches) {
+  const ctx = neuralCanvas.getContext('2d');
+  let width = 0;
+  let height = 0;
+  let particles = [];
+  let animationFrame = 0;
+  const pointer = { x: -9999, y: -9999 };
+
+  function createParticle() {
+    const speed = 0.18 + Math.random() * 0.32;
+    const angle = Math.random() * Math.PI * 2;
+    return {
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      r: 0.7 + Math.random() * 1.5
+    };
+  }
+
+  function resizeCanvas() {
+    const rect = neuralCanvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = rect.width;
+    height = rect.height;
+    neuralCanvas.width = Math.max(1, Math.floor(width * dpr));
+    neuralCanvas.height = Math.max(1, Math.floor(height * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const targetCount = width < 700 ? 30 : 58;
+    particles = Array.from({ length: targetCount }, createParticle);
+  }
+
+  function drawNetwork() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const p of particles) {
+      const dx = pointer.x - p.x;
+      const dy = pointer.y - p.y;
+      const pointerDistance = Math.hypot(dx, dy);
+      if (pointerDistance < 150 && pointerDistance > 0) {
+        p.vx -= (dx / pointerDistance) * 0.0025;
+        p.vy -= (dy / pointerDistance) * 0.0025;
+      }
+
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < -20) p.x = width + 20;
+      if (p.x > width + 20) p.x = -20;
+      if (p.y < -20) p.y = height + 20;
+      if (p.y > height + 20) p.y = -20;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(124,242,197,.72)';
+      ctx.fill();
+    }
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i];
+        const b = particles[j];
+        const distance = Math.hypot(a.x - b.x, a.y - b.y);
+        if (distance < 132) {
+          const alpha = (1 - distance / 132) * 0.26;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(126,164,255,${alpha})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+
+    animationFrame = requestAnimationFrame(drawNetwork);
+  }
+
+  resizeCanvas();
+  drawNetwork();
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+  hero?.addEventListener('pointermove', (event) => {
+    const rect = neuralCanvas.getBoundingClientRect();
+    pointer.x = event.clientX - rect.left;
+    pointer.y = event.clientY - rect.top;
+  });
+  hero?.addEventListener('pointerleave', () => {
+    pointer.x = -9999;
+    pointer.y = -9999;
+  });
+
+  reducedMotion.addEventListener?.('change', (event) => {
+    if (event.matches) {
+      cancelAnimationFrame(animationFrame);
+      if (heroVideo) heroVideo.pause();
+    }
+  });
+} else if (heroVideo && reducedMotion.matches) {
+  heroVideo.pause();
+}
