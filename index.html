@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,31 @@
   <meta property="og:image" content="https://github.com/qz-jo.png" />
   <title>Seif Elmughrabi | AI, Backend & Automation</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .language-toggle {
+      width: 48px;
+      height: 40px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 12px;
+      cursor: pointer;
+      font: 800 12px/1 ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: .05em;
+    }
+    .language-toggle:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+    html[dir="rtl"] body { font-family: Tahoma, Arial, "Segoe UI", sans-serif; }
+    html[dir="rtl"] .nav-links { margin-left: 0; margin-right: auto; }
+    html[dir="rtl"] .section-heading::after { margin-left: 0; margin-right: 14px; }
+    html[dir="rtl"] .quick-facts dd { text-align: left; }
+    html[dir="rtl"] .project-meta,
+    html[dir="rtl"] .footer { direction: rtl; }
+    html[dir="rtl"] .code-window { direction: ltr; text-align: left; }
+    @media (max-width: 700px) {
+      .language-toggle { width: 44px; height: 40px; }
+      html[dir="rtl"] .nav-links { margin: 0; }
+    }
+  </style>
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -33,6 +58,8 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
+
+      <button class="language-toggle" type="button" aria-label="Switch to Arabic" title="العربية">AR</button>
 
       <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
         <span class="theme-icon">☼</span>
