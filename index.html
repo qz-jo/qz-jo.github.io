@@ -11,7 +11,12 @@
   <meta property="og:url" content="https://qz-jo.github.io/" />
   <meta property="og:image" content="https://github.com/qz-jo.png" />
   <title>Seif Elmughrabi | AI, Backend & Automation</title>
-  <link rel="stylesheet" href="styles.css?v=20260816-2" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20260816-3" />
+
   <style>
     .language-toggle {
       width: 48px;
@@ -24,17 +29,92 @@
       font: 800 12px/1 ui-sans-serif, system-ui, sans-serif;
       letter-spacing: .05em;
     }
-    .language-toggle:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
-    html[dir="rtl"] body { font-family: Tahoma, Arial, "Segoe UI", sans-serif; }
-    html[dir="rtl"] .nav-links { margin-left: 0; margin-right: auto; }
-    html[dir="rtl"] .section-heading::after { margin-left: 0; margin-right: 14px; }
-    html[dir="rtl"] .quick-facts dd { text-align: left; }
+
+    .language-toggle:hover {
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+    }
+
+    html[dir="rtl"] body {
+      font-family: "Noto Naskh Arabic", Tahoma, Arial, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+      line-height: 1.95;
+    }
+
+    html[dir="rtl"] h1,
+    html[dir="rtl"] h2,
+    html[dir="rtl"] h3,
+    html[dir="rtl"] .contact-card h2,
+    html[dir="rtl"] .about-copy .lead,
+    html[dir="rtl"] .hero h1,
+    html[dir="rtl"] .section-heading h2,
+    html[dir="rtl"] .project h3 {
+      font-family: "Amiri", "Noto Naskh Arabic", serif;
+      letter-spacing: 0;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    html[dir="rtl"] .hero h1 {
+      font-size: clamp(4.2rem, 8vw, 7rem);
+    }
+
+    html[dir="rtl"] .hero-text,
+    html[dir="rtl"] .about-copy p,
+    html[dir="rtl"] .project p,
+    html[dir="rtl"] .journey-item p,
+    html[dir="rtl"] .contact-card > p:not(.contact-kicker) {
+      font-family: "Noto Naskh Arabic", sans-serif;
+      font-size: 1.08rem;
+      line-height: 2;
+    }
+
+    html[dir="rtl"] .nav-links a,
+    html[dir="rtl"] .button,
+    html[dir="rtl"] .eyebrow,
+    html[dir="rtl"] .contact-kicker,
+    html[dir="rtl"] .tags span,
+    html[dir="rtl"] .quick-facts dt,
+    html[dir="rtl"] .quick-facts dd {
+      font-family: "Noto Naskh Arabic", sans-serif;
+    }
+
+    html[dir="rtl"] .nav-links {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    html[dir="rtl"] .section-heading::after {
+      margin-left: 0;
+      margin-right: 14px;
+    }
+
+    html[dir="rtl"] .quick-facts dd {
+      text-align: left;
+    }
+
     html[dir="rtl"] .project-meta,
-    html[dir="rtl"] .footer { direction: rtl; }
-    html[dir="rtl"] .code-window { direction: ltr; text-align: left; }
+    html[dir="rtl"] .footer {
+      direction: rtl;
+    }
+
+    html[dir="rtl"] .code-window {
+      direction: ltr;
+      text-align: left;
+    }
+
     @media (max-width: 700px) {
-      .language-toggle { width: 44px; height: 40px; }
-      html[dir="rtl"] .nav-links { margin: 0; }
+      .language-toggle {
+        width: 44px;
+        height: 40px;
+      }
+
+      html[dir="rtl"] .hero h1 {
+        font-size: clamp(3.8rem, 16vw, 5.5rem);
+      }
+
+      html[dir="rtl"] .nav-links {
+        margin: 0;
+      }
     }
   </style>
 </head>
