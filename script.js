@@ -12,20 +12,20 @@ if (savedTheme === 'light') root.classList.add('light');
 
 const copy = {
   en: {
-    title: 'Seif Elmughrabi | AI, Backend & Automation',
-    description: 'Seif Elmughrabi — Artificial Intelligence student building backend systems, APIs, automation workflows, and practical software projects.',
+    title: 'Seif Elmughrabi | AI & Data Science, Backend & Automation',
+    description: 'Seif Elmughrabi — Artificial Intelligence & Data Science student building backend systems, APIs, automation workflows, and practical software projects.',
     nav: ['About', 'Skills', 'Projects', 'Contact'],
     eyebrow: 'Open to internships & collaborations',
     intro: "Hi, I'm",
-    heroText: 'Artificial Intelligence student building <strong>backend systems</strong>, <strong>APIs</strong>, and <strong>automation workflows</strong> that solve real problems.',
+    heroText: 'Artificial Intelligence & Data Science student building <strong>backend systems</strong>, <strong>APIs</strong>, and <strong>automation workflows</strong> that solve real problems.',
     explore: 'Explore my work <span>↗</span>',
     aboutHeading: 'About me',
     aboutLead: 'I like turning ideas into working software — especially when the project combines logic, automation, data, and useful user experiences.',
-    aboutP2: "I'm studying Artificial Intelligence and building hands-on experience through full-stack and backend projects, REST APIs, database-backed applications, and workflow automation. I care about clean structure, security fundamentals, and shipping projects that can actually be used.",
+    aboutP2: "I'm studying Artificial Intelligence & Data Science and building hands-on experience through full-stack and backend projects, REST APIs, database-backed applications, and workflow automation. I care about clean structure, security fundamentals, and shipping projects that can actually be used.",
     aboutP3: 'My current direction is the intersection of <strong>backend engineering, AI integrations, automation, and cloud deployment</strong>.',
     location: 'Amman, Jordan',
     facts: [
-      ['Field', 'Artificial Intelligence'],
+      ['Field', 'Artificial Intelligence & Data Science'],
       ['Graduation', 'Expected 2027'],
       ['Focus', 'Backend · Automation · AI'],
       ['GitHub', '@qz-jo ↗']
@@ -63,20 +63,20 @@ const copy = {
     langLabel: 'Switch to Arabic'
   },
   ar: {
-    title: 'سيف المغربي | الذكاء الاصطناعي والـ Backend والأتمتة',
-    description: 'سيف المغربي — طالب ذكاء اصطناعي يطوّر أنظمة Backend وواجهات API وحلول أتمتة ومشاريع برمجية عملية.',
+    title: 'سيف المغربي | الذكاء الاصطناعي وعلم البيانات',
+    description: 'سيف المغربي — طالب في تخصص الذكاء الاصطناعي وعلم البيانات، يطوّر أنظمة Backend وواجهات API وحلول أتمتة ومشاريع برمجية عملية.',
     nav: ['عني', 'المهارات', 'المشاريع', 'تواصل'],
     eyebrow: 'متاح للتدريب والتعاون على المشاريع',
     intro: 'مرحباً، أنا',
-    heroText: 'طالب ذكاء اصطناعي أبني <strong>أنظمة Backend</strong> و<strong>واجهات API</strong> و<strong>حلول أتمتة</strong> لحل مشاكل حقيقية.',
+    heroText: 'طالب في تخصص <strong>الذكاء الاصطناعي وعلم البيانات</strong>، أبني <strong>أنظمة Backend</strong> و<strong>واجهات API</strong> و<strong>حلول أتمتة</strong> لحل مشاكل حقيقية.',
     explore: 'شاهد مشاريعي <span>↗</span>',
     aboutHeading: 'عني',
     aboutLead: 'أحب تحويل الأفكار إلى برامج تعمل فعلياً، خصوصاً عندما يجمع المشروع بين المنطق والأتمتة والبيانات وتجربة مستخدم مفيدة.',
-    aboutP2: 'أدرس الذكاء الاصطناعي وأبني خبرة عملية من خلال مشاريع Full-stack وBackend وواجهات REST API وتطبيقات تعتمد على قواعد البيانات وأتمتة سير العمل. أهتم ببنية الكود النظيفة وأساسيات الأمان وإنهاء مشاريع قابلة للاستخدام فعلياً.',
+    aboutP2: 'أدرس تخصص الذكاء الاصطناعي وعلم البيانات، وأبني خبرة عملية من خلال مشاريع Full-stack وBackend وواجهات REST API وتطبيقات تعتمد على قواعد البيانات وأتمتة سير العمل. أهتم ببنية الكود النظيفة وأساسيات الأمان وإنهاء مشاريع قابلة للاستخدام فعلياً.',
     aboutP3: 'تركيزي الحالي يجمع بين <strong>Backend Engineering وتكاملات الذكاء الاصطناعي والأتمتة والنشر السحابي</strong>.',
     location: 'عمّان، الأردن',
     facts: [
-      ['التخصص', 'الذكاء الاصطناعي'],
+      ['التخصص', 'الذكاء الاصطناعي وعلم البيانات'],
       ['التخرج', 'متوقع 2027'],
       ['التركيز', 'Backend · Automation · AI'],
       ['GitHub', '@qz-jo ↗']
@@ -218,7 +218,6 @@ function applyLanguage(lang) {
   menuToggle.setAttribute('aria-label', navLinks.classList.contains('open') ? t.menuClose : t.menuOpen);
 }
 
-syncThemeIcon();
 applyLanguage(currentLanguage);
 
 themeToggle.addEventListener('click', () => {
