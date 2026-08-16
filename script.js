@@ -7,9 +7,7 @@ const navLinks = document.querySelector('.nav-links');
 const header = document.querySelector('.site-header');
 const year = document.querySelector('#year');
 const hero = document.querySelector('.ai-hero');
-const heroVideo = document.querySelector('.hero-video');
 const heroGrid = document.querySelector('.hero-grid');
-const neuralCanvas = document.querySelector('#neural-canvas');
 
 const savedTheme = localStorage.getItem('portfolio-theme');
 if (savedTheme === 'light') root.classList.add('light');
@@ -17,58 +15,62 @@ if (savedTheme === 'light') root.classList.add('light');
 const copy = {
   en: {
     title: 'Seif Elmughrabi | AI & Data Science, Backend & Automation',
-    description: 'Seif Elmughrabi — Artificial Intelligence & Data Science student building backend systems, APIs, automation workflows, and practical software projects.',
+    description: 'Seif Elmughrabi — Artificial Intelligence & Data Science student at Tafila Technical University focused on backend development, APIs, automation, databases, and secure software.',
     nav: ['About', 'Skills', 'Projects', 'Contact'],
     eyebrow: 'Open to internships & collaborations',
     intro: "Hi, I'm",
     introIndex: '01 / INTRO',
     disciplines: ['ARTIFICIAL INTELLIGENCE', 'DATA SCIENCE', 'BACKEND', 'AUTOMATION'],
-    heroText: 'Artificial Intelligence & Data Science student building <strong>backend systems</strong>, <strong>APIs</strong>, and <strong>automation workflows</strong> that solve real problems.',
+    heroText: 'Artificial Intelligence & Data Science student at <strong>Tafila Technical University</strong>, building <strong>secure backend systems</strong>, <strong>REST APIs</strong>, database-backed applications, and <strong>automation workflows</strong>.',
     explore: 'Explore my work <span>↗</span>',
     consoleHead: 'AI_PROFILE',
     consoleLive: 'LIVE',
     consoleRows: [
       ['FIELD', 'AI + DATA SCIENCE'],
-      ['BUILD', 'BACKEND SYSTEMS'],
-      ['AUTOMATE', 'n8n WORKFLOWS'],
-      ['SHIP', 'REAL PROJECTS']
+      ['UNIVERSITY', 'TAFILA TECHNICAL'],
+      ['GRAD', 'EXPECTED 2027'],
+      ['FOCUS', 'BACKEND + AUTOMATION']
     ],
     aboutHeading: 'About me',
-    aboutLead: 'I like turning ideas into working software — especially when the project combines logic, automation, data, and useful user experiences.',
-    aboutP2: "I'm studying Artificial Intelligence & Data Science and building hands-on experience through full-stack and backend projects, REST APIs, database-backed applications, and workflow automation. I care about clean structure, security fundamentals, and shipping projects that can actually be used.",
-    aboutP3: 'My current direction is the intersection of <strong>backend engineering, AI integrations, automation, and cloud deployment</strong>.',
+    aboutLead: 'I turn ideas into practical software, with a focus on backend engineering, automation, data, and secure API design.',
+    aboutP2: "I'm pursuing a B.Sc. in Artificial Intelligence & Data Science at Tafila Technical University, with expected graduation in 2027. I'm building hands-on experience through backend and full-stack projects, REST APIs, PostgreSQL-backed applications, workflow automation, debugging, and API testing.",
+    aboutP3: 'My current direction is the intersection of <strong>backend engineering, AI integrations, data-driven systems, automation, application security, and cloud deployment</strong>.',
     location: 'Amman, Jordan',
     facts: [
       ['Field', 'Artificial Intelligence & Data Science'],
+      ['University', 'Tafila Technical University'],
       ['Graduation', 'Expected 2027'],
-      ['Focus', 'Backend · Automation · AI'],
-      ['GitHub', '@qz-jo ↗']
+      ['Languages', 'Arabic · Native / English · Excellent'],
+      ['Focus', 'Backend · APIs · Automation · AI'],
+      ['GitHub', '@qz-jo ↗'],
+      ['LinkedIn', 'Connect ↗']
     ],
     skillsHeading: 'Tools & technologies',
     skills: [
-      ['Backend', 'Building APIs, authentication flows, server logic, and database-backed applications.'],
-      ['Data', 'Working with relational data, persistence, queries, and application data models.'],
-      ['Automation', 'Designing repeatable workflows that connect systems and reduce manual work.'],
-      ['Development', 'Shipping practical projects with version control, responsive interfaces, and AI-assisted workflows.']
+      ['Backend', 'Building REST APIs, authentication and authorization flows, server logic, and maintainable backend services.'],
+      ['Data & Databases', 'Designing and working with relational databases, SQL queries, persistence, and application data models.'],
+      ['Automation', 'Creating workflow automations that connect services, process structured data, and reduce repetitive manual work.'],
+      ['Programming', 'Using multiple languages to solve problems, build web applications, automate tasks, and explore AI and data-oriented development.'],
+      ['API Security', 'Applying security fundamentals to APIs with validation, access control, safe database queries, headers, and traffic protection.'],
+      ['Tools & Frontend', 'Testing APIs, debugging applications, using version control, and building clean responsive interfaces for practical projects.']
     ],
     projectsHeading: 'Selected projects',
     projectMeta: ['Backend · Security', 'Full-stack', 'Automation', 'Frontend · Productivity'],
     projectDescriptions: [
-      'Secure Node.js and Express API with authentication, authorization, input validation, rate limiting, IDOR protection, and PostgreSQL persistence.',
+      'Secure Node.js and Express API with authentication, authorization, validation, rate limiting, IDOR protection, and PostgreSQL persistence.',
       'Full-stack task manager with JWT authentication, reminders, filtering, and PostgreSQL persistence, served from a single Express application.',
       'n8n workflow that receives support requests, validates them, classifies issues, assigns priority, calculates SLA deadlines, and returns structured results.',
       'Privacy-friendly browser app for tracking applications, statuses, notes, search, filtering, dashboard stats, and JSON backups without a backend.'
     ],
     journeyHeading: 'Currently building toward',
     journey: [
-      ['Cloud', 'Deploying reliable applications and understanding production infrastructure.'],
-      ['Security', 'Strengthening application security, authentication, authorization, and safe API design.'],
-      ['AI + Automation', 'Connecting AI capabilities to practical workflows and real software products.']
+      ['Cloud', 'Deploying reliable applications and learning production infrastructure, hosting, and cloud workflows.'],
+      ['Security', 'Strengthening authentication, authorization, secure database access, and defensive API design.'],
+      ['AI + Automation', 'Connecting AI capabilities, data, and automation to useful workflows and real software products.']
     ],
-    contactKicker: 'Have a project, internship, or collaboration in mind?',
+    contactKicker: 'Internship, backend project, automation workflow, or technical collaboration?',
     contactHeading: "Let's build something useful.",
-    contactText: "I'm interested in opportunities where I can learn fast, contribute technically, and ship real work.",
-    connect: 'Connect on GitHub <span>↗</span>',
+    contactText: "I'm open to opportunities where I can contribute technically, learn from real engineering work, and continue building experience in AI, data, backend development, and automation.",
     footer: 'Designed & built by Seif Elmughrabi.',
     themeDark: 'Switch to dark theme',
     themeLight: 'Switch to light theme',
@@ -78,39 +80,44 @@ const copy = {
   },
   ar: {
     title: 'سيف المغربي | الذكاء الاصطناعي وعلم البيانات',
-    description: 'سيف المغربي — طالب في تخصص الذكاء الاصطناعي وعلم البيانات، يطوّر أنظمة Backend وواجهات API وحلول أتمتة ومشاريع برمجية عملية.',
+    description: 'سيف المغربي — طالب ذكاء اصطناعي وعلم بيانات في جامعة الطفيلة التقنية، يركز على تطوير الـBackend وواجهات API والأتمتة وقواعد البيانات وأمان التطبيقات.',
     nav: ['عني', 'المهارات', 'المشاريع', 'تواصل'],
     eyebrow: 'متاح للتدريب والتعاون على المشاريع',
     intro: 'مرحباً، أنا',
     introIndex: '01 / البداية',
     disciplines: ['الذكاء الاصطناعي', 'علم البيانات', 'BACKEND', 'الأتمتة'],
-    heroText: 'طالب في تخصص <strong>الذكاء الاصطناعي وعلم البيانات</strong>، أبني <strong>أنظمة Backend</strong> و<strong>واجهات API</strong> و<strong>حلول أتمتة</strong> لحل مشاكل حقيقية.',
+    heroText: 'طالب <strong>ذكاء اصطناعي وعلم بيانات</strong> في <strong>جامعة الطفيلة التقنية</strong>، أبني <strong>أنظمة Backend آمنة</strong> و<strong>واجهات REST API</strong> وتطبيقات تعتمد على قواعد البيانات وحلول <strong>أتمتة</strong>.',
     explore: 'شاهد مشاريعي <span>↗</span>',
     consoleHead: 'ملف_تقني',
     consoleLive: 'مباشر',
     consoleRows: [
       ['التخصص', 'AI + DATA SCIENCE'],
-      ['أبني', 'BACKEND SYSTEMS'],
-      ['أؤتمت', 'n8n WORKFLOWS'],
-      ['الهدف', 'REAL PROJECTS']
+      ['الجامعة', 'TAFILA TECHNICAL'],
+      ['التخرج', 'EXPECTED 2027'],
+      ['التركيز', 'BACKEND + AUTOMATION']
     ],
     aboutHeading: 'عني',
-    aboutLead: 'أحب تحويل الأفكار إلى برامج تعمل فعلياً، خصوصاً عندما يجمع المشروع بين المنطق والأتمتة والبيانات وتجربة مستخدم مفيدة.',
-    aboutP2: 'أدرس تخصص الذكاء الاصطناعي وعلم البيانات، وأبني خبرة عملية من خلال مشاريع Full-stack وBackend وواجهات REST API وتطبيقات تعتمد على قواعد البيانات وأتمتة سير العمل. أهتم ببنية الكود النظيفة وأساسيات الأمان وإنهاء مشاريع قابلة للاستخدام فعلياً.',
-    aboutP3: 'تركيزي الحالي يجمع بين <strong>Backend Engineering وتكاملات الذكاء الاصطناعي والأتمتة والنشر السحابي</strong>.',
+    aboutLead: 'أحوّل الأفكار إلى برمجيات عملية، مع تركيز على هندسة الـBackend والأتمتة والبيانات وتصميم واجهات API آمنة.',
+    aboutP2: 'أدرس بكالوريوس الذكاء الاصطناعي وعلم البيانات في جامعة الطفيلة التقنية، ومن المتوقع تخرجي في 2027. أبني خبرة عملية من خلال مشاريع Backend وFull-stack وواجهات REST API وتطبيقات PostgreSQL وأتمتة سير العمل وتصحيح الأخطاء واختبار الـAPI.',
+    aboutP3: 'اتجاهي الحالي يجمع بين <strong>هندسة الـBackend وتكاملات الذكاء الاصطناعي والأنظمة المعتمدة على البيانات والأتمتة وأمان التطبيقات والنشر السحابي</strong>.',
     location: 'عمّان، الأردن',
     facts: [
       ['التخصص', 'الذكاء الاصطناعي وعلم البيانات'],
+      ['الجامعة', 'جامعة الطفيلة التقنية'],
       ['التخرج', 'متوقع 2027'],
-      ['التركيز', 'Backend · Automation · AI'],
-      ['GitHub', '@qz-jo ↗']
+      ['اللغات', 'العربية · اللغة الأم / الإنجليزية · ممتاز'],
+      ['التركيز', 'Backend · APIs · Automation · AI'],
+      ['GitHub', '@qz-jo ↗'],
+      ['LinkedIn', 'تواصل ↗']
     ],
     skillsHeading: 'الأدوات والتقنيات',
     skills: [
-      ['Backend', 'بناء واجهات API وأنظمة تسجيل الدخول ومنطق الخادم والتطبيقات المرتبطة بقواعد البيانات.'],
-      ['البيانات', 'العمل مع البيانات العلائقية والتخزين والاستعلامات ونمذجة بيانات التطبيقات.'],
-      ['الأتمتة', 'تصميم تدفقات عمل تربط الأنظمة ببعضها وتقلل العمل اليدوي المتكرر.'],
-      ['التطوير', 'بناء ونشر مشاريع عملية باستخدام Git وواجهات متجاوبة وأدوات تطوير مدعومة بالذكاء الاصطناعي.']
+      ['Backend', 'بناء REST APIs وأنظمة المصادقة والصلاحيات ومنطق الخادم وخدمات Backend قابلة للتطوير والصيانة.'],
+      ['البيانات وقواعد البيانات', 'تصميم والعمل مع قواعد البيانات العلائقية واستعلامات SQL والتخزين ونمذجة بيانات التطبيقات.'],
+      ['الأتمتة', 'إنشاء تدفقات عمل تربط الخدمات وتعالج البيانات المنظمة وتقلل الأعمال اليدوية المتكررة.'],
+      ['البرمجة', 'استخدام عدة لغات لحل المشاكل وبناء تطبيقات الويب وأتمتة المهام والتطوير المرتبط بالذكاء الاصطناعي والبيانات.'],
+      ['أمان الـAPI', 'تطبيق أساسيات الأمان من خلال التحقق من المدخلات والصلاحيات والاستعلامات الآمنة وHeaders والحماية من إساءة استخدام الطلبات.'],
+      ['الأدوات والواجهات', 'اختبار الـAPIs وتصحيح الأخطاء واستخدام Git وبناء واجهات متجاوبة ونظيفة للمشاريع العملية.']
     ],
     projectsHeading: 'مشاريع مختارة',
     projectMeta: ['Backend · Security', 'Full-stack', 'Automation', 'Frontend · Productivity'],
@@ -122,14 +129,13 @@ const copy = {
     ],
     journeyHeading: 'ما أعمل على تطويره حالياً',
     journey: [
-      ['Cloud', 'نشر تطبيقات موثوقة وفهم البنية التحتية المستخدمة في بيئات الإنتاج.'],
-      ['الأمان', 'تطوير معرفتي بأمان التطبيقات والمصادقة والصلاحيات وتصميم واجهات API بشكل آمن.'],
-      ['AI + Automation', 'ربط قدرات الذكاء الاصطناعي بتدفقات عمل عملية ومنتجات برمجية حقيقية.']
+      ['Cloud', 'نشر تطبيقات موثوقة وتطوير فهمي للبنية التحتية والاستضافة وبيئات الإنتاج السحابية.'],
+      ['الأمان', 'تقوية معرفتي بالمصادقة والصلاحيات والوصول الآمن لقواعد البيانات وتصميم APIs دفاعية وآمنة.'],
+      ['AI + Automation', 'ربط قدرات الذكاء الاصطناعي والبيانات والأتمتة بتدفقات عمل مفيدة ومنتجات برمجية حقيقية.']
     ],
-    contactKicker: 'عندك مشروع أو فرصة تدريب أو فكرة للتعاون؟',
+    contactKicker: 'فرصة تدريب، مشروع Backend، أتمتة، أو تعاون تقني؟',
     contactHeading: 'خلينا نبني شيء مفيد.',
-    contactText: 'مهتم بالفرص التي تسمح لي بالتعلم بسرعة والمساهمة تقنياً والعمل على مشاريع حقيقية.',
-    connect: 'تواصل معي على GitHub <span>↗</span>',
+    contactText: 'متاح للفرص التي أقدر فيها أساهم تقنياً وأتعلم من عمل هندسي حقيقي وأطوّر خبرتي في الذكاء الاصطناعي والبيانات والـBackend والأتمتة.',
     footer: 'تصميم وتطوير سيف المغربي.',
     themeDark: 'الوضع الداكن',
     themeLight: 'الوضع الفاتح',
@@ -142,13 +148,6 @@ const copy = {
 let currentLanguage = localStorage.getItem('portfolio-lang') || 'en';
 if (!copy[currentLanguage]) currentLanguage = 'en';
 
-function syncThemeIcon() {
-  const isLight = root.classList.contains('light');
-  themeIcon.textContent = isLight ? '☾' : '☼';
-  const t = copy[currentLanguage];
-  themeToggle.setAttribute('aria-label', isLight ? t.themeDark : t.themeLight);
-}
-
 function setText(selector, value) {
   const el = document.querySelector(selector);
   if (el) el.textContent = value;
@@ -157,6 +156,13 @@ function setText(selector, value) {
 function setHTML(selector, value) {
   const el = document.querySelector(selector);
   if (el) el.innerHTML = value;
+}
+
+function syncThemeIcon() {
+  const isLight = root.classList.contains('light');
+  themeIcon.textContent = isLight ? '☾' : '☼';
+  const t = copy[currentLanguage];
+  themeToggle.setAttribute('aria-label', isLight ? t.themeDark : t.themeLight);
 }
 
 function applyLanguage(lang) {
@@ -185,14 +191,13 @@ function applyLanguage(lang) {
   });
   setHTML('.hero-text', t.heroText);
   setHTML('.hero-actions .primary', t.explore);
+
   setText('.console-head > span:first-child', t.consoleHead);
   setText('.console-live', t.consoleLive);
   document.querySelectorAll('.console-row').forEach((row, i) => {
     if (!t.consoleRows[i]) return;
-    const label = row.querySelector('span');
-    const value = row.querySelector('strong');
-    if (label) label.textContent = t.consoleRows[i][0];
-    if (value) value.textContent = t.consoleRows[i][1];
+    setTextIn(row.querySelector('span'), t.consoleRows[i][0]);
+    setTextIn(row.querySelector('strong'), t.consoleRows[i][1]);
   });
 
   setText('#about .section-heading h2', t.aboutHeading);
@@ -203,17 +208,14 @@ function applyLanguage(lang) {
   setText('.profile-line span', t.location);
 
   document.querySelectorAll('.quick-facts > div').forEach((row, i) => {
+    if (!t.facts[i]) return;
     const dt = row.querySelector('dt');
     const dd = row.querySelector('dd');
-    if (!t.facts[i]) return;
     if (dt) dt.textContent = t.facts[i][0];
     if (dd) {
-      if (i === 3) {
-        const link = dd.querySelector('a');
-        if (link) link.textContent = t.facts[i][1];
-      } else {
-        dd.textContent = t.facts[i][1];
-      }
+      const link = dd.querySelector('a');
+      if (link) link.textContent = t.facts[i][1];
+      else dd.textContent = t.facts[i][1];
     }
   });
 
@@ -247,12 +249,15 @@ function applyLanguage(lang) {
   setText('.contact-card h2', t.contactHeading);
   const contactBody = document.querySelector('.contact-card > p:not(.contact-kicker)');
   if (contactBody) contactBody.textContent = t.contactText;
-  setHTML('.contact-actions .primary', t.connect);
   setText('.footer p:first-child', t.footer);
 
   localStorage.setItem('portfolio-lang', lang);
   syncThemeIcon();
   menuToggle.setAttribute('aria-label', navLinks.classList.contains('open') ? t.menuClose : t.menuOpen);
+}
+
+function setTextIn(element, value) {
+  if (element) element.textContent = value;
 }
 
 applyLanguage(currentLanguage);
@@ -298,126 +303,16 @@ document.querySelectorAll('.reveal').forEach((element) => observer.observe(eleme
 
 year.textContent = new Date().getFullYear();
 
-// Cinematic background video
-if (heroVideo) {
-  heroVideo.muted = true;
-  heroVideo.play().catch(() => {});
-}
-
-// Lightweight pointer parallax for the hero media.
+// Very light parallax only; no particle canvas or heavy background processing.
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-if (hero && !reducedMotion.matches) {
+if (hero && heroGrid && !reducedMotion.matches) {
   hero.addEventListener('pointermove', (event) => {
     const rect = hero.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
-    if (heroGrid) heroGrid.style.transform = `translate(${x * -12}px, ${y * -9}px)`;
-    if (heroVideo) heroVideo.style.transform = `scale(1.055) translate(${x * -5}px, ${y * -4}px)`;
-  });
-
+    heroGrid.style.transform = `translate(${x * -7}px, ${y * -5}px)`;
+  }, { passive: true });
   hero.addEventListener('pointerleave', () => {
-    if (heroGrid) heroGrid.style.transform = 'translate(0, 0)';
-    if (heroVideo) heroVideo.style.transform = 'scale(1.03) translate(0, 0)';
+    heroGrid.style.transform = 'translate(0, 0)';
   });
-}
-
-// Neural-network particle layer.
-if (neuralCanvas && !reducedMotion.matches) {
-  const ctx = neuralCanvas.getContext('2d');
-  let width = 0;
-  let height = 0;
-  let particles = [];
-  let animationFrame = 0;
-  const pointer = { x: -9999, y: -9999 };
-
-  function createParticle() {
-    const speed = 0.18 + Math.random() * 0.32;
-    const angle = Math.random() * Math.PI * 2;
-    return {
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      r: 0.7 + Math.random() * 1.5
-    };
-  }
-
-  function resizeCanvas() {
-    const rect = neuralCanvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = rect.width;
-    height = rect.height;
-    neuralCanvas.width = Math.max(1, Math.floor(width * dpr));
-    neuralCanvas.height = Math.max(1, Math.floor(height * dpr));
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const targetCount = width < 700 ? 30 : 58;
-    particles = Array.from({ length: targetCount }, createParticle);
-  }
-
-  function drawNetwork() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (const p of particles) {
-      const dx = pointer.x - p.x;
-      const dy = pointer.y - p.y;
-      const pointerDistance = Math.hypot(dx, dy);
-      if (pointerDistance < 150 && pointerDistance > 0) {
-        p.vx -= (dx / pointerDistance) * 0.0025;
-        p.vy -= (dy / pointerDistance) * 0.0025;
-      }
-
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < -20) p.x = width + 20;
-      if (p.x > width + 20) p.x = -20;
-      if (p.y < -20) p.y = height + 20;
-      if (p.y > height + 20) p.y = -20;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(124,242,197,.72)';
-      ctx.fill();
-    }
-
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const a = particles[i];
-        const b = particles[j];
-        const distance = Math.hypot(a.x - b.x, a.y - b.y);
-        if (distance < 132) {
-          const alpha = (1 - distance / 132) * 0.26;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = `rgba(126,164,255,${alpha})`;
-          ctx.lineWidth = 0.7;
-          ctx.stroke();
-        }
-      }
-    }
-
-    animationFrame = requestAnimationFrame(drawNetwork);
-  }
-
-  resizeCanvas();
-  drawNetwork();
-  window.addEventListener('resize', resizeCanvas, { passive: true });
-  hero?.addEventListener('pointermove', (event) => {
-    const rect = neuralCanvas.getBoundingClientRect();
-    pointer.x = event.clientX - rect.left;
-    pointer.y = event.clientY - rect.top;
-  });
-  hero?.addEventListener('pointerleave', () => {
-    pointer.x = -9999;
-    pointer.y = -9999;
-  });
-
-  reducedMotion.addEventListener?.('change', (event) => {
-    if (event.matches) {
-      cancelAnimationFrame(animationFrame);
-      if (heroVideo) heroVideo.pause();
-    }
-  });
-} else if (heroVideo && reducedMotion.matches) {
-  heroVideo.pause();
 }
