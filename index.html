@@ -30,9 +30,18 @@
     html[dir="rtl"] .project-meta, html[dir="rtl"] .footer { direction:rtl; }
     html[dir="rtl"] .hero-stage { text-align:right; }
     html[dir="rtl"] .hero-text { margin-left:auto; margin-right:0; }
+
+    /* Refined opening-title scale */
+    .ai-hero h1 { font-size:clamp(3.9rem,8.7vw,7.9rem); }
+
+    @media (max-width:1000px) {
+      .ai-hero h1 { font-size:clamp(3.8rem,11.5vw,6.8rem); }
+    }
+
     @media (max-width:700px) {
       .language-toggle { width:44px; height:40px; }
       html[dir="rtl"] .nav-links { margin:0; }
+      .ai-hero h1 { font-size:clamp(3rem,15vw,4.7rem); }
     }
   </style>
 </head>
@@ -55,7 +64,7 @@
     <section class="hero ai-hero" id="home">
       <div class="hero-media" aria-hidden="true">
         <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-          <source src="https://videos.pexels.com/video-files/35546615/15059753_1920_1080_30fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/34688317/14702966_3840_2160_60fps.mp4" type="video/mp4" />
         </video>
         <canvas id="neural-canvas"></canvas>
         <div class="hero-grid"></div>
