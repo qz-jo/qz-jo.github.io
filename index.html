@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Seif Elmughrabi — Artificial Intelligence & Data Science student building backend systems, APIs, automation workflows, and practical software projects." />
-  <meta name="theme-color" content="#0a0d14" />
+  <meta name="theme-color" content="#06080d" />
   <meta property="og:title" content="Seif Elmughrabi | AI & Data Science, Backend & Automation" />
   <meta property="og:description" content="Portfolio of Seif Elmughrabi — Artificial Intelligence & Data Science student focused on backend development, automation, and practical software." />
   <meta property="og:type" content="website" />
@@ -15,24 +15,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20260816-3" />
+  <link rel="stylesheet" href="styles.css?v=20260816-5" />
 
   <style>
     .language-toggle { width:48px; height:40px; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:12px; cursor:pointer; font:800 12px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em; }
     .language-toggle:hover { border-color:color-mix(in srgb,var(--accent) 45%,var(--line)); }
     html[dir="rtl"] body { font-family:"Noto Naskh Arabic",Tahoma,Arial,"Segoe UI",sans-serif; letter-spacing:0; line-height:1.95; }
     html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] .contact-card h2, html[dir="rtl"] .about-copy .lead, html[dir="rtl"] .hero h1, html[dir="rtl"] .section-heading h2, html[dir="rtl"] .project h3 { font-family:"Amiri","Noto Naskh Arabic",serif; letter-spacing:0; line-height:1.25; font-weight:700; }
-    html[dir="rtl"] .hero h1 { font-size:clamp(4.2rem,8vw,7rem); }
     html[dir="rtl"] .hero-text, html[dir="rtl"] .about-copy p, html[dir="rtl"] .project p, html[dir="rtl"] .journey-item p, html[dir="rtl"] .contact-card > p:not(.contact-kicker) { font-family:"Noto Naskh Arabic",sans-serif; font-size:1.08rem; line-height:2; }
     html[dir="rtl"] .nav-links a, html[dir="rtl"] .button, html[dir="rtl"] .eyebrow, html[dir="rtl"] .contact-kicker, html[dir="rtl"] .tags span, html[dir="rtl"] .quick-facts dt, html[dir="rtl"] .quick-facts dd { font-family:"Noto Naskh Arabic",sans-serif; }
     html[dir="rtl"] .nav-links { margin-left:0; margin-right:auto; }
     html[dir="rtl"] .section-heading::after { margin-left:0; margin-right:14px; }
     html[dir="rtl"] .quick-facts dd { text-align:left; }
     html[dir="rtl"] .project-meta, html[dir="rtl"] .footer { direction:rtl; }
-    html[dir="rtl"] .code-window { direction:ltr; text-align:left; }
+    html[dir="rtl"] .hero-stage { text-align:right; }
+    html[dir="rtl"] .hero-text { margin-left:auto; margin-right:0; }
     @media (max-width:700px) {
       .language-toggle { width:44px; height:40px; }
-      html[dir="rtl"] .hero h1 { font-size:clamp(3.8rem,16vw,5.5rem); }
       html[dir="rtl"] .nav-links { margin:0; }
     }
   </style>
@@ -53,37 +52,56 @@
   </header>
 
   <main>
-    <section class="hero container" id="home">
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="status-dot"></span> Open to internships & collaborations</div>
-        <p class="intro">Hi, I'm</p>
-        <h1>Seif<br /><span>Elmughrabi.</span></h1>
-        <p class="hero-text">Artificial Intelligence & Data Science student building <strong>backend systems</strong>, <strong>APIs</strong>, and <strong>automation workflows</strong> that solve real problems.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#projects">Explore my work <span>↗</span></a>
-          <a class="button ghost" href="https://github.com/qz-jo" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
-        </div>
+    <section class="hero ai-hero" id="home">
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+          <source src="https://videos.pexels.com/video-files/35546615/15059753_1920_1080_30fps.mp4" type="video/mp4" />
+        </video>
+        <canvas id="neural-canvas"></canvas>
+        <div class="hero-grid"></div>
+        <div class="hero-vignette"></div>
+        <div class="hero-scan"></div>
       </div>
 
-      <div class="hero-visual reveal" aria-hidden="true">
-        <div class="code-window">
-          <div class="window-bar"><div class="window-dots"><i></i><i></i><i></i></div><span>portfolio.js</span></div>
-          <pre><code><span class="code-dim">const</span> developer = {
-  name: <span class="code-string">"Seif Elmughrabi"</span>,
-  focus: [
-    <span class="code-string">"Artificial Intelligence"</span>,
-    <span class="code-string">"Data Science"</span>,
-    <span class="code-string">"Backend Engineering"</span>,
-    <span class="code-string">"Automation"</span>
-  ],
-  tools: [
-    <span class="code-string">"Node.js"</span>, <span class="code-string">"PostgreSQL"</span>,
-    <span class="code-string">"n8n"</span>, <span class="code-string">"Python"</span>
-  ],
-  mindset: <span class="code-string">"learn → build → ship"</span>
-};</code></pre>
+      <div class="hero-stage container">
+        <div class="hero-deck">
+          <div class="eyebrow hero-step step-1"><span class="status-dot"></span> Open to internships & collaborations</div>
+          <p class="intro hero-step step-2">Hi, I'm</p>
+
+          <div class="name-frame hero-step step-3">
+            <span class="name-index">01 / INTRO</span>
+            <h1><span class="name-first">SEIF</span><span class="name-last">ELMUGHRABI</span></h1>
+            <div class="name-rule"><span></span></div>
+          </div>
+
+          <div class="discipline-track hero-step step-4" aria-label="Areas of focus">
+            <span>ARTIFICIAL INTELLIGENCE</span>
+            <i></i>
+            <span>DATA SCIENCE</span>
+            <i></i>
+            <span>BACKEND</span>
+            <i></i>
+            <span>AUTOMATION</span>
+          </div>
+
+          <p class="hero-text hero-step step-5">Artificial Intelligence & Data Science student building <strong>backend systems</strong>, <strong>APIs</strong>, and <strong>automation workflows</strong> that solve real problems.</p>
+
+          <div class="hero-actions hero-step step-6">
+            <a class="button primary" href="#projects">Explore my work <span>↗</span></a>
+            <a class="button ghost" href="https://github.com/qz-jo" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+          </div>
         </div>
-        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+
+        <aside class="ai-console hero-step step-5" aria-label="AI profile summary">
+          <div class="console-head"><span>AI_PROFILE</span><span class="console-live">LIVE</span></div>
+          <div class="console-row"><span>FIELD</span><strong>AI + DATA SCIENCE</strong></div>
+          <div class="console-row"><span>BUILD</span><strong>BACKEND SYSTEMS</strong></div>
+          <div class="console-row"><span>AUTOMATE</span><strong>n8n WORKFLOWS</strong></div>
+          <div class="console-row"><span>SHIP</span><strong>REAL PROJECTS</strong></div>
+          <div class="console-wave"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+        </aside>
+
+        <a class="scroll-cue hero-step step-6" href="#about" aria-label="Scroll to About section"><span>SCROLL</span><i></i></a>
       </div>
     </section>
 
@@ -163,6 +181,6 @@
   </main>
 
   <footer class="footer container"><p>Designed & built by Seif Elmughrabi.</p><p>© <span id="year"></span></p></footer>
-  <script src="script.js?v=20260816-4"></script>
+  <script src="script.js?v=20260816-5"></script>
 </body>
 </html>
