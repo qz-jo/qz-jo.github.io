@@ -1,31 +1,21 @@
-# Seif Elmughrabi — Portfolio
+# Seif Elmughrabi — AI Developer Portfolio
 
-Personal portfolio website for Seif Elmughrabi, an Artificial Intelligence student focused on backend development, automation, APIs, and practical software projects.
+Premium bilingual AI developer portfolio for **Seif Elmughrabi**, deployed through GitHub Pages.
 
-## Live site
+## Live portfolio
 
-Once GitHub Pages is enabled for the `main` branch, the site is available at:
+- GitHub Pages: https://qz-jo.github.io
+- GitHub profile: https://github.com/qz-jo
+- LinkedIn: https://www.linkedin.com/in/saif-almograbe-8847723aa
 
-`https://qz-jo.github.io`
+## Highlights
 
-## Built with
+- English and Arabic interfaces with RTL support
+- Responsive premium dark-tech design
+- Featured project case studies and category filters
+- Local “Ask About Me” portfolio assistant demo
+- Accessible navigation, reduced-motion support, and contact validation
+- Optimized WebP portrait and self-hosted Arabic typography
+- SEO metadata, sitemap, robots file, and social preview data
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- GitHub Pages
-
-## Sections
-
-- About
-- Skills
-- Selected projects
-- Current learning direction
-- Contact
-
-## Projects featured
-
-- E-commerce REST API
-- Smart Task Manager
-- IT Support Ticket Triage Automation
-- Job Application Tracker
+This repository contains the optimized static production build served by GitHub Pages. Previous versions remain recoverable from the repository history.

@@ -1,0 +1,9 @@
+{
+  "name": "Seif Elmughrabi Portfolio",
+  "short_name": "Seif Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06090f",
+  "theme_color": "#06090f",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
