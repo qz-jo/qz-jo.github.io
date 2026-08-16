@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Abstract technical grid background">
+  <defs>
+    <radialGradient id="b" cx="72%" cy="38%" r="70%"><stop offset="0" stop-color="#172f53"/><stop offset=".55" stop-color="#07101c"/><stop offset="1" stop-color="#03060b"/></radialGradient>
+    <pattern id="g" width="72" height="72" patternUnits="userSpaceOnUse"><path d="M72 0H0v72" fill="none" stroke="#69edbd" stroke-opacity=".07"/></pattern>
+    <linearGradient id="l" x1="0" x2="1"><stop stop-color="#69edbd" stop-opacity="0"/><stop offset=".5" stop-color="#69edbd" stop-opacity=".42"/><stop offset="1" stop-color="#6f91ff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#b)"/><rect width="1600" height="900" fill="url(#g)"/>
+  <g fill="none" stroke="url(#l)" stroke-width="1"><path d="M870 90 1110 280 975 485 1320 680"/><path d="m1020 120 210 165-105 160 270 155"/><path d="M810 300 980 420 865 620"/></g>
+  <g fill="#69edbd"><circle cx="870" cy="90" r="4"/><circle cx="1110" cy="280" r="5"/><circle cx="975" cy="485" r="4"/><circle cx="1320" cy="680" r="5"/></g>
+</svg>
