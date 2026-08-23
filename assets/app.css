@@ -2290,6 +2290,34 @@ html[dir="rtl"] .assistant-panel.open {
   backdrop-filter: blur(7px);
 }
 
+.command-backdrop {
+  position: fixed;
+  z-index: 300;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(7px);
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.command-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.command-palette.fallback-open {
+  display: block;
+  position: fixed;
+  z-index: 301;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
+
 .command-palette[open] {
   animation: paletteIn 0.3s var(--ease) both;
 }

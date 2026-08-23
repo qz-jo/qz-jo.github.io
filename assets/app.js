@@ -536,10 +536,26 @@ function initObservers() {
 
 function openCommandPalette() {
   const dialog = $("#commandPalette");
-  if (!dialog.open) dialog.showModal();
+  if (!dialog.open && !dialog.hasAttribute("open")) {
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute("open", "");
+      dialog.classList.add("fallback-open");
+      $("#commandBackdrop").classList.add("open");
+    }
+  }
   $("#commandInput").value = "";
   filterCommands("");
   window.setTimeout(() => $("#commandInput").focus(), 40);
+}
+
+function closeCommandPalette() {
+  const dialog = $("#commandPalette");
+  if (typeof dialog.close === "function" && dialog.open) dialog.close();
+  else dialog.removeAttribute("open");
+  dialog.classList.remove("fallback-open");
+  $("#commandBackdrop").classList.remove("open");
 }
 
 function filterCommands(value) {
@@ -557,7 +573,7 @@ function filterCommands(value) {
 function executeCommand(button) {
   const type = button.dataset.command;
   const target = button.dataset.target;
-  $("#commandPalette").close();
+  closeCommandPalette();
   if (type === "section") $(target)?.scrollIntoView({ behavior: state.motion === "off" ? "auto" : "smooth" });
   if (type === "external") window.open(target, "_blank", "noopener,noreferrer");
   if (type === "assistant") openAssistant();
@@ -602,11 +618,12 @@ function setupInteractions() {
   });
 
   $("#commandTrigger").addEventListener("click", openCommandPalette);
-  $("#commandClose").addEventListener("click", () => $("#commandPalette").close());
+  $("#commandClose").addEventListener("click", closeCommandPalette);
+  $("#commandBackdrop").addEventListener("click", closeCommandPalette);
   $("#commandPalette").addEventListener("click", (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
-    if (outside) event.currentTarget.close();
+    if (outside) closeCommandPalette();
   });
   $("#commandInput").addEventListener("input", (event) => filterCommands(event.target.value));
   $$(".command-list button").forEach((button) => button.addEventListener("click", () => executeCommand(button)));
@@ -615,6 +632,11 @@ function setupInteractions() {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
       event.preventDefault();
       openCommandPalette();
+      return;
+    }
+    if (event.key === "Escape" && ($("#commandPalette").open || $("#commandPalette").hasAttribute("open"))) {
+      event.preventDefault();
+      closeCommandPalette();
       return;
     }
     if (event.key === "Escape" && $("#assistantPanel").classList.contains("open")) closeAssistant();
