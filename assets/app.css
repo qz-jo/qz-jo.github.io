@@ -2096,6 +2096,10 @@ html[dir="rtl"] .assistant-panel {
   visibility: visible;
 }
 
+html[dir="rtl"] .assistant-panel.open {
+  transform: translateX(0);
+}
+
 .assistant-backdrop {
   position: fixed;
   z-index: 200;
