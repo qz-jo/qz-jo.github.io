@@ -1,9 +1,12 @@
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
+// Connect Calendly, Cal.com, Google Appointment Scheduling, or another booking page here.
+const MEETING_URL = "";
+
 const state = {
-  language: localStorage.getItem("seif-language") === "ar" ? "ar" : "en",
-  motion: localStorage.getItem("seif-motion") || (matchMedia("(prefers-reduced-motion: reduce)").matches ? "off" : "on"),
+  language: localStorage.getItem("saif-language") === "ar" ? "ar" : "en",
+  motion: localStorage.getItem("saif-motion") || (matchMedia("(prefers-reduced-motion: reduce)").matches ? "off" : "on"),
   lastFocus: null,
   toastTimer: null,
 };
@@ -16,6 +19,7 @@ const arabic = {
   navWork: "المشاريع",
   navJourney: "المسيرة",
   navContact: "تواصل",
+  scheduleMeetingShort: "احجز اجتماعًا",
   command: "تنقّل",
   available: "متاح للتدريب والعمل الحر والتعاون التقني",
   intro: "مرحبًا، أنا سيف — من عمّان، الأردن.",
@@ -23,8 +27,10 @@ const arabic = {
   heroLine2: "تقف خلف المنتجات الذكية.",
   heroLead: "طالب ذكاء اصطناعي وعلم بيانات أركز على هندسة Backend الآمنة، وتطبيقات الويب المعتمدة على البيانات، والأتمتة التي تختصر العمل المتكرر.",
   exploreWork: "استكشف أبرز المشاريع",
-  askPortfolio: "اسأل موقعي الذكي",
+  askPortfolio: "اسأل SEIF.OS",
+  scheduleMeeting: "احجز اجتماعًا",
   liveProfile: "ملف مباشر",
+  statusAvailable: "الحالة: متاح",
   field: "التخصص",
   focus: "التركيز",
   university: "الجامعة",
@@ -35,9 +41,9 @@ const arabic = {
   scroll: "تابع لاكتشاف الدليل",
   signalIntro: "موقع صُمّم ليجيب بسرعة عن سؤال واحد: ماذا يستطيع سيف أن يبني فعلًا؟",
   publicRepos: "مستودعات GitHub عامة",
-  featuredSystems: "أنظمة مختارة",
-  tools: "تقنية وأداة",
-  gradExpected: "التخرج المتوقع",
+  featuredSystems: "دراسات حالة هندسية",
+  capabilityTracks: "مسارات تقنية",
+  verifiedCredential: "شهادة موثقة",
   aboutTitle: "هندسة بفضول. وتنفيذ بانضباط.",
   location: "عمّان · الأردن",
   aboutLead: "أنا طالب ذكاء اصطناعي وعلم بيانات، وأتعلّم ببناء برمجيات مفيدة وقابلة للصيانة.",
@@ -54,14 +60,19 @@ const arabic = {
   viewLinkedIn: "عرض ملف LinkedIn",
   viewCv: "عرض السيرة الذاتية",
   capTitle: "ليست قائمة كلمات رنانة؛ بل خريطة لما أستطيع تنفيذه.",
-  capBackendTitle: "أنظمة Backend آمنة",
-  capBackendBody: "REST APIs ومصادقة وصلاحيات وتحقق من المدخلات ووصول آمن للبيانات وأخطاء متوقعة وواضحة.",
-  capDataTitle: "تطبيقات تعتمد على البيانات",
-  capDataBody: "نمذجة علائقية وتخزين واستعلامات آمنة وتصميم بيانات التطبيقات وتفكير تحليلي عملي.",
-  capAutomationTitle: "أتمتة تدفقات العمل",
-  capAutomationBody: "Workflows تعتمد على Webhooks للتحقق من المدخلات وربط الخدمات وإرجاع بيانات منظمة وتقليل العمل اليدوي.",
-  capProductTitle: "منتجات ويب عملية",
-  capProductBody: "واجهات متجاوبة وسهلة الوصول مرتبطة بتدفقات حقيقية، وليست مجرد عروض بصرية بلا نظام خلفها.",
+  capAiTitle: "الذكاء الاصطناعي والأنظمة الذكية",
+  capAiBody: "تكاملات ذكاء اصطناعي عملية مبنية حول مدخلات منظمة ومخرجات مفيدة وتدفقات يمكن الاعتماد عليها، لا ذكاء اصطناعي للزينة.",
+  deliverLabel: "ما أستطيع تنفيذه",
+  capAiDeliver: "ميزات منتجات مدعومة بالذكاء الاصطناعي ونماذج أولية معتمدة على البيانات وطبقات Workflows ذكية.",
+  capBackendTitle: "هندسة Backend",
+  capBackendBody: "REST APIs مع مصادقة وصلاحيات وتحقق وأخطاء متوقعة وحدود ثقة واضحة.",
+  capBackendDeliver: "أساسات API آمنة وخدمات محمية بالمصادقة وهندسة Backend تراعي بيئة الإنتاج.",
+  capAutomationTitle: "الأتمتة",
+  capAutomationBody: "Workflows تعتمد على Webhooks للتحقق من المدخلات وربط الخدمات وإرجاع بيانات منظمة وتقليل العمل المتكرر.",
+  capAutomationDeliver: "تدفقات n8n وتكاملات APIs وأنظمة فرز وأتمتة قابلة للتكرار لعمليات الأعمال.",
+  capDataTitle: "البيانات والأمان",
+  capDataBody: "نمذجة علائقية وSQL آمن ووصول محمي لقاعدة البيانات وتصميم صلاحيات وتحقق على مستوى التطبيق.",
+  capDataDeliver: "تطبيقات مدعومة بـPostgreSQL مع نماذج بيانات واضحة وقواعد ملكية وضوابط أمان.",
   workTitle: "مشاريع تثبت طريقة تفكيري.",
   workIntro: "اختر ما تحتاجه، وسيقودك الموقع إلى أقوى دليل مناسب.",
   matcherLabel: "مطابق المشاريع الذكي",
@@ -85,6 +96,47 @@ const arabic = {
   projectAutomationProof: "Workflow بلا بيانات اعتماد، مع عينات وقواعد شفافة واختبارات آلية لسيناريوهات الفرز.",
   projectJobsBody: "تطبيق متصفح خفيف لتتبع طلبات التوظيف والحالات والملاحظات والبحث والتصفية والإحصائيات ونسخ JSON الاحتياطية، بلا حساب أو Backend.",
   projectJobsProof: "تخزين محلي وتصدير واستيراد JSON واضح وواجهة متجاوبة، بلا API keys أو نقل خارجي للبيانات.",
+  openCaseStudy: "عرض التفاصيل الهندسية",
+  caseProblem: "المشكلة",
+  caseBuilt: "ما الذي بنيته",
+  caseArchitecture: "الهندسة",
+  caseDecisions: "القرارات الهندسية",
+  caseResult: "النتيجة",
+  viewGithub: "اعرض الدليل على GitHub",
+  ecomProblem: "واجهة تجارة إلكترونية قائمة احتاجت حدود ثقة واضحة بين المستخدمين والأدوار والمنتجات والطلبات.",
+  ecomBuilt: "واجهة Express تركز على الأمان مع مسارات محمية وتحقق وضوابط ملكية وتخزين PostgreSQL.",
+  ecomArchitecture: "Routes ← التحقق والمصادقة ← Controllers ← استعلامات آمنة ← Neon PostgreSQL.",
+  ecomDecisions: "التحقق من JWT وفحص الأدوار مباشرة وRBAC وحماية IDOR وتحديد المعدل وHelmet وCORS وأخطاء آمنة.",
+  ecomResult: "مراجعة أمان موثقة وخطة Postman قابلة لإعادة الاستخدام تغطي الصلاحيات وحالات الفشل المطلوبة.",
+  taskProblem: "تتبع المهام غالبًا يوزع الواجهة والـAPI والنشر على أجزاء متحركة أكثر من اللازم.",
+  taskBuilt: "مدير مهام محمي بالمصادقة مع تنبيهات وتصفية وتهيئة تلقائية للجداول وتخزين PostgreSQL.",
+  taskArchitecture: "خدمة Express واحدة تقدم الواجهة الثابتة والـAPI وتعمل مع PostgreSQL من المصدر نفسه.",
+  taskDecisions: "مصادقة JWT وحد أدنى 32 حرفًا للمفتاح ودعم SSL وCORS مقيد وHealth endpoint.",
+  taskResult: "نظام Full-stack مدمج يمكن نشره كخدمة Node واحدة مع قاعدة بيانات مُدارة.",
+  automationProblem: "تخسر فرق الدعم وقتًا في مراجعة كل تذكرة واردة وتحديد أولويتها يدويًا.",
+  automationBuilt: "تدفق Webhook جاهز للاستيراد يتحقق من الطلبات ويصنف المشكلات ويحدد الأولوية ويحسب SLA.",
+  automationArchitecture: "POST webhook ← التحقق والقواعد ← التصنيف وحساب SLA ← استجابة JSON منظمة.",
+  automationDecisions: "استخدام Nodes الأساسية في n8n فقط، بلا بيانات اعتماد، مع تقييم قواعد الأمان أولًا وفئات واضحة ومخرجات قابلة لإعادة الاستخدام.",
+  automationResult: "عملية فرز أولية متسقة ومرفقة بعينات وتوثيق واختبارات آلية.",
+  jobsProblem: "يحتاج الباحث عن عمل مكانًا واحدًا لتتبع الطلبات والحالات والروابط والتواريخ وملاحظات المتابعة.",
+  jobsBuilt: "لوحة متجاوبة للإضافة والتعديل والحذف والبحث وتصفية الحالات والإحصائيات والنسخ الاحتياطية.",
+  jobsArchitecture: "واجهة متصفح بلا Framework تحفظ السجلات في localStorage وتصدر أو تستعيد JSON عند الطلب.",
+  jobsDecisions: "بلا حساب أو Backend أو قاعدة بيانات أو API key أو نقل صامت للبيانات؛ المستخدم يتحكم بكل نسخة احتياطية.",
+  jobsResult: "أداة مفيدة تضع الخصوصية أولًا وتعمل محليًا وتحفظ بيانات الطلبات داخل متصفح المستخدم.",
+  proofTitle: "دليل، لا ادعاءات تسويقية.",
+  proofIntro: "العمل عام وقابل للفحص وموثق ومرتبط بالتنفيذ، بلا شهادات عملاء مختلقة.",
+  proofReposTitle: "مصدر عام",
+  proofReposBody: "ستة مستودعات عامة تكشف الكود وبنية المشاريع وسجل التنفيذ.",
+  inspectGithub: "افحص GitHub",
+  proofSecurityTitle: "مراجعة أمان وخطة API",
+  proofSecurityBody: "يوثق مشروع E-commerce API المصادقة وRBAC وحماية IDOR وSQL الآمن وتحديد المعدل وخطة اختبار Postman.",
+  inspectEvidence: "افحص الدليل",
+  proofTestsTitle: "سيناريوهات آلية",
+  proofTestsBody: "يتضمن Workflow فرز التذاكر اختبارات قابلة للتنفيذ للتحقق والأمان والأعطال والوصول والفوترة والحالات العامة.",
+  inspectTests: "افحص الاختبارات",
+  proofDocsTitle: "توثيق تقني",
+  proofDocsBody: "يشرح كل مشروع مختار الإعداد والهندسة والقيود وخيارات الأمان وما يمكن إضافته لاحقًا.",
+  readDocs: "اقرأ التوثيق",
   approachTitle: "كيف أحوّل المشكلة إلى نظام يمكن الاعتماد عليه.",
   stepUnderstand: "أفهم",
   stepUnderstandBody: "أحدد سير العمل الحقيقي والمستخدمين وحالات الفشل.",
@@ -111,7 +163,7 @@ const arabic = {
   dateMay2026: "مايو 2026",
   typeCredential: "شهادة",
   timelineCredentialBody: "شهادة Google برقم اعتماد 24563886، ومدرجة في السيرة الذاتية المثبتة على LinkedIn.",
-  contactTitle: "عندك مشكلة حقيقية؟ لنبنِ الإجابة المفيدة.",
+  contactTitle: "لنبنِ شيئًا مفيدًا.",
   contactBody: "متاح للتدريب والعمل الحر في الـBackend ومشاريع الأتمتة والتعاونات التقنية.",
   copyEmail: "انسخ البريد",
   formName: "اسمك",
@@ -128,13 +180,14 @@ const arabic = {
   messagePlaceholder: "احكِ لي عن المشكلة والهدف والوقت المتوقع…",
   footerBuilt: "صُمّم وبُني بعناية",
   backTop: "العودة للأعلى",
-  askSeif: "اسأل SEIF.OS",
+  askSaif: "اسأل SEIF.OS",
   assistantSubtitle: "طبقة ذكاء البورتفوليو",
   assistantWelcome: "اسأل عن أقوى مشاريع سيف أو تقنياته أو دراسته أو توفره أو اتجاهه الحالي.",
   assistantQ1: "أقوى دليل Backend؟",
   assistantQ2: "خبرته في الأتمتة؟",
   assistantQ3: "لماذا أختار سيف؟",
   assistantQ4: "كيف أتواصل معه؟",
+  assistantQ5: "كيف أحجز اجتماعًا؟",
   assistantLabel: "اسأل البورتفوليو",
   assistantPlaceholder: "اسأل عن المهارات أو المشاريع أو التوفر…",
   assistantNote: "سريع وخاص ويعتمد على محتوى هذا الموقع الموثق.",
@@ -144,6 +197,7 @@ const arabic = {
   commandWork: "استكشف المشاريع المختارة",
   commandAssistant: "اسأل مساعد البورتفوليو",
   commandContact: "ابدأ محادثة",
+  commandMeeting: "احجز اجتماعًا",
   commandGithub: "افتح GitHub",
   commandLanguage: "غيّر اللغة",
   commandHint: "↑ ↓ للتنقل · Enter للاختيار · Esc للإغلاق",
@@ -166,7 +220,7 @@ function setLanguage(language, persist = true) {
   const isArabic = language === "ar";
   document.documentElement.lang = language;
   document.documentElement.dir = isArabic ? "rtl" : "ltr";
-  document.title = isArabic ? "سيف المغربي — الذكاء الاصطناعي والـBackend والأتمتة" : "Seif Elmughrabi — AI, Backend & Automation";
+  document.title = isArabic ? "Saif Almograbe — الذكاء الاصطناعي والـBackend والأتمتة" : "Saif Almograbe — AI, Backend & Automation";
 
   $$('[data-i18n]').forEach((element) => {
     const key = element.dataset.i18n;
@@ -181,7 +235,7 @@ function setLanguage(language, persist = true) {
   const toggle = $("#languageToggle");
   toggle.textContent = isArabic ? "EN" : "AR";
   toggle.setAttribute("aria-label", isArabic ? "Switch to English" : "التبديل إلى العربية");
-  if (persist) localStorage.setItem("seif-language", language);
+  if (persist) localStorage.setItem("saif-language", language);
   updateClock();
 }
 
@@ -203,7 +257,7 @@ function chooseProject(type) {
 const answers = {
   en: {
     backend: {
-      text: "Seif’s strongest backend proof is the E-commerce REST API. It covers JWT authentication, RBAC, input validation, parameterized PostgreSQL queries, rate limiting, Helmet, safe errors, and ownership protection.",
+      text: "Saif’s strongest backend proof is the E-commerce REST API. It covers JWT authentication, RBAC, input validation, parameterized PostgreSQL queries, rate limiting, Helmet, safe errors, and ownership protection.",
       label: "Inspect the backend case",
       href: "#project-ecommerce",
     },
@@ -228,24 +282,29 @@ const answers = {
       href: "#capabilities",
     },
     ai: {
-      text: "AI and Data Science are Seif’s academic field. His practical direction is connecting useful AI integrations to dependable backend, data, and automation systems without overstating work that is not yet shipped.",
+      text: "AI and Data Science are Saif’s academic field. His practical direction is connecting useful AI integrations to dependable backend, data, and automation systems without overstating work that is not yet shipped.",
       label: "See his current direction",
       href: "#about",
     },
     education: {
-      text: "Seif is pursuing a B.Sc. in Artificial Intelligence & Data Science at Tafila Technical University, with expected graduation in 2027. He also holds Google’s Introduction to Generative AI credential.",
+      text: "Saif is pursuing a B.Sc. in Artificial Intelligence & Data Science at Tafila Technical University, with expected graduation in 2027. He also holds Google’s Introduction to Generative AI credential.",
       label: "View the journey",
       href: "#journey",
     },
     hire: {
-      text: "Seif combines an AI and data foundation with practical backend delivery. His portfolio shows secure API thinking, PostgreSQL work, full-stack execution, automation, testing, documentation, and a habit of learning by shipping.",
+      text: "Saif combines an AI and data foundation with practical backend delivery. His portfolio shows secure API thinking, PostgreSQL work, full-stack execution, automation, testing, documentation, and a habit of learning by shipping.",
       label: "See the proof",
       href: "#work",
     },
     contact: {
-      text: "Seif is open to internships, freelance backend work, automation projects, and technical collaborations. The fastest route is email; LinkedIn and GitHub are also available.",
+      text: "Saif is open to internships, freelance backend work, automation projects, and technical collaborations. You can schedule a meeting, send an email, or use LinkedIn and GitHub.",
       label: "Go to contact",
       href: "#contact",
+    },
+    meeting: {
+      text: "Use any Schedule a Meeting button to open Saif’s booking page. If the booking link is still being connected, email him from the contact section.",
+      label: "Schedule a meeting",
+      href: MEETING_URL || "#contact",
     },
     projects: {
       text: "Four projects are featured: a security-focused E-commerce API, Smart Task Manager, an n8n IT ticket triage workflow, and a privacy-first Job Application Tracker.",
@@ -253,7 +312,7 @@ const answers = {
       href: "#work",
     },
     fallback: {
-      text: "I can answer from Seif’s verified portfolio. Try asking about backend security, automation, full-stack work, technologies, education, availability, or his strongest project.",
+      text: "I can answer from Saif’s verified portfolio. Try asking about backend security, automation, full-stack work, technologies, education, availability, or his strongest project.",
       label: "Explore the portfolio",
       href: "#work",
     },
@@ -300,9 +359,14 @@ const answers = {
       href: "#work",
     },
     contact: {
-      text: "سيف متاح للتدريب والعمل الحر في الـBackend ومشاريع الأتمتة والتعاون التقني. البريد الإلكتروني هو الطريق الأسرع، كما يتوفر LinkedIn وGitHub.",
+      text: "سيف متاح للتدريب والعمل الحر في الـBackend ومشاريع الأتمتة والتعاون التقني. يمكنك حجز اجتماع أو إرسال بريد أو استخدام LinkedIn وGitHub.",
       label: "اذهب للتواصل",
       href: "#contact",
+    },
+    meeting: {
+      text: "استخدم أي زر لحجز اجتماع لفتح صفحة المواعيد. إذا كان رابط الحجز لا يزال قيد الربط، أرسل بريدًا من قسم التواصل.",
+      label: "احجز اجتماعًا",
+      href: MEETING_URL || "#contact",
     },
     projects: {
       text: "يعرض الموقع أربعة مشاريع: E-commerce API تركز على الأمان، وSmart Task Manager، وWorkflow لفرز تذاكر الدعم عبر n8n، وJob Application Tracker يضع الخصوصية أولًا.",
@@ -326,6 +390,7 @@ function classifyQuestion(value) {
   if (/stack|skill|tech|language|tool|تقني|مهار|لغة|أداة|اداة/.test(query)) return "skills";
   if (/education|study|university|graduate|degree|certificate|دراس|جامع|تخرج|شهاد/.test(query)) return "education";
   if (/why|hire|choose|fit|employ|لماذا|ليش|اختار|توظف/.test(query)) return "hire";
+  if (/meeting|schedule|book|calendar|calendly|cal\.com|موعد|اجتماع|احجز|حجز/.test(query)) return "meeting";
   if (/contact|email|available|intern|freelance|connect|تواصل|بريد|متاح|تدريب|عمل حر/.test(query)) return "contact";
   if (/project|work|portfolio|مشروع|أعمال|اعمال|بورتفوليو/.test(query)) return "projects";
   if (/\bai\b|artificial|data science|machine|ذكاء|بيانات/.test(query)) return "ai";
@@ -343,6 +408,10 @@ function appendAssistantMessage(type, text, answer = null) {
     const link = document.createElement("a");
     link.href = answer.href;
     link.textContent = `${answer.label} ↘`;
+    if (/^https:\/\//i.test(answer.href)) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
     link.addEventListener("click", closeAssistant);
     paragraph.append(document.createElement("br"), link);
   }
@@ -374,8 +443,8 @@ function openAssistant(preset = null) {
   window.setTimeout(() => $("#assistantInput").focus(), 120);
   if (preset) {
     const prompts = {
-      backend: state.language === "ar" ? "ما أقوى دليل على خبرة سيف في الـBackend؟" : "What is Seif’s strongest backend proof?",
-      automation: state.language === "ar" ? "أرني أقوى مشروع أتمتة." : "Show me Seif’s strongest automation work.",
+      backend: state.language === "ar" ? "ما أقوى دليل على خبرة سيف في الـBackend؟" : "What is Saif’s strongest backend proof?",
+      automation: state.language === "ar" ? "أرني أقوى مشروع أتمتة." : "Show me Saif’s strongest automation work.",
     };
     answerQuestion(prompts[preset] || preset, preset);
   }
@@ -395,6 +464,31 @@ function showToast(message) {
   toast.classList.add("show");
   clearTimeout(state.toastTimer);
   state.toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+function openMeetingOrFallback() {
+  if (MEETING_URL) {
+    window.open(MEETING_URL, "_blank", "noopener,noreferrer");
+    return;
+  }
+  showToast(state.language === "ar" ? "رابط الحجز قيد الربط — استخدم البريد مؤقتًا" : "Booking link is being connected — use email for now");
+  $("#contact")?.scrollIntoView({ behavior: state.motion === "off" ? "auto" : "smooth" });
+}
+
+function setupMeetingLinks() {
+  $$('[data-meeting-link]').forEach((link) => {
+    if (MEETING_URL) {
+      link.href = MEETING_URL;
+      delete link.dataset.configPending;
+      return;
+    }
+    link.href = "#contact";
+    link.dataset.configPending = "true";
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openMeetingOrFallback();
+    });
+  });
 }
 
 function updateClock() {
@@ -576,6 +670,7 @@ function executeCommand(button) {
   closeCommandPalette();
   if (type === "section") $(target)?.scrollIntoView({ behavior: state.motion === "off" ? "auto" : "smooth" });
   if (type === "external") window.open(target, "_blank", "noopener,noreferrer");
+  if (type === "meeting") openMeetingOrFallback();
   if (type === "assistant") openAssistant();
   if (type === "language") setLanguage(state.language === "en" ? "ar" : "en");
 }
@@ -584,7 +679,7 @@ function setupInteractions() {
   $("#languageToggle").addEventListener("click", () => setLanguage(state.language === "en" ? "ar" : "en"));
   $("#motionToggle").addEventListener("click", () => {
     state.motion = state.motion === "on" ? "off" : "on";
-    localStorage.setItem("seif-motion", state.motion);
+    localStorage.setItem("saif-motion", state.motion);
     setupMotion();
     if (state.motion === "on" && canvasActive) startNeuralField();
     else stopNeuralField();
@@ -640,6 +735,12 @@ function setupInteractions() {
       return;
     }
     if (event.key === "Escape" && $("#assistantPanel").classList.contains("open")) closeAssistant();
+    if (event.key === "Escape" && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("panel-open");
+      menuToggle.focus();
+    }
     if (!$("#commandPalette").open || !["ArrowDown", "ArrowUp", "Enter"].includes(event.key)) return;
     const visible = $$(".command-list button").filter((button) => !button.hidden);
     if (!visible.length) return;
@@ -687,6 +788,18 @@ function setupInteractions() {
   hero.addEventListener("pointerleave", () => { pointer.active = false; });
 
   if (matchMedia("(pointer: fine)").matches) {
+    const portraitPicture = $("#heroPortraitStage picture");
+    hero.addEventListener("pointermove", (event) => {
+      if (state.motion === "off" || !portraitPicture) return;
+      const rect = hero.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 8;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 6;
+      portraitPicture.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1.012)`;
+    });
+    hero.addEventListener("pointerleave", () => {
+      if (portraitPicture) portraitPicture.style.transform = "";
+    });
+
     $$(".magnetic").forEach((button) => {
       button.addEventListener("pointermove", (event) => {
         if (state.motion === "off") return;
@@ -736,6 +849,7 @@ function init() {
   $("#year").textContent = String(new Date().getFullYear());
   setLanguage(state.language, false);
   setupMotion();
+  setupMeetingLinks();
   setupInteractions();
   resizeCanvas();
   initObservers();
