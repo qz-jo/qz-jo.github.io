@@ -1,37 +1,448 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-motion="on">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#06090f" />
-    <meta name="color-scheme" content="dark light" />
-    <meta name="description" content="Portfolio of Seif Elmughrabi, an AI & Data Science student building secure backend systems, REST APIs, PostgreSQL applications, and n8n automation workflows." />
+    <meta name="theme-color" content="#05070b" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Seif Elmughrabi is an AI & Data Science student and backend developer in Amman, building secure APIs, data-backed applications, and automation systems." />
     <meta name="keywords" content="Seif Elmughrabi, AI Developer, Backend Developer, Automation, n8n, Node.js, PostgreSQL, Jordan, Portfolio" />
     <meta name="author" content="Seif Elmughrabi" />
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="profile" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Seif Elmughrabi | AI Developer, Backend & Automation" />
-    <meta property="og:description" content="AI & Data Science student building secure backend systems, practical web applications, and automation workflows." />
+    <meta property="og:title" content="Seif Elmughrabi — AI, Backend & Automation" />
+    <meta property="og:description" content="I build the systems behind intelligent products: secure APIs, data-backed applications, and automation workflows." />
     <meta property="og:url" content="https://qz-jo.github.io/" />
     <meta property="og:image" content="https://qz-jo.github.io/seif-about.webp" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Seif Elmughrabi | AI Developer, Backend & Automation" />
-    <meta name="twitter:description" content="Secure backend systems, practical web applications, and automation workflows." />
+    <meta property="og:image:alt" content="Portrait of Seif Elmughrabi" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Seif Elmughrabi — AI, Backend & Automation" />
+    <meta name="twitter:description" content="Secure APIs, data-backed products, and automation systems." />
     <meta name="twitter:image" content="https://qz-jo.github.io/seif-about.webp" />
     <link rel="canonical" href="https://qz-jo.github.io/" />
     <link rel="icon" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>Seif Elmughrabi | AI Developer, Backend & Automation</title>
+    <link rel="preload" href="/seif-about.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="/assets/app.css?v=20260823-1" />
+    <title>Seif Elmughrabi — AI, Backend & Automation</title>
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Person","name":"Seif Elmughrabi","url":"https://qz-jo.github.io/","image":"https://qz-jo.github.io/seif-about.webp","email":"mailto:saifnabel800@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Amman","addressCountry":"JO"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Tafila Technical University"},"knowsAbout":["Artificial Intelligence","Data Science","Backend Development","REST APIs","PostgreSQL","n8n","Automation","Web Development"],"sameAs":["https://github.com/qz-jo","https://www.linkedin.com/in/saif-almograbe-8847723aa"]}
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Seif Elmughrabi",
+        "url": "https://qz-jo.github.io/",
+        "image": "https://qz-jo.github.io/seif-about.webp",
+        "email": "mailto:saifnabel800@gmail.com",
+        "jobTitle": "AI & Data Science Student and Backend Developer",
+        "address": {"@type": "PostalAddress", "addressLocality": "Amman", "addressCountry": "JO"},
+        "alumniOf": {"@type": "CollegeOrUniversity", "name": "Tafila Technical University"},
+        "knowsAbout": ["Artificial Intelligence", "Data Science", "Backend Development", "REST APIs", "PostgreSQL", "n8n", "Automation", "Application Security"],
+        "sameAs": ["https://github.com/qz-jo", "https://www.linkedin.com/in/saif-almograbe-8847723aa"]
+      }
     </script>
-    <script type="module" crossorigin src="/assets/index-Bo-U2oIk.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DYl8maAD.css">
-    <link rel="stylesheet" href="/assets/custom.css">
+    <script type="module" src="/assets/app.js?v=20260823-1"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <noscript>This portfolio requires JavaScript for its interactive experience.</noscript>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+    <div class="page-noise" aria-hidden="true"></div>
+
+    <header class="site-header" id="siteHeader">
+      <nav class="nav shell" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Seif Elmughrabi home">
+          <span class="brand-mark">SE<span>/AI</span></span>
+          <span class="brand-copy"><b>SEIF ELMUGHRABI</b><small data-i18n="brandRole">AI · BACKEND · AUTOMATION</small></span>
+        </a>
+
+        <button class="menu-toggle icon-button" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav">
+          <span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="primaryNav">
+          <a href="#about" data-i18n="navAbout">About</a>
+          <a href="#capabilities" data-i18n="navCapabilities">Capabilities</a>
+          <a href="#work" data-i18n="navWork">Work</a>
+          <a href="#journey" data-i18n="navJourney">Journey</a>
+          <a href="#contact" data-i18n="navContact">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="command-trigger" id="commandTrigger" type="button" aria-haspopup="dialog">
+            <span data-i18n="command">Navigate</span><kbd>⌘ K</kbd>
+          </button>
+          <button class="icon-button language-toggle" id="languageToggle" type="button" aria-label="Switch to Arabic">AR</button>
+          <button class="icon-button motion-toggle" id="motionToggle" type="button" aria-label="Pause motion" title="Pause motion">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home" aria-labelledby="heroTitle">
+        <div class="hero-media" aria-hidden="true">
+          <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="/hero-poster.svg">
+            <source src="/assets/neural-circuit.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-color"></div>
+          <canvas id="neuralCanvas"></canvas>
+          <div class="hero-grid"></div>
+          <div class="hero-vignette"></div>
+        </div>
+
+        <div class="hero-content shell">
+          <div class="hero-copy">
+            <div class="status-pill reveal-up">
+              <span class="status-pulse"></span>
+              <span data-i18n="available">Open to internships, freelance & collaboration</span>
+            </div>
+            <p class="hero-kicker reveal-up delay-1"><span>01</span><span data-i18n="intro">Hi, I’m Seif — from Amman, Jordan.</span></p>
+            <h1 id="heroTitle" class="reveal-up delay-2">
+              <span data-i18n="heroLine1">I build the systems</span>
+              <span class="gradient-text" data-i18n="heroLine2">behind intelligent products.</span>
+            </h1>
+            <p class="hero-lead reveal-up delay-3" data-i18n="heroLead">AI & Data Science student focused on secure backend engineering, data-backed web applications, and automation that removes repetitive work.</p>
+            <div class="role-track reveal-up delay-3" aria-label="Areas of focus">
+              <span>AI INTEGRATIONS</span><i></i><span>SECURE APIs</span><i></i><span>POSTGRESQL</span><i></i><span>AUTOMATION</span>
+            </div>
+            <div class="hero-actions reveal-up delay-4">
+              <a class="button button-primary magnetic" href="#work"><span data-i18n="exploreWork">Explore selected work</span><b>↘</b></a>
+              <button class="button button-glass magnetic" type="button" data-open-assistant><span data-i18n="askPortfolio">Ask my portfolio</span><b>✦</b></button>
+            </div>
+            <div class="hero-meta reveal-up delay-4">
+              <a href="https://github.com/qz-jo" target="_blank" rel="noreferrer">GitHub ↗</a>
+              <a href="https://www.linkedin.com/in/saif-almograbe-8847723aa" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              <span id="ammanClock">AMMAN · --:--</span>
+            </div>
+          </div>
+
+          <aside class="intelligence-card reveal-scale delay-3" aria-label="Technical profile summary">
+            <div class="intel-head">
+              <div><span class="intel-orbit"></span><b>SEIF.OS</b></div>
+              <span class="sync-status"><i></i><span data-i18n="liveProfile">LIVE PROFILE</span></span>
+            </div>
+            <div class="intel-core" aria-hidden="true">
+              <span class="core-ring ring-a"></span>
+              <span class="core-ring ring-b"></span>
+              <span class="core-ring ring-c"></span>
+              <span class="core-label">AI<br /><small>CORE</small></span>
+            </div>
+            <div class="intel-grid">
+              <div><span data-i18n="field">FIELD</span><strong>AI + DATA SCIENCE</strong></div>
+              <div><span data-i18n="focus">FOCUS</span><strong>BACKEND + AUTOMATION</strong></div>
+              <div><span data-i18n="university">UNIVERSITY</span><strong>TAFILA TECHNICAL</strong></div>
+              <div><span data-i18n="graduation">GRADUATION</span><strong>2027 · EXPECTED</strong></div>
+            </div>
+            <div class="intel-query">
+              <p><span>›</span> <span data-i18n="tryQuery">Try a smart shortcut</span></p>
+              <button type="button" data-assistant-prompt="backend" data-open-assistant><span data-i18n="queryBackend">Best backend proof?</span><b>↗</b></button>
+              <button type="button" data-assistant-prompt="automation" data-open-assistant><span data-i18n="queryAutomation">Show automation work</span><b>↗</b></button>
+            </div>
+          </aside>
+        </div>
+
+        <a class="scroll-cue" href="#signal" aria-label="Scroll to portfolio signal"><span data-i18n="scroll">SCROLL TO SIGNAL</span><i></i></a>
+      </section>
+
+      <section class="signal-strip" id="signal" aria-label="Portfolio highlights">
+        <div class="shell signal-grid">
+          <div class="signal-intro reveal"><span>LIVE / 01</span><p data-i18n="signalIntro">A portfolio designed to answer one question fast: what can Seif actually build?</p></div>
+          <div class="signal-stat reveal"><strong id="publicRepoCount">6</strong><span data-i18n="publicRepos">public GitHub repos</span></div>
+          <div class="signal-stat reveal"><strong>4</strong><span data-i18n="featuredSystems">featured systems</span></div>
+          <div class="signal-stat reveal"><strong>20+</strong><span data-i18n="tools">technologies & tools</span></div>
+          <div class="signal-stat reveal"><strong>2027</strong><span data-i18n="gradExpected">expected graduation</span></div>
+        </div>
+      </section>
+
+      <section class="section shell" id="about">
+        <div class="section-heading reveal">
+          <div><span>02 / PROFILE</span><span class="section-line"></span></div>
+          <h2 data-i18n="aboutTitle">Engineering with curiosity. Shipping with discipline.</h2>
+        </div>
+
+        <div class="about-layout">
+          <figure class="portrait-card reveal">
+            <div class="portrait-frame">
+              <img src="/seif-about.webp" width="900" height="1200" alt="Seif Elmughrabi" />
+              <div class="portrait-wash"></div>
+              <span class="portrait-corner corner-a"></span><span class="portrait-corner corner-b"></span>
+              <span class="portrait-index">SE / 001</span>
+            </div>
+            <figcaption>
+              <span>SEIF ELMUGHRABI</span>
+              <span data-i18n="location">AMMAN · JORDAN</span>
+            </figcaption>
+          </figure>
+
+          <div class="about-copy">
+            <p class="lead reveal" data-i18n="aboutLead">I’m an Artificial Intelligence & Data Science student who learns by building useful, maintainable software.</p>
+            <div class="about-columns reveal">
+              <p data-i18n="aboutBody1">My work sits where backend engineering, data, automation, and application security meet. I build REST APIs, PostgreSQL-backed applications, local-first browser tools, and n8n workflows.</p>
+              <p data-i18n="aboutBody2">Right now I’m strengthening the bridge between AI integrations and dependable software systems—with a practical eye for testing, debugging, security, and deployment.</p>
+            </div>
+            <div class="about-facts reveal">
+              <div><span data-i18n="study">STUDY</span><strong data-i18n="studyValue">B.Sc. AI & Data Science</strong></div>
+              <div><span data-i18n="workMode">WORK MODE</span><strong data-i18n="workModeValue">Backend · Full-stack · Automation</strong></div>
+              <div><span data-i18n="languages">LANGUAGES</span><strong data-i18n="languagesValue">Arabic · Native / English · Excellent</strong></div>
+              <div><span data-i18n="availability">AVAILABILITY</span><strong data-i18n="availabilityValue">Internships · Freelance · Collaboration</strong></div>
+            </div>
+            <div class="about-actions reveal">
+              <a class="text-link" href="https://www.linkedin.com/in/saif-almograbe-8847723aa" target="_blank" rel="noreferrer"><span data-i18n="viewLinkedIn">View LinkedIn profile</span><b>↗</b></a>
+              <a class="text-link" href="https://www.linkedin.com/in/saif-almograbe-8847723aa/overlay/1786840547295/single-media-viewer/" target="_blank" rel="noreferrer"><span data-i18n="viewCv">View CV</span><b>↗</b></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section capability-section" id="capabilities">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <div><span>03 / CAPABILITY MAP</span><span class="section-line"></span></div>
+            <h2 data-i18n="capTitle">Not a list of buzzwords. A map of what I can deliver.</h2>
+          </div>
+
+          <div class="capability-grid">
+            <article class="cap-card reveal" data-capability="backend">
+              <div class="cap-top"><span>01</span><b>API</b></div>
+              <h3 data-i18n="capBackendTitle">Secure backend systems</h3>
+              <p data-i18n="capBackendBody">REST APIs, authentication, authorization, validation, safe database access, and predictable error handling.</p>
+              <ul><li>Node.js</li><li>Express</li><li>JWT</li><li>RBAC</li><li>Helmet</li></ul>
+            </article>
+            <article class="cap-card reveal" data-capability="data">
+              <div class="cap-top"><span>02</span><b>DB</b></div>
+              <h3 data-i18n="capDataTitle">Data-backed applications</h3>
+              <p data-i18n="capDataBody">Relational modeling, persistence, parameterized queries, application data design, and practical analytics thinking.</p>
+              <ul><li>PostgreSQL</li><li>SQL</li><li>Neon</li><li>Python</li></ul>
+            </article>
+            <article class="cap-card reveal" data-capability="automation">
+              <div class="cap-top"><span>03</span><b>↻</b></div>
+              <h3 data-i18n="capAutomationTitle">Workflow automation</h3>
+              <p data-i18n="capAutomationBody">Webhook-driven workflows that validate inputs, connect services, return structured data, and reduce manual work.</p>
+              <ul><li>n8n</li><li>Webhooks</li><li>JSON</li><li>APIs</li></ul>
+            </article>
+            <article class="cap-card reveal" data-capability="product">
+              <div class="cap-top"><span>04</span><b>UI</b></div>
+              <h3 data-i18n="capProductTitle">Practical web products</h3>
+              <p data-i18n="capProductBody">Responsive, accessible interfaces connected to real workflows—not visual demos with nothing behind them.</p>
+              <ul><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Responsive UI</li></ul>
+            </article>
+          </div>
+
+          <div class="tool-marquee reveal" aria-label="Technology stack">
+            <div>
+              <span>PYTHON</span><i>✦</i><span>JAVASCRIPT</span><i>✦</i><span>NODE.JS</span><i>✦</i><span>POSTGRESQL</span><i>✦</i><span>N8N</span><i>✦</i><span>REST APIs</span><i>✦</i><span>GIT</span><i>✦</i><span>POSTMAN</span><i>✦</i>
+              <span>PYTHON</span><i>✦</i><span>JAVASCRIPT</span><i>✦</i><span>NODE.JS</span><i>✦</i><span>POSTGRESQL</span><i>✦</i><span>N8N</span><i>✦</i><span>REST APIs</span><i>✦</i><span>GIT</span><i>✦</i><span>POSTMAN</span><i>✦</i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell" id="work">
+        <div class="section-heading split-heading reveal">
+          <div><span>04 / SELECTED SYSTEMS</span><span class="section-line"></span></div>
+          <h2 data-i18n="workTitle">Work that proves how I think.</h2>
+          <p data-i18n="workIntro">Choose what you need. The portfolio will point you to the strongest evidence.</p>
+        </div>
+
+        <div class="project-matcher reveal" aria-labelledby="matcherTitle">
+          <div class="matcher-copy">
+            <span id="matcherTitle" data-i18n="matcherLabel">SMART PROJECT MATCHER</span>
+            <p data-i18n="matcherQuestion">What are you looking for?</p>
+          </div>
+          <div class="matcher-options" role="group" aria-label="Project matching filters">
+            <button type="button" class="active" data-match="security" data-i18n="matchSecurity">Secure API</button>
+            <button type="button" data-match="automation" data-i18n="matchAutomation">Automation</button>
+            <button type="button" data-match="fullstack" data-i18n="matchFullstack">Full-stack</button>
+            <button type="button" data-match="local" data-i18n="matchLocal">Privacy-first tool</button>
+          </div>
+          <div class="matcher-result" aria-live="polite">
+            <span data-i18n="recommended">RECOMMENDED</span>
+            <strong id="matcherResultTitle">E-commerce REST API</strong>
+            <a id="matcherResultLink" href="#project-ecommerce"><span data-i18n="inspectCase">Inspect case</span> ↘</a>
+          </div>
+        </div>
+
+        <div class="projects-stack">
+          <article class="project-card reveal is-recommended" id="project-ecommerce" data-project="security">
+            <div class="project-number"><span>01</span><i></i></div>
+            <div class="project-main">
+              <div class="project-label"><span data-i18n="labelBackendSecurity">BACKEND · SECURITY</span><span>2026</span></div>
+              <h3>E-commerce REST API</h3>
+              <p data-i18n="projectEcomBody">A Node.js + Express API designed around explicit trust boundaries: authentication, role-based access, validation, rate limits, IDOR protection, safe errors, and PostgreSQL persistence.</p>
+              <div class="project-proof"><span data-i18n="proof">PROOF</span><p data-i18n="projectEcomProof">Documented security review, Postman test plan, protected ownership routes, and production-style configuration.</p></div>
+              <ul><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>JWT</li><li>RBAC</li><li>Helmet</li></ul>
+            </div>
+            <div class="project-visual visual-api" aria-hidden="true">
+              <div class="api-window"><span class="window-dots">● ● ●</span><code><i>POST</i> /api/auth/login</code><code><i>GET</i> /api/orders/:id</code><code><i>401</i> ownership denied</code><b>SECURITY LAYER ACTIVE</b></div>
+            </div>
+            <a class="project-open" href="https://github.com/qz-jo/ecommerce-api" target="_blank" rel="noreferrer" aria-label="Open E-commerce REST API on GitHub">↗</a>
+          </article>
+
+          <article class="project-card reveal" id="project-task" data-project="fullstack">
+            <div class="project-number"><span>02</span><i></i></div>
+            <div class="project-main">
+              <div class="project-label"><span data-i18n="labelFullstack">FULL-STACK · PRODUCTIVITY</span><span>2026</span></div>
+              <h3>Smart Task Manager</h3>
+              <p data-i18n="projectTaskBody">A single-service full-stack task manager with JWT authentication, reminders, filtering, automatic database setup, and PostgreSQL persistence.</p>
+              <div class="project-proof"><span data-i18n="proof">PROOF</span><p data-i18n="projectTaskProof">Same-origin frontend and API, documented production configuration, and a health endpoint for deployment.</p></div>
+              <ul><li>JavaScript</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>JWT</li></ul>
+            </div>
+            <div class="project-visual visual-tasks" aria-hidden="true">
+              <div class="task-window"><span class="window-dots">● ● ●</span><div><b>12<small>ALL</small></b><b>7<small>ACTIVE</small></b><b>5<small>DONE</small></b></div><p><i></i>Deploy API service <em>Today</em></p><p><i class="done"></i>Secure auth flow <em>Done</em></p></div>
+            </div>
+            <a class="project-open" href="https://github.com/qz-jo/smart-task-manager" target="_blank" rel="noreferrer" aria-label="Open Smart Task Manager on GitHub">↗</a>
+          </article>
+
+          <article class="project-card reveal" id="project-automation" data-project="automation">
+            <div class="project-number"><span>03</span><i></i></div>
+            <div class="project-main">
+              <div class="project-label"><span data-i18n="labelAutomation">AUTOMATION · OPERATIONS</span><span>2026</span></div>
+              <h3>IT Support Ticket Triage</h3>
+              <p data-i18n="projectAutomationBody">An import-ready n8n workflow that validates incoming tickets, classifies five issue types, assigns priority, calculates SLA deadlines, and returns structured JSON.</p>
+              <div class="project-proof"><span data-i18n="proof">PROOF</span><p data-i18n="projectAutomationProof">Credential-free workflow, sample payloads, transparent rule ordering, and automated tests for triage scenarios.</p></div>
+              <ul><li>n8n</li><li>Webhooks</li><li>JavaScript</li><li>JSON</li><li>Automation</li></ul>
+            </div>
+            <div class="project-visual visual-flow" aria-hidden="true">
+              <div class="flow-window"><span class="window-dots">● ● ●</span><div><b><small>01</small>WEBHOOK</b><i></i><b><small>02</small>VALIDATE</b><i></i><b><small>03</small>TRIAGE</b></div><p>PRIORITY: <strong>CRITICAL</strong> · SLA: 1H</p></div>
+            </div>
+            <a class="project-open" href="https://github.com/qz-jo/n8n-it-support-ticket-triage" target="_blank" rel="noreferrer" aria-label="Open IT Support Ticket Triage on GitHub">↗</a>
+          </article>
+
+          <article class="project-card reveal" id="project-jobs" data-project="local">
+            <div class="project-number"><span>04</span><i></i></div>
+            <div class="project-main">
+              <div class="project-label"><span data-i18n="labelLocal">WEB · PRIVACY-FIRST</span><span>2026</span></div>
+              <h3>Job Application Tracker</h3>
+              <p data-i18n="projectJobsBody">A lightweight browser app for tracking applications, statuses, notes, search, filters, statistics, and JSON backups—without accounts or a backend.</p>
+              <div class="project-proof"><span data-i18n="proof">PROOF</span><p data-i18n="projectJobsProof">Local-first storage, explicit JSON export/import, responsive UI, and zero API keys or external data transfer.</p></div>
+              <ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>localStorage</li></ul>
+            </div>
+            <div class="project-visual visual-jobs" aria-hidden="true">
+              <div class="jobs-window"><span class="window-dots">● ● ●</span><p><b>APPLICATIONS</b><strong>24</strong></p><div><i style="--w:82%"></i><i style="--w:58%"></i><i style="--w:34%"></i></div><small>DATA STAYS IN YOUR BROWSER</small></div>
+            </div>
+            <a class="project-open" href="https://github.com/qz-jo/job-application-tracker" target="_blank" rel="noreferrer" aria-label="Open Job Application Tracker on GitHub">↗</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section approach-section">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <div><span>05 / BUILD LOOP</span><span class="section-line"></span></div>
+            <h2 data-i18n="approachTitle">How I turn a problem into a dependable system.</h2>
+          </div>
+          <div class="build-loop reveal">
+            <div><span>01</span><b data-i18n="stepUnderstand">Understand</b><p data-i18n="stepUnderstandBody">Clarify the real workflow, users, and failure cases.</p></div>
+            <div><span>02</span><b data-i18n="stepModel">Model</b><p data-i18n="stepModelBody">Define data, boundaries, roles, and expected behavior.</p></div>
+            <div><span>03</span><b data-i18n="stepBuild">Build</b><p data-i18n="stepBuildBody">Implement the smallest useful system cleanly.</p></div>
+            <div><span>04</span><b data-i18n="stepValidate">Validate</b><p data-i18n="stepValidateBody">Test permissions, inputs, edge cases, and outputs.</p></div>
+            <div><span>05</span><b data-i18n="stepShip">Ship & learn</b><p data-i18n="stepShipBody">Document, deploy, observe, and improve.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell" id="journey">
+        <div class="section-heading reveal">
+          <div><span>06 / JOURNEY</span><span class="section-line"></span></div>
+          <h2 data-i18n="journeyTitle">Building depth one system at a time.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-date" data-i18n="dateCurrent">2025 — NOW</span>
+            <div><small data-i18n="typeWork">INDEPENDENT WORK</small><h3 data-i18n="timelineWorkTitle">Freelance backend web development</h3><p data-i18n="timelineWorkBody">Developing server-side features, PostgreSQL models, REST API integrations, authentication flows, validation, testing, debugging, and technical documentation.</p></div>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="timeline-date" data-i18n="dateCurrent">2025 — NOW</span>
+            <div><small data-i18n="typeProjects">TECHNICAL PRACTICE</small><h3 data-i18n="timelineProjectsTitle">Backend, full-stack & automation projects</h3><p data-i18n="timelineProjectsBody">Building public, documented systems across API security, PostgreSQL applications, browser-first tools, and n8n workflow automation.</p></div>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="timeline-date" data-i18n="date2027">EXPECTED 2027</span>
+            <div><small data-i18n="typeEducation">EDUCATION</small><h3 data-i18n="timelineEducationTitle">B.Sc. Artificial Intelligence & Data Science</h3><p data-i18n="timelineEducationBody">Tafila Technical University—building practical software experience alongside academic study in AI and data science.</p></div>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="timeline-date" data-i18n="dateMay2026">MAY 2026</span>
+            <div><small data-i18n="typeCredential">CREDENTIAL</small><h3>Introduction to Generative AI · Google</h3><p data-i18n="timelineCredentialBody">Google credential ID 24563886, listed in the CV featured on LinkedIn.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="contact-glow" aria-hidden="true"></div>
+        <div class="shell contact-layout">
+          <div class="contact-copy reveal">
+            <span>07 / CONTACT</span>
+            <h2 data-i18n="contactTitle">Have a real problem? Let’s build the useful answer.</h2>
+            <p data-i18n="contactBody">I’m open to internships, freelance backend work, automation projects, and technical collaborations.</p>
+            <button class="email-copy" id="copyEmail" type="button"><span data-i18n="copyEmail">COPY EMAIL</span><b>saifnabel800@gmail.com</b><i>⧉</i></button>
+            <div class="contact-links">
+              <a href="https://github.com/qz-jo" target="_blank" rel="noreferrer">GitHub <b>↗</b></a>
+              <a href="https://www.linkedin.com/in/saif-almograbe-8847723aa" target="_blank" rel="noreferrer">LinkedIn <b>↗</b></a>
+            </div>
+          </div>
+          <form class="contact-form reveal" id="contactForm">
+            <div class="form-row">
+              <label><span data-i18n="formName">YOUR NAME</span><input name="name" type="text" autocomplete="name" required placeholder="Name" data-i18n-placeholder="namePlaceholder" /></label>
+              <label><span data-i18n="formEmail">YOUR EMAIL</span><input name="email" type="email" autocomplete="email" required placeholder="you@example.com" /></label>
+            </div>
+            <label><span data-i18n="formSubject">WHAT ARE WE BUILDING?</span><select name="subject"><option value="Backend project" data-i18n="optionBackend">Backend project</option><option value="Automation workflow" data-i18n="optionAutomation">Automation workflow</option><option value="Internship opportunity" data-i18n="optionInternship">Internship opportunity</option><option value="Technical collaboration" data-i18n="optionCollaboration">Technical collaboration</option></select></label>
+            <label><span data-i18n="formMessage">A FEW DETAILS</span><textarea name="message" rows="5" required minlength="20" placeholder="Tell me about the problem, goal, and timeline…" data-i18n-placeholder="messagePlaceholder"></textarea></label>
+            <button class="button button-primary form-submit" type="submit"><span data-i18n="openEmail">Open email draft</span><b>↗</b></button>
+            <p class="form-note" data-i18n="formNote">This opens your email app with the message prepared. Nothing is sent automatically.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-grid">
+        <a class="brand footer-brand" href="#home"><span class="brand-mark">SE<span>/AI</span></span><span class="brand-copy"><b>SEIF ELMUGHRABI</b><small data-i18n="footerBuilt">DESIGNED & BUILT WITH INTENT</small></span></a>
+        <p>© <span id="year"></span> · AMMAN, JORDAN</p>
+        <button type="button" id="backTop"><span data-i18n="backTop">BACK TO TOP</span> ↑</button>
+      </div>
+    </footer>
+
+    <button class="assistant-fab" type="button" data-open-assistant aria-label="Open portfolio assistant">
+      <span class="fab-spark">✦</span><span data-i18n="askSeif">ASK SEIF.OS</span><i></i>
+    </button>
+
+    <aside class="assistant-panel" id="assistantPanel" role="dialog" aria-modal="true" aria-labelledby="assistantTitle" aria-hidden="true">
+      <div class="assistant-head">
+        <div><span class="intel-orbit"></span><p><b id="assistantTitle">SEIF.OS</b><small data-i18n="assistantSubtitle">Portfolio intelligence layer</small></p></div>
+        <button class="icon-button" id="assistantClose" type="button" aria-label="Close assistant">×</button>
+      </div>
+      <div class="assistant-log" id="assistantLog" aria-live="polite">
+        <div class="assistant-message bot"><span>✦</span><p data-i18n="assistantWelcome">Ask about Seif’s strongest project, stack, education, availability, or current direction.</p></div>
+      </div>
+      <div class="assistant-suggestions" id="assistantSuggestions">
+        <button type="button" data-question="backend" data-i18n="assistantQ1">Best backend proof?</button>
+        <button type="button" data-question="automation" data-i18n="assistantQ2">Automation experience?</button>
+        <button type="button" data-question="hire" data-i18n="assistantQ3">Why hire Seif?</button>
+        <button type="button" data-question="contact" data-i18n="assistantQ4">How do I contact him?</button>
+      </div>
+      <form class="assistant-form" id="assistantForm">
+        <label class="sr-only" for="assistantInput" data-i18n="assistantLabel">Ask the portfolio</label>
+        <input id="assistantInput" autocomplete="off" placeholder="Ask about skills, projects, or availability…" data-i18n-placeholder="assistantPlaceholder" />
+        <button type="submit" aria-label="Send question">↗</button>
+      </form>
+      <p class="assistant-note" data-i18n="assistantNote">Fast, private, and powered by this portfolio’s verified content.</p>
+    </aside>
+    <div class="assistant-backdrop" id="assistantBackdrop"></div>
+
+    <dialog class="command-palette" id="commandPalette" aria-labelledby="commandTitle">
+      <div class="command-head"><span>⌘</span><label for="commandInput" id="commandTitle" data-i18n="commandTitle">Jump anywhere</label><button type="button" id="commandClose" aria-label="Close">ESC</button></div>
+      <input id="commandInput" autocomplete="off" placeholder="Type a command…" data-i18n-placeholder="commandPlaceholder" />
+      <div class="command-list" id="commandList">
+        <button type="button" data-command="section" data-target="#about"><span>01</span><b data-i18n="commandAbout">Go to About</b><kbd>↵</kbd></button>
+        <button type="button" data-command="section" data-target="#work"><span>02</span><b data-i18n="commandWork">Explore selected work</b><kbd>↵</kbd></button>
+        <button type="button" data-command="assistant"><span>03</span><b data-i18n="commandAssistant">Ask the portfolio assistant</b><kbd>↵</kbd></button>
+        <button type="button" data-command="section" data-target="#contact"><span>04</span><b data-i18n="commandContact">Start a conversation</b><kbd>↵</kbd></button>
+        <button type="button" data-command="external" data-target="https://github.com/qz-jo"><span>05</span><b data-i18n="commandGithub">Open GitHub</b><kbd>↗</kbd></button>
+        <button type="button" data-command="language"><span>06</span><b data-i18n="commandLanguage">Switch language</b><kbd>AR</kbd></button>
+      </div>
+      <p class="command-hint" data-i18n="commandHint">↑ ↓ to move · Enter to select · Esc to close</p>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
