@@ -2,7 +2,7 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
 // Connect Calendly, Cal.com, Google Appointment Scheduling, or another booking page here.
-const MEETING_URL = "";
+const MEETING_URL = "https://cal.com/qz-jo/30min";
 
 const state = {
   language: localStorage.getItem("saif-language") === "ar" ? "ar" : "en",
