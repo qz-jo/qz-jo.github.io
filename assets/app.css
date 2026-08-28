@@ -1795,6 +1795,11 @@ html[dir="rtl"] .project-main > p {
   padding-top: 1.7rem;
 }
 
+.project-demo {
+  align-self: flex-start;
+  margin-top: 1.1rem;
+}
+
 .project-visual {
   position: relative;
   display: grid;

@@ -25,7 +25,7 @@ const arabic = {
   intro: "مرحبًا، أنا سيف — من عمّان، الأردن.",
   heroLine1: "أبني الأنظمة التي",
   heroLine2: "تقف خلف المنتجات الذكية.",
-  heroLead: "طالب ذكاء اصطناعي وعلم بيانات أركز على هندسة Backend الآمنة، وتطبيقات الويب المعتمدة على البيانات، والأتمتة التي تختصر العمل المتكرر.",
+  heroLead: "طالب ذكاء اصطناعي وعلم بيانات أبني APIs آمنة وواجهات React وتطبيقات ويب معتمدة على البيانات وأتمتة تختصر العمل المتكرر.",
   exploreWork: "استكشف أبرز المشاريع",
   askPortfolio: "اسأل SEIF.OS",
   scheduleMeeting: "احجز اجتماعًا",
@@ -47,7 +47,7 @@ const arabic = {
   aboutTitle: "هندسة بفضول. وتنفيذ بانضباط.",
   location: "عمّان · الأردن",
   aboutLead: "أنا طالب ذكاء اصطناعي وعلم بيانات، وأتعلّم ببناء برمجيات مفيدة وقابلة للصيانة.",
-  aboutBody1: "يجتمع عملي عند نقطة الـBackend والبيانات والأتمتة وأمان التطبيقات. أبني REST APIs وتطبيقات مدعومة بـPostgreSQL وأدوات متصفح محلية وWorkflows عبر n8n.",
+  aboutBody1: "يربط عملي بين الـBackend والواجهات والبيانات والأتمتة. أبني REST APIs آمنة ومتاجر React وتطبيقات مدعومة بـPostgreSQL وأدوات متصفح وWorkflows عبر n8n.",
   aboutBody2: "أقوّي حاليًا الصلة بين تكاملات الذكاء الاصطناعي والأنظمة البرمجية الموثوقة، مع اهتمام عملي بالاختبار والتصحيح والأمان والنشر.",
   study: "الدراسة",
   studyValue: "بكالوريوس الذكاء الاصطناعي وعلم البيانات",
@@ -78,41 +78,70 @@ const arabic = {
   matcherLabel: "مطابق المشاريع الذكي",
   matcherQuestion: "ما الذي تبحث عنه؟",
   matchSecurity: "API آمنة",
+  matchFrontend: "واجهة React",
+  matchBrowser: "اختبار المتصفح",
   matchAutomation: "أتمتة",
   matchFullstack: "Full-stack",
   matchLocal: "أداة تركز على الخصوصية",
   recommended: "الأنسب لك",
   inspectCase: "افتح المشروع",
   labelBackendSecurity: "BACKEND · أمان",
+  labelFrontend: "REACT · تجارة إلكترونية",
+  labelBrowser: "واجهات المتصفح · تعلّم الأمان",
+  projectAugust2026: "أغسطس 2026",
   labelFullstack: "FULL-STACK · إنتاجية",
   labelAutomation: "أتمتة · عمليات",
   labelLocal: "ويب · خصوصية أولًا",
   projectEcomBody: "واجهة Node.js وExpress مبنية حول حدود صلاحيات واضحة: مصادقة وأدوار وتحقق وتحديد معدل الطلبات وحماية IDOR وأخطاء آمنة وتخزين PostgreSQL.",
   proof: "الدليل",
-  projectEcomProof: "مراجعة أمان موثقة وخطة اختبارات Postman ومسارات ملكية محمية وإعداد بأسلوب إنتاجي.",
+  projectEcomProof: "مراجعة أمان ومجموعة Postman قابلة لإعادة الاستخدام. أُضيفت واجهة متجر React منفصلة إلى المستودع في أغسطس 2026.",
+  projectStorefrontBody: "متجر React متجاوب يضم 20 منتجًا تجريبيًا، مع بحث وفلاتر مجمعة وترتيب وتقسيم صفحات وسلة محفوظة محليًا وإتمام طلب ومسارات للعميل والمشرف.",
+  projectStorefrontProof: "نجاح CI والنشر على GitHub Pages، مع توثيق فحوص التفاعل والتجاوب بعروض 1440 و768 و390 بكسل.",
+  projectProctorBody: "محاكاة تعليمية لاختبار مدته 80 دقيقة تضم ستة أسئلة تجريبية وفحصًا اختياريًا للكاميرا والميكروفون وسجلًا ظاهرًا لنشاط المتصفح.",
+  projectProctorProof: "منشور على GitHub Pages. يسجل بيانات أحداث النسخ والقص واللصق والتركيز وظهور التبويب وملء الشاشة محليًا، مع تصدير JSON.",
   projectTaskBody: "مدير مهام Full-stack ضمن خدمة واحدة، يدعم JWT والتنبيهات والتصفية وتهيئة قاعدة البيانات تلقائيًا والتخزين في PostgreSQL.",
   projectTaskProof: "واجهة وAPI من المصدر نفسه، وإعداد إنتاج موثق، وHealth endpoint يساعد على النشر.",
   projectAutomationBody: "Workflow جاهز للاستيراد في n8n يتحقق من التذاكر ويصنف خمس فئات ويحدد الأولوية ويحسب مهلة SLA ويعيد JSON منظمًا.",
   projectAutomationProof: "Workflow بلا بيانات اعتماد، مع عينات وقواعد شفافة واختبارات آلية لسيناريوهات الفرز.",
   projectJobsBody: "تطبيق متصفح خفيف لتتبع طلبات التوظيف والحالات والملاحظات والبحث والتصفية والإحصائيات ونسخ JSON الاحتياطية، بلا حساب أو Backend.",
-  projectJobsProof: "تخزين محلي وتصدير واستيراد JSON واضح وواجهة متجاوبة، بلا API keys أو نقل خارجي للبيانات.",
+  projectJobsProof: "منشور على GitHub Pages مع تخزين محلي ونسخ JSON احتياطية ووضع داكن، دون حساب أو Backend.",
   openCaseStudy: "عرض التفاصيل الهندسية",
   caseProblem: "المشكلة",
   caseBuilt: "ما الذي بنيته",
   caseArchitecture: "الهندسة",
   caseDecisions: "القرارات الهندسية",
   caseResult: "النتيجة",
+  caseScope: "النطاق الحالي",
   viewGithub: "اعرض الدليل على GitHub",
+  viewStorefrontCase: "استكشف واجهة متجر React",
+  viewTestChecklist: "اقرأ قائمة التحقق والاختبارات",
+  openStorefrontDemo: "جرّب واجهة المتجر",
+  openProctorDemo: "استكشف محاكاة الاختبار",
+  openTrackerDemo: "جرّب متعقب طلبات التوظيف",
   ecomProblem: "واجهة تجارة إلكترونية قائمة احتاجت حدود ثقة واضحة بين المستخدمين والأدوار والمنتجات والطلبات.",
   ecomBuilt: "واجهة Express تركز على الأمان مع مسارات محمية وتحقق وضوابط ملكية وتخزين PostgreSQL.",
   ecomArchitecture: "Routes ← التحقق والمصادقة ← Controllers ← استعلامات آمنة ← Neon PostgreSQL.",
   ecomDecisions: "التحقق من JWT وفحص الأدوار مباشرة وRBAC وحماية IDOR وتحديد المعدل وHelmet وCORS وأخطاء آمنة.",
   ecomResult: "مراجعة أمان موثقة وخطة Postman قابلة لإعادة الاستخدام تغطي الصلاحيات وحالات الفشل المطلوبة.",
+  ecomScope: "توجد الـAPI وواجهة Nova Tech في المستودع نفسه. تستخدم الواجهة بيانات تجريبية حاليًا، وربطها بالـAPI مهمة لاحقة.",
+  storefrontProblem: "بناء واجهة تسوق متكاملة بتنقل واضح ومكونات قابلة لإعادة الاستخدام وحالات مفيدة للتحميل والفراغ والخطأ والنجاح.",
+  storefrontBuilt: "تصفح منتجات وسلة تراعي المخزون وتحقق من إتمام الطلب وتسجيل دخول وحساب تجريبي وملفات مستخدمين وإدارة محلية للمشرف.",
+  storefrontArchitecture: "صفحات React Router ← مكونات مشتركة وحالة عبر Context ← بيانات تجريبية محلية وlocalStorage، مع بناء عبر Vite.",
+  storefrontDecisions: "التصفية قبل الترتيب وتقسيم الصفحات، وحساب إجمالي السلة من الكميات، واحترام حدود المخزون، ودعم تحديث الروابط المباشرة على GitHub Pages.",
+  storefrontResult: "واجهة Task 4 منشورة مع قائمة تحقق مرتبطة بالمصدر تميز بين التفاعلات المفحوصة والميزات المنفذة.",
+  storefrontScope: "بيانات تجريبية فقط. تسجيل الدخول والأدوار والطلبات وإتمام الشراء للمحاكاة، دون ربط API أو قاعدة بيانات أو بوابة دفع.",
+  proctorProblem: "توضيح مراقبة الاختبارات بعرض أحداث المتصفح التي تلاحظها الصفحة للمشارك نفسه.",
+  proctorBuilt: "لوحة بداية وموافقة وفحص أجهزة وأسئلة بمؤقت ونتائج وسجل نشاط محلي قابل للتنزيل بصيغة JSON.",
+  proctorArchitecture: "تدير React وTypeScript مراحل الاختبار. تحفظ مستمعات أحداث المتصفح بيانات الأحداث في sessionStorage، ويبني Vite نسخة Pages.",
+  proctorDecisions: "أذونات وسائط اختيارية وسجل أحداث ظاهر وتنظيف مستمعات الأحداث وتخزين داخل الجلسة. لا يُحفظ أو يُرفع نص الحافظة أو الصوت أو الفيديو.",
+  proctorResult: "مختبر تعليمي عام للاختبار المصرح به لسلوك المتصفح وحدود مراقبة الاختبارات.",
+  proctorScope: "محاكاة تعليمية؛ الأحداث لا تثبت الغش، والتطبيق لا يكتشف لقطات شاشة نظام التشغيل ولا يسجل الوسائط.",
   taskProblem: "تتبع المهام غالبًا يوزع الواجهة والـAPI والنشر على أجزاء متحركة أكثر من اللازم.",
   taskBuilt: "مدير مهام محمي بالمصادقة مع تنبيهات وتصفية وتهيئة تلقائية للجداول وتخزين PostgreSQL.",
   taskArchitecture: "خدمة Express واحدة تقدم الواجهة الثابتة والـAPI وتعمل مع PostgreSQL من المصدر نفسه.",
   taskDecisions: "مصادقة JWT وحد أدنى 32 حرفًا للمفتاح ودعم SSL وCORS مقيد وHealth endpoint.",
   taskResult: "نظام Full-stack مدمج يمكن نشره كخدمة Node واحدة مع قاعدة بيانات مُدارة.",
+  taskScope: "اقتراحات الذكاء الاصطناعي معطلة في الإنتاج لحين تنفيذ مزود مستضاف. تعمل ميزات إدارة المهام بشكل مستقل عنها.",
   automationProblem: "تخسر فرق الدعم وقتًا في مراجعة كل تذكرة واردة وتحديد أولويتها يدويًا.",
   automationBuilt: "تدفق Webhook جاهز للاستيراد يتحقق من الطلبات ويصنف المشكلات ويحدد الأولوية ويحسب SLA.",
   automationArchitecture: "POST webhook ← التحقق والقواعد ← التصنيف وحساب SLA ← استجابة JSON منظمة.",
@@ -122,11 +151,11 @@ const arabic = {
   jobsBuilt: "لوحة متجاوبة للإضافة والتعديل والحذف والبحث وتصفية الحالات والإحصائيات والنسخ الاحتياطية.",
   jobsArchitecture: "واجهة متصفح بلا Framework تحفظ السجلات في localStorage وتصدر أو تستعيد JSON عند الطلب.",
   jobsDecisions: "بلا حساب أو Backend أو قاعدة بيانات أو API key أو نقل صامت للبيانات؛ المستخدم يتحكم بكل نسخة احتياطية.",
-  jobsResult: "أداة مفيدة تضع الخصوصية أولًا وتعمل محليًا وتحفظ بيانات الطلبات داخل متصفح المستخدم.",
+  jobsResult: "أداة متصفح منشورة تعمل محليًا أيضًا، وتبقي سجلات التقديم على جهاز المستخدم ما لم يصدّر نسخة احتياطية.",
   proofTitle: "دليل، لا ادعاءات تسويقية.",
   proofIntro: "العمل عام وقابل للفحص وموثق ومرتبط بالتنفيذ، بلا شهادات عملاء مختلقة.",
   proofReposTitle: "مصدر عام",
-  proofReposBody: "ستة مستودعات عامة تكشف الكود وبنية المشاريع وسجل التنفيذ.",
+  proofReposBody: "ست دراسات حالة هندسية ضمن خمسة مستودعات مشاريع عامة، مع الكود والتوثيق وسجل التنفيذ.",
   inspectGithub: "افحص GitHub",
   proofSecurityTitle: "مراجعة أمان وخطة API",
   proofSecurityBody: "يوثق مشروع E-commerce API المصادقة وRBAC وحماية IDOR وSQL الآمن وتحديد المعدل وخطة اختبار Postman.",
@@ -154,8 +183,8 @@ const arabic = {
   timelineWorkTitle: "تطوير Backend للويب بعمل حر",
   timelineWorkBody: "تطوير ميزات الخادم ونماذج PostgreSQL وتكاملات REST API ومسارات المصادقة والتحقق والاختبار وتصحيح الأخطاء والتوثيق التقني.",
   typeProjects: "تطبيق تقني",
-  timelineProjectsTitle: "مشاريع Backend وFull-stack وأتمتة",
-  timelineProjectsBody: "بناء أنظمة عامة وموثقة في أمان APIs وتطبيقات PostgreSQL وأدوات المتصفح وأتمتة n8n.",
+  timelineProjectsTitle: "مشاريع Backend وReact وأتمتة",
+  timelineProjectsBody: "مشاريع عامة تشمل أمان APIs ومتجر React ومراقبة المتصفح التعليمية عبر ProctorLab وتطبيقات PostgreSQL وأدوات متصفح محلية وأتمتة n8n.",
   date2027: "متوقع 2027",
   typeEducation: "التعليم",
   timelineEducationTitle: "بكالوريوس الذكاء الاصطناعي وعلم البيانات",
@@ -185,7 +214,7 @@ const arabic = {
   assistantWelcome: "اسأل عن أقوى مشاريع سيف أو تقنياته أو دراسته أو توفره أو اتجاهه الحالي.",
   assistantQ1: "أقوى دليل Backend؟",
   assistantQ2: "خبرته في الأتمتة؟",
-  assistantQ3: "لماذا أختار سيف؟",
+  assistantQ3: "ما الجديد في مشاريعه؟",
   assistantQ4: "كيف أتواصل معه؟",
   assistantQ5: "كيف أحجز اجتماعًا؟",
   assistantLabel: "اسأل البورتفوليو",
@@ -241,14 +270,21 @@ function setLanguage(language, persist = true) {
 
 const matcherMap = {
   security: { title: "E-commerce REST API", target: "#project-ecommerce" },
+  frontend: { title: "Nova Tech", target: "#project-storefront" },
+  browser: { title: "ProctorLab", target: "#project-proctor" },
   automation: { title: "IT Support Ticket Triage", target: "#project-automation" },
   fullstack: { title: "Smart Task Manager", target: "#project-task" },
   local: { title: "Job Application Tracker", target: "#project-jobs" },
 };
 
 function chooseProject(type) {
-  const match = matcherMap[type] || matcherMap.security;
-  $$("[data-match]").forEach((button) => button.classList.toggle("active", button.dataset.match === type));
+  if (!Object.prototype.hasOwnProperty.call(matcherMap, type)) type = "security";
+  const match = matcherMap[type];
+  $$("[data-match]").forEach((button) => {
+    const selected = button.dataset.match === type;
+    button.classList.toggle("active", selected);
+    button.setAttribute("aria-pressed", String(selected));
+  });
   $$("[data-project]").forEach((card) => card.classList.toggle("is-recommended", card.dataset.project === type));
   $("#matcherResultTitle").textContent = match.title;
   $("#matcherResultLink").setAttribute("href", match.target);
@@ -256,8 +292,18 @@ function chooseProject(type) {
 
 const answers = {
   en: {
+    frontend: {
+      text: "Nova Tech is Saif's React + Vite storefront: 20 demo products, search, filters, sorting, a persistent cart, checkout, and customer/admin flows. It is published on GitHub Pages. It uses mock data; API, database, and payment integration are not included.",
+      label: "Explore Nova Tech",
+      href: "#project-storefront",
+    },
+    browser: {
+      text: "ProctorLab is an educational React/TypeScript assessment simulator with an 80-minute timer, six sample questions, optional media preflight, and visible copy/paste, focus, visibility, and fullscreen event logs. Metadata stays in the browser session, with JSON export. It does not record media or prove cheating.",
+      label: "Explore ProctorLab",
+      href: "#project-proctor",
+    },
     backend: {
-      text: "Saif’s strongest backend proof is the E-commerce REST API. It covers JWT authentication, RBAC, input validation, parameterized PostgreSQL queries, rate limiting, Helmet, safe errors, and ownership protection.",
+      text: "Saif’s strongest backend proof is the E-commerce REST API: JWT, RBAC, validation, parameterized PostgreSQL queries, rate limiting, Helmet, safe errors, and ownership protection. The repository now also contains Nova Tech, a separate mock-data React frontend whose API integration is pending.",
       label: "Inspect the backend case",
       href: "#project-ecommerce",
     },
@@ -267,17 +313,17 @@ const answers = {
       href: "#project-automation",
     },
     fullstack: {
-      text: "Smart Task Manager shows full-stack delivery in one deployable Express service: authenticated tasks, reminders, filters, PostgreSQL persistence, automatic database setup, and a production health endpoint.",
+      text: "Smart Task Manager combines authenticated tasks, reminders, filters, PostgreSQL, and the frontend in one Express service, with automatic database setup and a health endpoint. AI suggestions are disabled in production until a hosted provider is implemented.",
       label: "Inspect Smart Task Manager",
       href: "#project-task",
     },
     local: {
-      text: "Job Application Tracker demonstrates privacy-first product thinking. It runs in the browser, keeps data in localStorage, supports search and filters, and offers explicit JSON backup and restore.",
+      text: "Job Application Tracker is published on GitHub Pages and keeps application records in localStorage. It supports search, status filters, statistics, dark mode, and explicit JSON backup and restore without an account or backend.",
       label: "Inspect the local-first app",
       href: "#project-jobs",
     },
     skills: {
-      text: "His working stack includes JavaScript, Python, Node.js, Express, PostgreSQL, SQL, n8n, REST APIs, Git, GitHub, and Postman—plus practical JWT, RBAC, validation, CORS, Helmet, and API-security patterns.",
+      text: "His project stack includes JavaScript, TypeScript, React, React Router, Vite, Python, Node.js, Express, PostgreSQL, SQL, n8n, REST APIs, Git, GitHub, and Postman, with practical browser APIs, JWT, RBAC, validation, CORS, Helmet, and API-security patterns.",
       label: "View the capability map",
       href: "#capabilities",
     },
@@ -292,7 +338,7 @@ const answers = {
       href: "#journey",
     },
     hire: {
-      text: "Saif combines an AI and data foundation with practical backend delivery. His portfolio shows secure API thinking, PostgreSQL work, full-stack execution, automation, testing, documentation, and a habit of learning by shipping.",
+      text: "Saif combines an AI and data foundation with practical backend and React work. His portfolio includes API security, PostgreSQL, a storefront, browser-monitoring simulations, full-stack delivery, automation, testing, and documentation.",
       label: "See the proof",
       href: "#work",
     },
@@ -307,19 +353,29 @@ const answers = {
       href: MEETING_URL || "#contact",
     },
     projects: {
-      text: "Four projects are featured: a security-focused E-commerce API, Smart Task Manager, an n8n IT ticket triage workflow, and a privacy-first Job Application Tracker.",
+      text: "Six case studies are featured. New in August: Nova Tech, a React storefront in the E-commerce API repository, and ProctorLab, an educational assessment simulator. They join the E-commerce REST API, Smart Task Manager, n8n IT Support Ticket Triage, and Job Application Tracker.",
       label: "Explore selected work",
       href: "#work",
     },
     fallback: {
-      text: "I can answer from Saif’s verified portfolio. Try asking about backend security, automation, full-stack work, technologies, education, availability, or his strongest project.",
+      text: "I can answer from Saif’s portfolio. Ask about Nova Tech, ProctorLab, backend security, React, automation, full-stack work, technologies, education, or availability.",
       label: "Explore the portfolio",
       href: "#work",
     },
   },
   ar: {
+    frontend: {
+      text: "Nova Tech هو متجر React وVite لسيف: 20 منتجًا تجريبيًا وبحث وفلاتر وترتيب وسلة محفوظة وإتمام طلب ومسارات عميل ومشرف. منشور على GitHub Pages ويستخدم بيانات تجريبية، دون ربط API أو قاعدة بيانات أو بوابة دفع.",
+      label: "استكشف Nova Tech",
+      href: "#project-storefront",
+    },
+    browser: {
+      text: "ProctorLab محاكاة تعليمية بـReact وTypeScript لاختبار مدته 80 دقيقة وستة أسئلة، مع فحص وسائط اختياري وسجل ظاهر للنسخ واللصق والتركيز وظهور التبويب وملء الشاشة. بيانات الأحداث تبقى داخل جلسة المتصفح مع تصدير JSON؛ لا يسجل الوسائط ولا يثبت الغش.",
+      label: "استكشف ProctorLab",
+      href: "#project-proctor",
+    },
     backend: {
-      text: "أقوى دليل لدى سيف في الـBackend هو مشروع E-commerce REST API. يشمل مصادقة JWT وصلاحيات RBAC والتحقق من المدخلات واستعلامات PostgreSQL الآمنة وتحديد معدل الطلبات وHelmet وأخطاء آمنة وحماية ملكية الموارد.",
+      text: "أقوى دليل Backend لدى سيف هو E-commerce REST API: مصادقة JWT وRBAC وتحقق واستعلامات PostgreSQL آمنة وتحديد معدل الطلبات وHelmet وحماية الملكية. يضم المستودع الآن Nova Tech أيضًا، وهي واجهة React منفصلة ببيانات تجريبية لم تُربط بالـAPI بعد.",
       label: "افتح مشروع الـBackend",
       href: "#project-ecommerce",
     },
@@ -329,17 +385,17 @@ const answers = {
       href: "#project-automation",
     },
     fullstack: {
-      text: "يُظهر Smart Task Manager قدرة Full-stack ضمن خدمة Express واحدة قابلة للنشر: مهام محمية بالمصادقة وتنبيهات وتصفية وتخزين PostgreSQL وتهيئة تلقائية للبيانات وHealth endpoint.",
+      text: "يجمع Smart Task Manager المهام المحمية والتنبيهات والتصفية وPostgreSQL والواجهة ضمن خدمة Express واحدة، مع تهيئة تلقائية للبيانات وHealth endpoint. اقتراحات AI معطلة في الإنتاج لحين تنفيذ مزود مستضاف.",
       label: "افتح Smart Task Manager",
       href: "#project-task",
     },
     local: {
-      text: "يعكس Job Application Tracker تفكيرًا يضع الخصوصية أولًا؛ يعمل داخل المتصفح ويحفظ البيانات محليًا ويدعم البحث والتصفية والنسخ الاحتياطي والاستعادة عبر JSON.",
+      text: "Job Application Tracker منشور على GitHub Pages ويحفظ سجلات التقديم في localStorage. يدعم البحث وتصفية الحالات والإحصائيات والوضع الداكن ونسخ JSON الاحتياطية واستعادتها، بلا حساب أو Backend.",
       label: "افتح التطبيق المحلي",
       href: "#project-jobs",
     },
     skills: {
-      text: "يعمل سيف باستخدام JavaScript وPython وNode.js وExpress وPostgreSQL وSQL وn8n وREST APIs وGit وGitHub وPostman، مع تطبيقات عملية لـJWT وRBAC والتحقق وCORS وHelmet وأمان APIs.",
+      text: "تشمل تقنيات مشاريع سيف JavaScript وTypeScript وReact وReact Router وVite وPython وNode.js وExpress وPostgreSQL وSQL وn8n وREST APIs وGit وGitHub وPostman، مع استخدام واجهات المتصفح وJWT وRBAC والتحقق وCORS وHelmet وأمان APIs.",
       label: "اعرض خريطة القدرات",
       href: "#capabilities",
     },
@@ -354,7 +410,7 @@ const answers = {
       href: "#journey",
     },
     hire: {
-      text: "يجمع سيف بين أساس أكاديمي في الذكاء الاصطناعي والبيانات وتنفيذ عملي للـBackend. يثبت موقعه فهم أمان APIs وPostgreSQL وFull-stack والأتمتة والاختبار والتوثيق والتعلم عبر البناء.",
+      text: "يجمع سيف بين أساس أكاديمي في الذكاء الاصطناعي والبيانات وعمل عملي في الـBackend وReact. تشمل مشاريعه أمان APIs وPostgreSQL ومتجرًا ومحاكاة مراقبة المتصفح وFull-stack والأتمتة والاختبار والتوثيق.",
       label: "شاهد الدليل",
       href: "#work",
     },
@@ -369,12 +425,12 @@ const answers = {
       href: MEETING_URL || "#contact",
     },
     projects: {
-      text: "يعرض الموقع أربعة مشاريع: E-commerce API تركز على الأمان، وSmart Task Manager، وWorkflow لفرز تذاكر الدعم عبر n8n، وJob Application Tracker يضع الخصوصية أولًا.",
+      text: "يعرض الموقع ست دراسات حالة. الجديد في أغسطس: Nova Tech، متجر React ضمن مستودع E-commerce API، وProctorLab، محاكاة تعليمية للاختبارات. ينضمان إلى E-commerce REST API وSmart Task Manager وفرز تذاكر الدعم عبر n8n وJob Application Tracker.",
       label: "استكشف المشاريع",
       href: "#work",
     },
     fallback: {
-      text: "أجيب من محتوى موقع سيف الموثق. جرّب أن تسأل عن أمان الـBackend أو الأتمتة أو Full-stack أو التقنيات أو الدراسة أو التوفر أو أقوى مشروع.",
+      text: "أجيب من محتوى موقع سيف. اسأل عن Nova Tech أو ProctorLab أو أمان الـBackend أو React أو الأتمتة أو Full-stack أو التقنيات أو الدراسة أو التوفر.",
       label: "استكشف الموقع",
       href: "#work",
     },
@@ -383,6 +439,8 @@ const answers = {
 
 function classifyQuestion(value) {
   const query = value.toLowerCase().trim();
+  if (/proctor[\s-]?lab|proctoring|assessment|clipboard|fullscreen|screenshot|بروكتور|مراقبة|محاكاة|لصق|لقطات الشاشة|اختبار المتصفح/.test(query)) return "browser";
+  if (/nova[\s-]?tech|front.?end|react|storefront|shopping|checkout|cart|نوفا|رياكت|ريأكت|متجر|تسوق|سلة|واجهة/.test(query)) return "frontend";
   if (/backend|api|security|secure|auth|jwt|rbac|ecommerce|أمان|امن|باك|خلفي|مصادقة/.test(query)) return "backend";
   if (/automat|n8n|workflow|ticket|triage|sla|أتمت|اتمت|تذكرة|تذاكر/.test(query)) return "automation";
   if (/full.?stack|task|manager|مهام|فول/.test(query)) return "fullstack";
@@ -392,7 +450,7 @@ function classifyQuestion(value) {
   if (/why|hire|choose|fit|employ|لماذا|ليش|اختار|توظف/.test(query)) return "hire";
   if (/meeting|schedule|book|calendar|calendly|cal\.com|موعد|اجتماع|احجز|حجز/.test(query)) return "meeting";
   if (/contact|email|available|intern|freelance|connect|تواصل|بريد|متاح|تدريب|عمل حر/.test(query)) return "contact";
-  if (/project|work|portfolio|مشروع|أعمال|اعمال|بورتفوليو/.test(query)) return "projects";
+  if (/project|work|portfolio|latest|recent|updates?|new|مشروع|مشاريع|جديد|تحديث|أعمال|اعمال|بورتفوليو/.test(query)) return "projects";
   if (/\bai\b|artificial|data science|machine|ذكاء|بيانات/.test(query)) return "ai";
   return "fallback";
 }
