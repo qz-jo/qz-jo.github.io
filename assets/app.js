@@ -249,7 +249,7 @@ function setLanguage(language, persist = true) {
   const isArabic = language === "ar";
   document.documentElement.lang = language;
   document.documentElement.dir = isArabic ? "rtl" : "ltr";
-  document.title = isArabic ? "Saif Almograbe — الذكاء الاصطناعي والـBackend والأتمتة" : "Saif Almograbe — AI, Backend & Automation";
+  document.title = isArabic ? "Saif AL-Moghrabi — الذكاء الاصطناعي والـBackend والأتمتة" : "Saif AL-Moghrabi — AI, Backend & Automation";
 
   $$('[data-i18n]').forEach((element) => {
     const key = element.dataset.i18n;
