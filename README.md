@@ -1,6 +1,6 @@
-# Saif Almograbe — Intelligent Developer Portfolio V2
+# Saif AL-Moghrabi — Intelligent Developer Portfolio V2
 
-A cinematic, bilingual portfolio for **Saif Almograbe**, an AI & Data Science student focused on backend engineering and automation in Amman, Jordan.
+A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an AI & Data Science student focused on backend engineering and automation in Amman, Jordan.
 
 ## Live site
 
