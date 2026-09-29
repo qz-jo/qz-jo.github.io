@@ -79,7 +79,7 @@ test("case studies have unique anchors, sequential numbering, and an accurate to
   assert.equal(Number(count?.[1]), cards.length);
   cards.forEach((match, index) => {
     assert.equal(Number(match[2].match(/class="project-number"><span>(\d+)/)?.[1]), index + 1);
-    if (index < 6) {
+    if (!["project-showroom", "project-hr"].includes(projectIds[index])) {
       for (const field of ["caseProblem", "caseBuilt", "caseArchitecture", "caseDecisions", "caseResult"]) {
         assert.ok(match[2].includes('data-i18n="' + field + '"'), projectIds[index] + " is missing " + field);
       }
@@ -118,13 +118,14 @@ test("each matcher selects one matching card, link, and accessible pressed state
     assert.equal(active[0].dataset.match, type);
     assert.equal(recommended.length, 1);
     assert.equal(recommended[0].dataset.project, type);
+    assert.equal("#" + recommended[0].getAttribute("id"), match.target);
     app.buttons.forEach((button) => assert.equal(button.getAttribute("aria-pressed"), String(button === active[0])));
     assert.equal(app.elementsById["#matcherResultTitle"].textContent, match.title);
     assert.equal(app.elementsById["#matcherResultLink"].getAttribute("href"), match.target);
     assert.ok(ids.has(match.target.slice(1)));
   }
   app.chooseProject("unknown");
-  assert.equal(app.elementsById["#matcherResultLink"].getAttribute("href"), "#project-ecommerce");
+  assert.equal(app.elementsById["#matcherResultLink"].getAttribute("href"), "#project-showroom");
   assert.equal(app.buttons.filter((button) => button.getAttribute("aria-pressed") === "true").length, 1);
 });
 
