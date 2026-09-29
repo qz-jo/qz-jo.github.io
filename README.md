@@ -1,6 +1,6 @@
-# Saif AL-Moghrabi — Portfolio
+# Saif AL-Moghrabi — Data Engineering Portfolio
 
-A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an AI & Data Science student focused on backend engineering and automation in Amman, Jordan.
+A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an Artificial Intelligence student building a data engineering foundation in Amman, Jordan. The portfolio leads with Power BI modeling and analysis, then shows PostgreSQL, API, and n8n automation work.
 
 ## Live site
 
@@ -15,17 +15,17 @@ A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an AI & Data Science 
 - Premium monochrome meeting CTA controlled by one `MEETING_URL` constant
 - English and Arabic interfaces with full RTL support
 - SEIF.OS portfolio assistant grounded in verified project and profile content
-- Smart project matcher for backend security, React frontends, browser testing, automation, full-stack, and privacy-first work
-- Expandable engineering case studies and a source-linked Proof of Work section
+- Project matcher leading with Power BI analytics, with paths into PostgreSQL, APIs, automation, and supporting web projects
+- Documented data and software case studies and a source-linked Proof of Work section
 - Command palette with keyboard navigation (`Ctrl/Cmd + K`)
 - Live Amman clock and optional GitHub public-repository count
 - Motion controls, reduced-motion support, keyboard accessibility, and responsive layouts
 - Privacy-friendly contact flow that prepares a local email draft without sending data to a form service
 - SEO metadata, structured data, sitemap, robots file, social preview, PWA manifest, and custom 404 page
 
-## Featured work — September 2026
+## Data and engineering work — September 2026
 
-Eight featured case studies include six software case studies and two documented Power BI learning projects. Nova Tech and the E-commerce REST API share a repository but remain separate implementations. Power BI case studies describe publicly shared work; their PBIX files and source datasets are not published here.
+Eight case studies lead with two documented Power BI learning projects and include six software projects that demonstrate databases, APIs, automation, and web engineering. Nova Tech and the E-commerce REST API share a repository but remain separate implementations. Power BI case studies describe publicly shared work; their PBIX files and source datasets are not published here.
 
 | Case study | Current scope | Demo / source |
 | --- | --- | --- |
