@@ -83,6 +83,17 @@ const arabic = {
   matchAutomation: "أتمتة",
   matchFullstack: "Full-stack",
   matchLocal: "أداة تركز على الخصوصية",
+  matchAnalytics: "تحليل Power BI",
+  labelAnalytics: "POWER BI · تحليل السيارات",
+  labelHR: "POWER BI · تحليل الموارد البشرية",
+  projectShowroomBody: "تقرير متعدد الصفحات مبني على بيانات تدريبية لمعرض سيارات: نظرة تنفيذية ومبيعات ومخزون وصيانة ورؤى العملاء واستكشاف الماركات والطرازات.",
+  projectShowroomProof: "تنظيف في Power Query ونموذج بيانات ومقاييس DAX وفلاتر وتفاصيل Drillthrough وتلميحات وBookmarks وتنقل. ملف PBIX والبيانات غير منشورين.",
+  projectHRBody: "تقرير تفاعلي عن الموظفين يتناول العدد والإنهاءات ومعدل الدوران ومتوسط الراتب والعمر والتوزيع حسب القسم والجنس والتعيينات الشهرية.",
+  projectHRProof: "Power Query ونمذجة البيانات وDAX وفلاتر للقسم والموقع وحالة التوظيف. ملف PBIX وبيانات الموظفين غير منشورين.",
+  readCaseStudy: "اقرأ دراسة المشروع",
+  typeAnalytics: "تطبيق عملي في تحليل البيانات",
+  timelineAnalyticsTitle: "لوحات Power BI",
+  timelineAnalyticsBody: "أنجزت تقارير تحليلية لمعرض سيارات والموارد البشرية، وأطوّر مشروع تدريب Auto Finance & Cards باستخدام Power Query ونمذجة البيانات وDAX.",
   recommended: "الأنسب لك",
   inspectCase: "افتح المشروع",
   labelBackendSecurity: "BACKEND · أمان",
@@ -275,6 +286,7 @@ const matcherMap = {
   automation: { title: "IT Support Ticket Triage", target: "#project-automation" },
   fullstack: { title: "Smart Task Manager", target: "#project-task" },
   local: { title: "Job Application Tracker", target: "#project-jobs" },
+  analytics: { title: "Automotive Showroom & HR Analytics", target: "#project-showroom" },
 };
 
 function chooseProject(type) {
@@ -353,7 +365,7 @@ const answers = {
       href: MEETING_URL || "#contact",
     },
     projects: {
-      text: "Six case studies are featured. New in August: Nova Tech, a React storefront in the E-commerce API repository, and ProctorLab, an educational assessment simulator. They join the E-commerce REST API, Smart Task Manager, n8n IT Support Ticket Triage, and Job Application Tracker.",
+      text: "Eight case studies are featured, including two Power BI reports: automotive showroom analysis with training data and an HR headcount and attrition dashboard. Auto Finance & Cards is still in development.",
       label: "Explore selected work",
       href: "#work",
     },
@@ -450,6 +462,7 @@ function classifyQuestion(value) {
   if (/why|hire|choose|fit|employ|لماذا|ليش|اختار|توظف/.test(query)) return "hire";
   if (/meeting|schedule|book|calendar|calendly|cal\.com|موعد|اجتماع|احجز|حجز/.test(query)) return "meeting";
   if (/contact|email|available|intern|freelance|connect|تواصل|بريد|متاح|تدريب|عمل حر/.test(query)) return "contact";
+  if (/power bi|dashboard|analytics|dax|تحليل|لوحة|داشبورد/.test(query)) return "projects";
   if (/project|work|portfolio|latest|recent|updates?|new|مشروع|مشاريع|جديد|تحديث|أعمال|اعمال|بورتفوليو/.test(query)) return "projects";
   if (/\bai\b|artificial|data science|machine|ذكاء|بيانات/.test(query)) return "ai";
   return "fallback";
