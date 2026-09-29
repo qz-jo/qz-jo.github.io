@@ -1,4 +1,4 @@
-# Saif AL-Moghrabi — Intelligent Developer Portfolio V2
+# Saif AL-Moghrabi — Portfolio
 
 A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an AI & Data Science student focused on backend engineering and automation in Amman, Jordan.
 
@@ -6,7 +6,7 @@ A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an AI & Data Science 
 
 - Portfolio: https://saif.codes
 - GitHub: https://github.com/qz-jo
-- LinkedIn: https://www.linkedin.com/in/saif-almograbe-8847723aa
+- LinkedIn: https://www.linkedin.com/in/saif-al-moghrabi-8847723aa/
 
 ## Experience highlights
 
@@ -23,9 +23,9 @@ A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an AI & Data Science 
 - Privacy-friendly contact flow that prepares a local email draft without sending data to a form service
 - SEO metadata, structured data, sitemap, robots file, social preview, PWA manifest, and custom 404 page
 
-## Featured work — August 2026
+## Featured work — September 2026
 
-Six case studies are drawn from five public project repositories. Nova Tech and the E-commerce REST API share a repository but remain separate implementations.
+Eight featured case studies include six software case studies and two documented Power BI learning projects. Nova Tech and the E-commerce REST API share a repository but remain separate implementations. Power BI case studies describe publicly shared work; their PBIX files and source datasets are not published here.
 
 | Case study | Current scope | Demo / source |
 | --- | --- | --- |
@@ -35,8 +35,10 @@ Six case studies are drawn from five public project repositories. Nova Tech and 
 | Smart Task Manager | Express + PostgreSQL task manager; production AI suggestions disabled | [Source](https://github.com/qz-jo/smart-task-manager) |
 | IT Support Ticket Triage | Rules-based n8n workflow with sample payloads and executable tests | [Source](https://github.com/qz-jo/n8n-it-support-ticket-triage) |
 | Job Application Tracker | Published browser app with localStorage, JSON backups, and dark mode | [Demo](https://saif.codes/job-application-tracker/) · [Source](https://github.com/qz-jo/job-application-tracker) |
+| Automotive Showroom Analytics | Power BI training-data report across sales, inventory, service, customers, and vehicle exploration | [Case study](case-studies/automotive-showroom-power-bi.md) |
+| HR Headcount & Attrition | Power BI workforce metrics and interactive analysis | [Case study](case-studies/hr-analytics-power-bi.md) |
 
-Descriptions were checked against public source and GitHub Actions on 28 August 2026. The storefront's [verification checklist](https://github.com/qz-jo/ecommerce-api/blob/main/frontend/TASK_TEST_RESULTS.md) distinguishes tested flows from implemented features. Private repositories are not included.
+Software descriptions were checked against public source and GitHub Actions on 28 August 2026. The Power BI descriptions come from Saif's LinkedIn project posts and profile. The storefront's [verification checklist](https://github.com/qz-jo/ecommerce-api/blob/main/frontend/TASK_TEST_RESULTS.md) distinguishes tested flows from implemented features. Private repositories are not included.
 
 ## Verification
 
