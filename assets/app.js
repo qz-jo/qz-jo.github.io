@@ -297,7 +297,7 @@ function chooseProject(type) {
     button.classList.toggle("active", selected);
     button.setAttribute("aria-pressed", String(selected));
   });
-  $$("[data-project]").forEach((card) => card.classList.toggle("is-recommended", card.dataset.project === type));
+  $$("[data-project]").forEach((card) => card.classList.toggle("is-recommended", card.dataset.project === type && "#" + card.getAttribute("id") === match.target));
   $("#matcherResultTitle").textContent = match.title;
   $("#matcherResultLink").setAttribute("href", match.target);
 }
