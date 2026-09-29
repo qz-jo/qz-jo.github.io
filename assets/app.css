@@ -491,6 +491,15 @@ html[dir="rtl"] .nav-links a::after {
   font: 760 clamp(1.05rem, 1.5vw, 1.42rem)/1 var(--mono);
   letter-spacing: 0.18em;
 }
+.hero-name .name-ar {
+  display: inline-block;
+  margin-inline-start: 0.7rem;
+  font-family: inherit;
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
 
 .hero-role {
   margin: 0.75rem 0 0;
