@@ -1,0 +1,75 @@
+{
+  "selected": "mesh3.obj",
+  "selection_reason": "Calm closed-mouth source expression; clear nose and jaw. Selection combines pose-aligned geometry inspection with supplied landmark/render images, not residual ranking.",
+  "orientation": "Right-handed UV eye/chin anatomical frame; source camera +Y down corrected by rigid rotation. Eyes horizontal, chin below eyes, nose forward verified.",
+  "landmarks": [
+    [
+      -0.48394188270660576,
+      0.38747139110375567,
+      0.09398841622955824
+    ],
+    [
+      0.49872119736572795,
+      0.3874713911037556,
+      0.09398841622955821
+    ],
+    [
+      0.042198725643659965,
+      -1.0852022163157897,
+      0.09398841622955939
+    ],
+    [
+      0.006452985964751425,
+      -0.03679807656420857,
+      0.6079419285048862
+    ]
+  ],
+  "meshes": [
+    {
+      "mesh": "mesh0.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5622793,
+      "mean_pose_aligned_difference_mm": 0.0,
+      "sha256": "2ebac2e199afae975d85eed8c78dbf6746108e2cb3692d269c0e162f7b94e392"
+    },
+    {
+      "mesh": "mesh1.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5678241,
+      "mean_pose_aligned_difference_mm": 1.3855,
+      "sha256": "d69166d5b1d9f9200a9b96dda17b1e4c274ad0221ec657056e2c22fe082b71cd"
+    },
+    {
+      "mesh": "mesh2.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5608050,
+      "mean_pose_aligned_difference_mm": 0.8738,
+      "sha256": "e694b120a4f4ee80f090eef0870ee0b43124cfa13e3841700095c7df22b03ceb"
+    },
+    {
+      "mesh": "mesh3.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5592406,
+      "mean_pose_aligned_difference_mm": 1.6078,
+      "sha256": "72b826d1b013d83764adc803589f0e277eba5a71c6d93beac3821b91982e00b0"
+    }
+  ],
+  "boundary_vertices": 512,
+  "preserved_inner_boundary_vertices": 92,
+  "point_count": 76000,
+  "bytes_per_point": 16,
+  "core_vertices": 6302,
+  "core_triangles": 12000,
+  "core_projection_error_mm": {
+    "mean": 0.008373210029642152,
+    "p95": 0.026402830357188975,
+    "max": 0.07301516860834417
+  },
+  "flow_paths": 10,
+  "hair_filament_vertices": 10500,
+  "seed": 834
+}
