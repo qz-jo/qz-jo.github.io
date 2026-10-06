@@ -10,8 +10,9 @@ A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an Artificial Intelli
 
 ## Experience highlights
 
-- Cinematic, self-hosted circuit-board hero video with a lightweight neural-canvas layer
-- Responsive portrait-led Hero using Saif's supplied photo and optimized WebP sources
+- Interactive silver particle portrait sampled from Saif's real NextGenFace `mesh3.obj`, with abstract hair/head/neck extensions
+- One adaptive WebGL canvas connects the Hero to restrained data streams throughout the page
+- Mobile composition, static supplied-mesh poster, reduced-motion support, and paused rendering in hidden tabs
 - Premium monochrome meeting CTA controlled by one `MEETING_URL` constant
 - English and Arabic interfaces with full RTL support
 - SEIF.OS portfolio assistant grounded in verified project and profile content
@@ -46,14 +47,16 @@ No package installation is required. With Node.js 20 or newer:
 
 ```sh
 node --check assets/app.js
+node --check assets/particle-portrait.js
 node --test tests/portfolio.test.mjs
+node tools/build.mjs
 ```
 
-The unit tests cover bilingual round trips, project matching and pressed states, assistant routing, case-study counts, and static link integrity. They do not replace browser or visual testing.
+The unit tests cover bilingual round trips, project matching and pressed states, assistant routing, case-study counts, and static link integrity. The production browser checks are in `tools/validate-browser.cjs`; see [portrait implementation and validation](docs/particle-portrait.md) for measurements, screenshots, asset generation, and exact preview commands.
 
 ## Technical approach
 
-The site is intentionally framework-free: semantic HTML, modern CSS, and vanilla JavaScript. It is served as a static GitHub Pages build with no API keys, build pipeline, cookies, analytics, or third-party form processor.
+The site uses semantic HTML, modern CSS, vanilla JavaScript, and a locally bundled MIT-licensed Three.js renderer. It is served as static GitHub Pages files with no backend, API keys, cookies, analytics, or third-party form processor. The optional production staging command copies the deployable files into `dist/`; the repository root remains directly deployable.
 
 The optional GitHub pulse uses GitHub's public API with a static fallback if the request is unavailable or rate-limited.
 
@@ -65,6 +68,6 @@ Set `MEETING_URL` once near the top of `assets/app.js`. Every Hero, navigation, 
 
 The optimized background clip is derived from **“Digital animation showcasing a glowing circuit board with techno elements”** by Soumya on Pexels: https://www.pexels.com/video/sequencing-white-lights-on-a-black-surface-2792370/
 
-The clip is self-hosted at 720p without audio and optimized for fast playback. Visitors who prefer reduced motion receive the static poster instead.
+This historical clip remains in repository history/current assets for attribution and recovery. The current Hero never requests or plays it; production staging omits it. The current particle poster is rendered from Saif's supplied reconstruction, not generated from the artistic reference.
 
 Previous versions remain recoverable from the repository history.

@@ -1,0 +1,321 @@
+{
+  "browser": "Chromium 131.0.6778.204",
+  "environment": "Headless software WebGL; mobile viewport emulation, not a physical phone. Optional external GitHub pulse is stubbed with an empty successful response to keep the static count.",
+  "checks": [
+    {
+      "viewport": "1920x1080",
+      "top": {
+        "status": "ready",
+        "canvas": 1,
+        "overflow": false,
+        "stats": {
+          "tier": "economy",
+          "portraitStatic": false,
+          "points": 21000,
+          "allocatedPoints": 43000,
+          "dpr": 0.7,
+          "drawCalls": 2,
+          "renderCount": 24,
+          "lastRenderMs": 0.20000000018626451,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        },
+        "stage": {
+          "x": 1009.515625,
+          "y": 177.453125,
+          "width": 640,
+          "height": 712.796875,
+          "top": 177.453125,
+          "right": 1649.515625,
+          "bottom": 890.25,
+          "left": 1009.515625
+        },
+        "heroHeight": 1080
+      },
+      "performance": {
+        "durationMs": 2509.1000000003733,
+        "renderedFrames": 18,
+        "medianRafMs": 16.700000000000728,
+        "p95RafMs": 66.60000000000036,
+        "stats": {
+          "tier": "economy",
+          "portraitStatic": true,
+          "points": 21000,
+          "allocatedPoints": 43000,
+          "dpr": 0.7,
+          "drawCalls": 1,
+          "renderCount": 75,
+          "lastRenderMs": 0.2999999998137355,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        }
+      },
+      "middle": {
+        "tier": "economy",
+        "portraitStatic": true,
+        "points": 21000,
+        "allocatedPoints": 43000,
+        "dpr": 0.7,
+        "drawCalls": 1,
+        "renderCount": 84,
+        "lastRenderMs": 0.20000000018626451,
+        "visible": false,
+        "enabled": true,
+        "documentHidden": false
+      },
+      "local404s": [],
+      "consoleErrors": [],
+      "interactions": "matcher, details, language, motion, navigation / command palette passed"
+    },
+    {
+      "viewport": "1440x900",
+      "top": {
+        "status": "ready",
+        "canvas": 1,
+        "overflow": false,
+        "stats": {
+          "tier": "economy",
+          "portraitStatic": false,
+          "points": 21000,
+          "allocatedPoints": 43000,
+          "dpr": 0.7,
+          "drawCalls": 2,
+          "renderCount": 30,
+          "lastRenderMs": 0.2999999998137355,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        },
+        "stage": {
+          "x": 767.203125,
+          "y": 146.84375,
+          "width": 615.171875,
+          "height": 594,
+          "top": 146.84375,
+          "right": 1382.375,
+          "bottom": 740.84375,
+          "left": 767.203125
+        },
+        "heroHeight": 900
+      },
+      "performance": {
+        "durationMs": 2529.6999999998134,
+        "renderedFrames": 59,
+        "medianRafMs": 49.899999999999636,
+        "p95RafMs": 50.099999999999454,
+        "stats": {
+          "tier": "economy",
+          "portraitStatic": false,
+          "points": 21000,
+          "allocatedPoints": 43000,
+          "dpr": 0.7,
+          "drawCalls": 2,
+          "renderCount": 167,
+          "lastRenderMs": 0,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        }
+      },
+      "middle": {
+        "tier": "economy",
+        "portraitStatic": true,
+        "points": 21000,
+        "allocatedPoints": 43000,
+        "dpr": 0.7,
+        "drawCalls": 1,
+        "renderCount": 198,
+        "lastRenderMs": 0.20000000018626451,
+        "visible": false,
+        "enabled": true,
+        "documentHidden": false
+      },
+      "local404s": [],
+      "consoleErrors": [],
+      "interactions": "matcher, details, language, motion, navigation / command palette passed"
+    },
+    {
+      "viewport": "1366x768",
+      "top": {
+        "status": "ready",
+        "canvas": 1,
+        "overflow": false,
+        "stats": {
+          "tier": "economy",
+          "portraitStatic": false,
+          "points": 21000,
+          "allocatedPoints": 43000,
+          "dpr": 0.7,
+          "drawCalls": 2,
+          "renderCount": 18,
+          "lastRenderMs": 0.2999999998137355,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        },
+        "stage": {
+          "x": 728.859375,
+          "y": 178.171875,
+          "width": 582.5,
+          "height": 510,
+          "top": 178.171875,
+          "right": 1311.359375,
+          "bottom": 688.171875,
+          "left": 728.859375
+        },
+        "heroHeight": 879
+      },
+      "performance": {
+        "durationMs": 2512.599999999813,
+        "renderedFrames": 62,
+        "medianRafMs": 33.30000000000018,
+        "p95RafMs": 50.100000000000364,
+        "stats": {
+          "tier": "economy",
+          "portraitStatic": false,
+          "points": 21000,
+          "allocatedPoints": 43000,
+          "dpr": 0.7,
+          "drawCalls": 2,
+          "renderCount": 159,
+          "lastRenderMs": 0.20000000018626451,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        }
+      },
+      "middle": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "points": 21000,
+        "allocatedPoints": 43000,
+        "dpr": 0.7,
+        "drawCalls": 1,
+        "renderCount": 184,
+        "lastRenderMs": 0.5,
+        "visible": false,
+        "enabled": true,
+        "documentHidden": false
+      },
+      "local404s": [],
+      "consoleErrors": [],
+      "interactions": "matcher, details, language, motion, navigation / command palette passed"
+    },
+    {
+      "viewport": "390x844",
+      "top": {
+        "status": "ready",
+        "canvas": 1,
+        "overflow": false,
+        "stats": {
+          "tier": "mobile",
+          "portraitStatic": false,
+          "points": 22500,
+          "allocatedPoints": 22500,
+          "dpr": 1,
+          "drawCalls": 2,
+          "renderCount": 44,
+          "lastRenderMs": 0.10000000009313226,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        },
+        "stage": {
+          "x": 12,
+          "y": 356.984375,
+          "width": 366,
+          "height": 380,
+          "top": 356.984375,
+          "right": 378,
+          "bottom": 736.984375,
+          "left": 12
+        },
+        "heroHeight": 1234
+      },
+      "performance": {
+        "durationMs": 2509.5,
+        "renderedFrames": 75,
+        "medianRafMs": 16.699999999999818,
+        "p95RafMs": 16.700000000000728,
+        "stats": {
+          "tier": "mobile",
+          "portraitStatic": false,
+          "points": 22500,
+          "allocatedPoints": 22500,
+          "dpr": 1,
+          "drawCalls": 2,
+          "renderCount": 213,
+          "lastRenderMs": 0.10000000009313226,
+          "visible": true,
+          "enabled": true,
+          "documentHidden": false
+        }
+      },
+      "middle": {
+        "tier": "mobile",
+        "portraitStatic": false,
+        "points": 22500,
+        "allocatedPoints": 22500,
+        "dpr": 1,
+        "drawCalls": 1,
+        "renderCount": 234,
+        "lastRenderMs": 0.10000000009313226,
+        "visible": false,
+        "enabled": true,
+        "documentHidden": false
+      },
+      "local404s": [],
+      "consoleErrors": [],
+      "interactions": "matcher, details, language, motion, navigation / command palette passed"
+    },
+    {
+      "mode": "reduced",
+      "status": "ready",
+      "posterOpacity": "0",
+      "titleVisible": true,
+      "stats": {
+        "tier": "balanced",
+        "portraitStatic": false,
+        "points": 43000,
+        "allocatedPoints": 43000,
+        "dpr": 1,
+        "drawCalls": 2,
+        "renderCount": 3,
+        "lastRenderMs": 0.39999999990686774,
+        "visible": true,
+        "enabled": false,
+        "documentHidden": false
+      }
+    },
+    {
+      "mode": "fallback",
+      "status": "fallback",
+      "posterOpacity": "1",
+      "titleVisible": true
+    },
+    {
+      "mode": "no-webgl",
+      "status": "fallback",
+      "posterOpacity": "1",
+      "titleVisible": true
+    },
+    {
+      "mode": "asset-failure",
+      "status": "fallback",
+      "posterOpacity": "1",
+      "titleVisible": true
+    },
+    {
+      "mode": "module-failure",
+      "status": "fallback",
+      "posterOpacity": "1",
+      "titleVisible": true
+    },
+    {
+      "mode": "production-debug-disabled-and-pages-subpath",
+      "passed": true
+    }
+  ]
+}
