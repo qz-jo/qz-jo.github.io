@@ -40,13 +40,28 @@ def main(folder):
             mean_pose_aligned_difference_mm=round(float(np.linalg.norm(a-ref, axis=1).mean()), 4),
             sha256=hashlib.sha256((folder/f'mesh{i}.obj').read_bytes()).hexdigest()))
 
-    v = aligned[3].copy()
-    # Remove the source camera's roll. This is a rigid transform, not facial editing.
-    a = 0.17
-    v = v @ np.array([[np.cos(a),np.sin(a),0],[-np.sin(a),np.cos(a),0],[0,0,1]])
-    v[:,2] *= -1
-    v /= 75
     uv, f = meshes[3][1:]
+    v = meshes[3][0].copy()
+    # The reconstruction uses camera coordinates (+Y DOWN). Establish a proper,
+    # right-handed anatomical frame from the supplied UV's eyes and chin instead
+    # of guessing Euler angles or mirroring individual axes. Rigid transform only.
+    def landmark(px, py):
+        target = np.array([px/512, 1-py/512])
+        indices = np.argsort(np.linalg.norm(uv-target, axis=1))[:8]
+        return v[indices].mean(0)
+    left, right, chin, nose = landmark(194,120), landmark(320,120), landmark(256,339), landmark(256,170)
+    eye_mid = (left+right)/2
+    lateral = right-left; lateral /= np.linalg.norm(lateral)
+    up = eye_mid-chin; up -= lateral*np.dot(up,lateral); up /= np.linalg.norm(up)
+    forward = np.cross(lateral,up)
+    frame = np.column_stack([lateral,up,forward])
+    origin = v.mean(0)
+    v = (v-origin) @ frame / 75
+    pose_check = np.array([left,right,chin,nose])
+    pose_check = (pose_check-origin) @ frame / 75
+    assert abs(pose_check[0,1]-pose_check[1,1]) < 1e-8
+    assert pose_check[2,1] < pose_check[:2,1].mean()
+    assert pose_check[3,2] > pose_check[:2,2].mean()
     triangles = v[f]
     cross = np.cross(triangles[:,1]-triangles[:,0], triangles[:,2]-triangles[:,0])
     area = np.linalg.norm(cross, axis=1)/2
@@ -75,55 +90,76 @@ def main(folder):
     feature = np.exp(-((center[:,1]-.28)/.22)**2)*1.1
     feature += np.exp(-((center[:,0])/.25)**2-((center[:,1]+.10)/.45)**2)*.9
     feature += np.exp(-((center[:,1]+.55)/.19)**2)*.8
-    weight = area*(1+feature)*(.15+.85*smooth(0,.13,distances[f].mean(1)))
-    n = 48000
+    weight = area*(1+feature)*(.025+.975*smooth(.005,.28,distances[f].mean(1)))
+    n = 56000
     chosen = rng.choice(len(f),n,p=weight/weight.sum())
     r = rng.random((n,2));sr=np.sqrt(r[:,0]);bary=np.c_[1-sr,sr*(1-r[:,1]),sr*r[:,1]]
     points = (v[f[chosen]]*bary[:,:,None]).sum(1)
     norm = (normals[f[chosen]]*bary[:,:,None]).sum(1)
     norm /= np.maximum(np.linalg.norm(norm,axis=1)[:,None],1e-8)
     lum = luminance((uv[f[chosen]]*bary[:,:,None]).sum(1))
-    edge = 1-smooth(.02,.24,(distances[f[chosen]]*bary).sum(1))
-    alpha = (.18+.82*(1-edge))*(.30+.70*np.clip(lum/.60,0,1))
+    edge = 1-smooth(.025,.38,(distances[f[chosen]]*bary).sum(1))
+    alpha = (1-edge)**1.35*(.34+.66*np.clip(lum/.60,0,1))
     # Surface brightness retains brows, eye sockets, lips and beard from supplied UV.
     shade = (.33+.67*np.clip(lum/.64,0,1))*(.38+.62*np.clip(norm @ [.2,.5,.84],0,1))
     data = [np.c_[points,norm,shade,edge,alpha,np.zeros(n)]]
 
-    # Curled hair volume: short layers around an ellipsoid, fading into open flow.
-    n=15000;t=rng.uniform(0,np.pi*2,n);u=rng.uniform(0,1,n)
-    rad=np.sqrt(1-u*u)
-    p=np.c_[.98*rad*np.cos(t),.68+.83*u,-.42+.83*rad*np.sin(t)]
-    curl=.030*np.sin(t*29+u*30)
-    p+=np.c_[curl,np.cos(t*23+u*39)*.024,np.sin(t*19+u*31)*.035]
-    p+=rng.normal(0,.021,(n,3))
-    # Fade the front hairline, do not place hair in the facial landmark region.
-    p[:,1]+=.05*np.cos(t*3)
-    hairalpha=.15+.63*rng.random(n)
-    nn=p-np.array([0,.64,-.42]);nn/=np.linalg.norm(nn,axis=1)[:,None]
-    data.append(np.c_[p,nn,rng.uniform(.20,.63,n),rng.uniform(.3,.8,n),hairalpha,np.ones(n)])
+    # Hair grows from the actual forehead/temple boundary. Curved clusters flow
+    # backward from those roots instead of placing a disconnected hemisphere above it.
+    roots = boundary[(v[boundary,1]>.52)|((np.abs(v[boundary,0])>.70)&(v[boundary,1]>.10))]
+    n=16500;clusters=125;root=v[rng.choice(roots,clusters)].copy()
+    direction=np.c_[rng.uniform(-.30,.12,clusters),rng.uniform(.25,.58,clusters),rng.uniform(-.92,-.45,clusters)]
+    curl_radius=rng.uniform(.025,.085,clusters)
+    index=rng.integers(0,clusters,n);t=rng.random(n);phase=t*17+index*2.39996
+    p=root[index]+direction[index]*t[:,None]
+    p[:,0]+=curl_radius[index]*np.sin(phase)*np.sin(np.pi*t)
+    p[:,1]+=curl_radius[index]*np.cos(phase)*np.sin(np.pi*t)+.17*np.sin(np.pi*t)
+    p[:,2]+=.04*np.sin(phase*.7)
+    p+=rng.normal(0,.012,(n,3))
+    nn=np.tile([-.1,.5,.85],(n,1));nn/=np.linalg.norm(nn,axis=1)[:,None]
+    hairalpha=(.15+.85*np.sin(np.pi*np.clip(t*.9+.08,0,1))) * rng.uniform(.28,.78,n)
+    data.append(np.c_[p,nn,rng.uniform(.24,.83,n),.28+.67*t,hairalpha,np.ones(n)])
 
-    # Abstract side/rear suggestion. It never becomes a solid replacement skull.
-    n=6000;t=rng.uniform(0,2*np.pi,n);y=rng.uniform(-.78,.87,n)
-    p=np.c_[1.00*np.cos(t),y,-.45+.86*np.sin(t)]
-    keep=p[:,2]<-.19;p=p[keep];n=len(p)
-    p+=rng.normal(0,.045,(n,3));nn=p.copy();nn[:,1]*=.4;nn/=np.linalg.norm(nn,axis=1)[:,None]
-    data.append(np.c_[p,nn,rng.uniform(.15,.40,n),rng.uniform(.6,.95,n),rng.uniform(.12,.46,n),np.ones(n)])
+    # Continuous edge break-up: emit from an INTERIOR geodesic band, never from
+    # a single perimeter contour. Directed travel replaces random spherical noise.
+    band=np.flatnonzero((distances>.015)&(distances<.45))
+    n=13500;idx=rng.choice(band,n);t=rng.random(n)**1.4
+    p=v[idx].copy();source=p.copy()
+    direction=np.c_[np.where(p[:,0]<0,-1,.35),np.where(p[:,1]>.35,.30,-.65),np.ones(n)*-.48]
+    travel=t*(.25+1.05*(1-smooth(.015,.45,distances[idx])))
+    p+=direction*travel[:,None]
+    p[:,0]+=.055*np.sin(t*10+source[:,1]*7)*t
+    p[:,1]+=.07*np.sin(t*8+source[:,0]*9)*t
+    p+=rng.normal(0,.008+t[:,None]*.015,(n,3))
+    alpha=(1-t)**1.8*rng.uniform(.12,.52,n)*smooth(.005,.08,distances[idx])
+    data.append(np.c_[p,normals[idx],rng.uniform(.28,.86,n),.55+.44*t,alpha,np.ones(n)*3])
 
-    # Chin -> neck -> shoulder ghost; wide soft fade hides the face's lower perimeter.
-    n=8500;t=rng.uniform(0,2*np.pi,n);u=rng.random(n)
-    y=-.88-u*1.24;radius=.48+smooth(.25,1,u)*.94
-    p=np.c_[radius*np.cos(t),y,-.36+.39*np.sin(t)]
-    p+=rng.normal(0,.025+u[:,None]*.07,(n,3))
-    nn=np.c_[np.cos(t),np.ones(n)*.1,np.sin(t)]
-    data.append(np.c_[p,nn,rng.uniform(.18,.47,n),.48+.50*u,(1-u)**1.2*rng.uniform(.16,.50,n),np.ones(n)*2])
+    # Abstract neck/shoulder ribbons start at the actual lower jaw, then spread
+    # down and back. Irregular lanes make the edge untraceable without a solid skull.
+    jaw=boundary[v[boundary,1]<-.72]
+    n=9500;idx=rng.choice(jaw,n);t=rng.random(n)
+    p=v[idx].copy();spread=np.sign(p[:,0])*(.35+.65*t)*t
+    p[:,0]+=spread;p[:,1]-=t*1.25;p[:,2]-=.18+t*.48
+    p[:,0]+=.035*np.sin(t*18+idx*.03)
+    p+=rng.normal(0,.014+t[:,None]*.045,(n,3))
+    nn=normals[idx];alpha=(1-t)**1.6*rng.uniform(.15,.60,n)
+    data.append(np.c_[p,nn,rng.uniform(.22,.62,n),.38+.61*t,alpha,np.ones(n)*2])
 
-    # Perimeter echoes sampled from the real boundary, dispersed with continuous falloff.
-    n=6500;idx=rng.choice(boundary,n);u=rng.random(n)
-    p=v[idx].copy();direction=p.copy();direction[:,2]*=.35
-    direction/=np.linalg.norm(direction,axis=1)[:,None]
-    p+=direction*(u*u*.78)[:,None]+rng.normal(0,.035+u[:,None]*.1,(n,3))
-    data.append(np.c_[p,normals[idx],rng.uniform(.25,.6,n),.50+.49*u,(1-u)**2*.38,np.ones(n)*3])
-    values=np.concatenate(data);rng.shuffle(values)
+    # A few curved streams continue the hair/jaw gesture into open space. Points
+    # along eight trajectories supply restrained trails within this same draw call.
+    n=6500;lane=rng.integers(0,8,n);t=rng.random(n)
+    roots2=v[rng.choice(band,8)].copy();roots2[:,0]-=.16
+    p=roots2[lane].copy();p[:,0]-=t*1.5
+    p[:,1]+=np.sin(t*3.3+lane*.13)*.28-t*(.4+lane*.11)
+    p[:,2]-=t*.75
+    p+=rng.normal(0,.008+t[:,None]*.018,(n,3))
+    alpha=(1-t)**2*rng.uniform(.07,.40,n)
+    data.append(np.c_[p,np.tile([0,0,1],(n,1)),rng.uniform(.33,.84,n),.7+.29*t,alpha,np.ones(n)*4])
+    # Spend the high-tier budget on identity first. Uniform prefix sampling of this
+    # mixed set preserves ~74% genuine facial points even at low quality.
+    extensions=np.concatenate(data[1:])
+    extensions=extensions[rng.choice(len(extensions),20000,replace=False)]
+    values=np.concatenate([data[0],extensions]);rng.shuffle(values)
     # 16 bytes/point: position int16 (1/8192), normal int8, packed art channels.
     dtype=np.dtype([('p','<i2',(3,)),('n','i1',(3,)),('shade','u1'),('edge','u1'),('alpha','u1'),('kind','u1'),('seed','u1'),('pad','u1',(2,))])
     packed=np.zeros(len(values),dtype=dtype)
@@ -134,11 +170,11 @@ def main(folder):
     (dest/'saif-particles.bin').write_bytes(b'SPF1'+struct.pack('<I',len(values))+packed.tobytes())
     for name,count in [('mobile',22500),('balanced',43000)]:
         (dest/f'saif-particles-{name}.bin').write_bytes(b'SPF1'+struct.pack('<I',count)+packed[:count].tobytes())
-    report=dict(selected='mesh3.obj',selection_reason='Calm closed-mouth source expression; clear three-quarter nose and jaw. Selection combines pose-aligned geometry inspection with supplied landmark/render images, not residual ranking.',meshes=report,boundary_vertices=len(boundary),point_count=len(values),bytes_per_point=16,seed=834)
+    report=dict(selected='mesh3.obj',selection_reason='Calm closed-mouth source expression; clear nose and jaw. Selection combines pose-aligned geometry inspection with supplied landmark/render images, not residual ranking.',orientation='Right-handed UV eye/chin anatomical frame; source camera +Y down corrected by rigid rotation. Eyes horizontal, chin below eyes, nose forward verified.',landmarks=pose_check.tolist(),meshes=report,boundary_vertices=len(boundary),point_count=len(values),bytes_per_point=16,seed=834)
     (ROOT/'docs/mesh-analysis.json').write_text(json.dumps(report,indent=2)+'\n')
 
     # True particle fallback from the same geometry/extension, never the artistic reference.
-    a=-.32;R=np.array([[np.cos(a),0,-np.sin(a)],[0,1,0],[np.sin(a),0,np.cos(a)]])
+    a=.38;R=np.array([[np.cos(a),0,-np.sin(a)],[0,1,0],[np.sin(a),0,np.cos(a)]])
     p=values[:,:3]@R;im=Image.new('RGB',(900,1080),(5,7,11));draw=ImageDraw.Draw(im,'RGBA')
     for j in np.argsort(p[:,2]):
         x,y,z=p[j];brightness=values[j,6];al=values[j,8]

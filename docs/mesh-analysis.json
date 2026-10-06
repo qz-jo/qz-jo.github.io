@@ -1,6 +1,29 @@
 {
   "selected": "mesh3.obj",
-  "selection_reason": "Calm closed-mouth source expression; clear three-quarter nose and jaw. Selection combines pose-aligned geometry inspection with supplied landmark/render images, not residual ranking.",
+  "selection_reason": "Calm closed-mouth source expression; clear nose and jaw. Selection combines pose-aligned geometry inspection with supplied landmark/render images, not residual ranking.",
+  "orientation": "Right-handed UV eye/chin anatomical frame; source camera +Y down corrected by rigid rotation. Eyes horizontal, chin below eyes, nose forward verified.",
+  "landmarks": [
+    [
+      -0.48394188270660576,
+      0.38747139110375567,
+      0.09398841622955824
+    ],
+    [
+      0.49872119736572795,
+      0.3874713911037556,
+      0.09398841622955821
+    ],
+    [
+      0.042198725643659965,
+      -1.0852022163157897,
+      0.09398841622955939
+    ],
+    [
+      0.006452985964751425,
+      -0.03679807656420857,
+      0.6079419285048862
+    ]
+  ],
   "meshes": [
     {
       "mesh": "mesh0.obj",
@@ -36,7 +59,7 @@
     }
   ],
   "boundary_vertices": 604,
-  "point_count": 81467,
+  "point_count": 76000,
   "bytes_per_point": 16,
   "seed": 834
 }
