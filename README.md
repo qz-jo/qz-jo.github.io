@@ -10,8 +10,8 @@ A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an Artificial Intelli
 
 ## Experience highlights
 
-- Interactive silver particle portrait sampled from Saif's real NextGenFace `mesh3.obj`, with abstract hair/head/neck extensions
-- Cinematic, skippable particle formation that moves the same portrait from center into the Hero
+- Hybrid shaded portrait + UV-colored particle skin from Saif's real NextGenFace `mesh3.obj`, rooted curl clumps and curved dissolution streams
+- Cinematic, skippable curved formation that reveals the face and moves the same hybrid group from center into the Hero with particle lag
 - One adaptive WebGL canvas connects the Hero to restrained data streams throughout the page
 - Mobile composition, static supplied-mesh poster, reduced-motion support, and paused rendering in hidden tabs
 - Premium monochrome meeting CTA controlled by one `MEETING_URL` constant
