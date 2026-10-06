@@ -27,10 +27,11 @@
     <meta name="twitter:image" content="https://saif.codes/assets/saif-data-social-card.jpg" />
     <meta name="twitter:image:alt" content="Saif AL-Moghrabi — Data Engineering Portfolio" />
     <link rel="canonical" href="https://saif.codes/" />
-    <link rel="icon" href="/favicon.svg" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preload" href="/assets/saif-portrait-768.webp" as="image" type="image/webp" imagesrcset="/assets/saif-portrait-480.webp 480w, /assets/saif-portrait-768.webp 768w, /assets/saif-portrait-1024.webp 1024w" imagesizes="(max-width: 940px) 92vw, 42vw" />
-    <link rel="stylesheet" href="/assets/app.css?v=20260929-seo" />
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="preload" href="./assets/portrait/saif-particle-poster.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="./assets/app.css?v=20261006" />
+    <link rel="stylesheet" href="./assets/portrait.css?v=20261006" />
     <title>Saif AL-Moghrabi | سيف المغربي — Data Engineering Portfolio</title>
     <script type="application/ld+json">
       {
@@ -50,7 +51,7 @@
         "sameAs": ["https://github.com/qz-jo", "https://www.linkedin.com/in/saif-al-moghrabi-8847723aa/"]
       }
     </script>
-    <script type="module" src="/assets/app.js?v=20260929-dataeng"></script>
+    <script type="module" src="./assets/app.js?v=20261006"></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -89,18 +90,9 @@
       </nav>
     </header>
 
+    <div id="particle-system" aria-hidden="true"><canvas id="portraitCanvas" aria-hidden="true"></canvas></div>
     <main id="main">
       <section class="hero" id="home" aria-labelledby="heroTitle">
-        <div class="hero-media" aria-hidden="true">
-          <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="/hero-poster.svg">
-            <source src="/assets/neural-circuit.mp4" type="video/mp4" />
-          </video>
-          <div class="hero-color"></div>
-          <canvas id="neuralCanvas"></canvas>
-          <div class="hero-grid"></div>
-          <div class="hero-vignette"></div>
-        </div>
-
         <div class="hero-content shell">
           <div class="hero-intro">
             <div class="status-pill reveal-up">
@@ -132,29 +124,11 @@
             </div>
           </div>
 
-          <aside class="hero-portrait reveal-scale delay-3" aria-label="Saif AL-Moghrabi technical profile">
-            <div class="portrait-system-head">
-              <div><span class="intel-orbit"></span><b>SEIF.OS</b></div>
-              <span class="sync-status"><i></i><span data-i18n="liveProfile">LIVE PROFILE</span></span>
-            </div>
+          <aside class="hero-portrait" aria-label="Particle portrait of Saif AL-Moghrabi">
             <div class="portrait-stage" id="heroPortraitStage">
-              <div class="portrait-grid" aria-hidden="true"></div>
-              <picture>
-                <source type="image/webp" srcset="/assets/saif-portrait-480.webp 480w, /assets/saif-portrait-768.webp 768w, /assets/saif-portrait-1024.webp 1024w" sizes="(max-width: 940px) 92vw, 42vw" />
-                <img src="/assets/saif-portrait-768.webp" width="768" height="1152" alt="Portrait of Saif AL-Moghrabi" fetchpriority="high" decoding="async" />
-              </picture>
-              <div class="portrait-atmosphere" aria-hidden="true"></div>
-              <span class="portrait-bracket bracket-a" aria-hidden="true"></span>
-              <span class="portrait-bracket bracket-b" aria-hidden="true"></span>
-              <span class="portrait-tag tag-ai">DATA / MODELING</span>
-              <span class="portrait-tag tag-backend">SQL / POSTGRESQL</span>
-              <span class="portrait-tag tag-automation">POWER BI / DAX</span>
-              <span class="portrait-tag tag-location">AMMAN, JORDAN</span>
+              <img class="particle-poster" src="./assets/portrait/saif-particle-poster.webp" width="900" height="1080" alt="Saif's reconstructed face in silver particles" fetchpriority="high" decoding="async" />
             </div>
-            <div class="portrait-system-foot">
-              <span>SA / 001</span>
-              <span class="portrait-available"><i></i><span data-i18n="statusAvailable">STATUS: AVAILABLE</span></span>
-            </div>
+            <div class="portrait-caption"><span>SA / 001</span><span>IDENTITY → DATA</span><span class="portrait-available"><i></i><span data-i18n="statusAvailable">STATUS: AVAILABLE</span></span></div>
           </aside>
         </div>
 
@@ -189,7 +163,7 @@
         <div class="about-layout">
           <figure class="portrait-card reveal">
             <div class="portrait-frame">
-              <img src="/assets/saif-portrait-768.webp" srcset="/assets/saif-portrait-480.webp 480w, /assets/saif-portrait-768.webp 768w, /assets/saif-portrait-1024.webp 1024w" sizes="(max-width: 940px) 92vw, 38vw" width="768" height="1152" alt="Saif AL-Moghrabi in Amman, Jordan" loading="lazy" decoding="async" />
+              <img src="./assets/saif-portrait-768.webp" srcset="./assets/saif-portrait-480.webp 480w, ./assets/saif-portrait-768.webp 768w, ./assets/saif-portrait-1024.webp 1024w" sizes="(max-width: 940px) 92vw, 38vw" width="768" height="1152" alt="Saif AL-Moghrabi in Amman, Jordan" loading="lazy" decoding="async" />
               <div class="portrait-wash"></div>
               <span class="portrait-corner corner-a"></span><span class="portrait-corner corner-b"></span>
               <span class="portrait-index">SA / 001</span>
