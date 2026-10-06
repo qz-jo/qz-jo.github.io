@@ -29,9 +29,14 @@
     <link rel="canonical" href="https://saif.codes/" />
     <link rel="icon" href="./favicon.svg" />
     <link rel="manifest" href="./site.webmanifest" />
-    <link rel="preload" href="./assets/portrait/saif-particle-poster.webp" as="image" type="image/webp" />
+    <link rel="preload" href="./assets/portrait/saif-particle-poster.webp?v=cinematic-3" as="image" type="image/webp" />
     <link rel="stylesheet" href="./assets/app.css?v=20261006" />
-    <link rel="stylesheet" href="./assets/portrait.css?v=20261006" />
+    <link rel="stylesheet" href="./assets/portrait.css?v=cinematic-3" />
+    <script>
+      // Never hide content when scripting/WebGL fails; the module releases this gate.
+      try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches && localStorage.getItem('saif-motion') !== 'off' && (new URLSearchParams(location.search).get('intro') === '1' || !sessionStorage.getItem('saif-intro-v3'))) document.documentElement.dataset.intro = 'loading'; } catch {}
+      setTimeout(() => { if (document.documentElement.dataset.intro === 'loading') document.documentElement.dataset.intro = 'hero'; }, 16000);
+    </script>
     <title>Saif AL-Moghrabi | سيف المغربي — Data Engineering Portfolio</title>
     <script type="application/ld+json">
       {
@@ -51,7 +56,7 @@
         "sameAs": ["https://github.com/qz-jo", "https://www.linkedin.com/in/saif-al-moghrabi-8847723aa/"]
       }
     </script>
-    <script type="module" src="./assets/app.js?v=20261006"></script>
+    <script type="module" src="./assets/app.js?v=cinematic-3"></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -90,6 +95,7 @@
       </nav>
     </header>
 
+    <button class="intro-skip" id="introSkip" type="button" aria-label="Skip portrait introduction"><span data-i18n="introSkip">Skip intro</span> ↗</button>
     <div id="particle-system" aria-hidden="true"><canvas id="portraitCanvas" aria-hidden="true"></canvas></div>
     <main id="main">
       <section class="hero" id="home" aria-labelledby="heroTitle">
@@ -120,19 +126,19 @@
             <div class="hero-meta reveal-up delay-4">
               <a href="https://github.com/qz-jo" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               <a href="https://www.linkedin.com/in/saif-al-moghrabi-8847723aa/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-              <span id="ammanClock">AMMAN · --:--</span>
+              <span>AMMAN · JORDAN</span>
             </div>
           </div>
 
           <aside class="hero-portrait" aria-label="Particle portrait of Saif AL-Moghrabi">
             <div class="portrait-stage" id="heroPortraitStage">
-              <img class="particle-poster" src="./assets/portrait/saif-particle-poster.webp" width="900" height="1080" alt="Saif's reconstructed face in silver particles" fetchpriority="high" decoding="async" />
+              <img class="particle-poster" src="./assets/portrait/saif-particle-poster.webp?v=cinematic-3" width="900" height="1080" alt="Saif's reconstructed face in silver particles" fetchpriority="high" decoding="async" />
             </div>
-            <div class="portrait-caption"><span>SA / 001</span><span>IDENTITY → DATA</span><span class="portrait-available"><i></i><span data-i18n="statusAvailable">STATUS: AVAILABLE</span></span></div>
+
           </aside>
         </div>
 
-        <a class="scroll-cue" href="#signal" aria-label="Scroll to portfolio signal"><span data-i18n="scroll">SCROLL TO SIGNAL</span><i></i></a>
+        <a class="scroll-cue" href="#work" aria-label="Explore my work"><span data-i18n="exploreWork">Explore my work</span><i></i></a>
       </section>
 
       <section class="technology-strip" aria-label="Technology stack">
@@ -561,7 +567,7 @@
     <footer class="footer">
       <div class="shell footer-grid">
         <a class="brand footer-brand" href="#home" aria-label="Saif AL-Moghrabi home"><span class="brand-mark">SA<span>/DE</span></span><span class="brand-copy"><b>Saif AL-Moghrabi</b><small data-i18n="footerBuilt">DESIGNED & BUILT WITH INTENT</small></span></a>
-        <p>© <span id="year"></span> · AMMAN, JORDAN</p>
+        <p>© <span id="year"></span> · <span id="ammanClock">AMMAN · --:--</span></p>
         <button type="button" id="backTop"><span data-i18n="backTop">BACK TO TOP</span> ↑</button>
       </div>
     </footer>

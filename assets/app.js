@@ -21,6 +21,7 @@ const arabic = {
   navContact: "تواصل",
   scheduleMeetingShort: "احجز اجتماعًا",
   command: "تنقّل",
+  introSkip: "تخطي المقدمة",
   available: "متاح للتدريب والعمل الحر والتعاون التقني",
   intro: "مرحبًا، أنا سيف — من عمّان، الأردن.",
   heroLine1: "من البيانات الخام",
@@ -569,7 +570,8 @@ function updateClock() {
     minute: "2-digit",
     hour12: false,
   }).format(new Date());
-  $("#ammanClock").textContent = state.language === "ar" ? `عمّان · ${time}` : `AMMAN · ${time}`;
+  const clock = $("#ammanClock");
+  if (clock) clock.textContent = state.language === "ar" ? `عمّان · ${time}` : `AMMAN · ${time}`;
 }
 
 function setupMotion() {
@@ -805,6 +807,11 @@ function init() {
   $("#year").textContent = String(new Date().getFullYear());
   setLanguage(state.language, false);
   setupMotion();
+  $("#introSkip")?.addEventListener("click", () => {
+    document.documentElement.dataset.intro = "hero";
+    try { sessionStorage.setItem("saif-intro-v3", "1"); } catch {}
+    window.dispatchEvent(new Event("portfolio-intro-skip"));
+  });
   setupMeetingLinks();
   setupInteractions();
   initObservers();
@@ -819,6 +826,7 @@ function init() {
 init();
 
 // Content boots independently. Any module/asset/GPU failure leaves the poster in place.
-import("./particle-portrait.js").then(({ initPortrait }) => initPortrait()).catch(() => {
+import("./particle-portrait.js?v=cinematic-3").then(({ initPortrait }) => initPortrait()).catch(() => {
   document.documentElement.dataset.portrait = "fallback";
+  document.documentElement.dataset.intro = "hero";
 });
