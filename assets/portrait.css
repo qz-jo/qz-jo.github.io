@@ -96,7 +96,7 @@ html[dir="rtl"] .hero-content { direction: ltr; }
   .hero-name { font-size: .88rem; letter-spacing: .12em; }
   .hero-role { font-size: .54rem; }
   .hero h1, html[dir="rtl"] .hero h1 { font-size: clamp(2.5rem,10.8vw,3.8rem); }
-  .hero-portrait { margin-top: 12px; }
+  .hero-portrait { margin-top: 48px; }
   .portrait-stage { height: 380px; }
   .hero-lead { font-size: .96rem; }
   .hero-meta { font-size: .54rem; gap: .8rem; }
@@ -106,3 +106,10 @@ html[dir="rtl"] .hero-content { direction: ltr; }
 @media (prefers-reduced-motion: reduce) {
   #portraitCanvas, .particle-poster, .hero-intro, .hero-message { transition: none !important; animation: none !important; }
 }
+
+/* The opening is a single black-stage shot. Navigation returns with Hero copy. */
+.site-header, .assistant-fab { transition: opacity .65s ease; }
+html[data-intro="loading"] .site-header, html[data-intro="forming"] .site-header,
+html[data-intro="assembled"] .site-header, html[data-intro="loading"] .assistant-fab,
+html[data-intro="forming"] .assistant-fab, html[data-intro="assembled"] .assistant-fab { visibility:hidden;opacity:0; }
+@media (prefers-reduced-motion: reduce) { .site-header, .assistant-fab { transition:none; } }

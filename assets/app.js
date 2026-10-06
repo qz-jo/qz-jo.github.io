@@ -826,7 +826,7 @@ function init() {
 init();
 
 // Content boots independently. Any module/asset/GPU failure leaves the poster in place.
-import("./particle-portrait.js?v=cinematic-3").then(({ initPortrait }) => initPortrait()).catch(() => {
+import("./particle-portrait.js?v=hybrid-5").then(({ initPortrait }) => initPortrait()).catch(() => {
   document.documentElement.dataset.portrait = "fallback";
   document.documentElement.dataset.intro = "hero";
 });

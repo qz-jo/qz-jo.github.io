@@ -58,8 +58,18 @@
       "sha256": "72b826d1b013d83764adc803589f0e277eba5a71c6d93beac3821b91982e00b0"
     }
   ],
-  "boundary_vertices": 604,
+  "boundary_vertices": 512,
+  "preserved_inner_boundary_vertices": 92,
   "point_count": 76000,
   "bytes_per_point": 16,
+  "core_vertices": 6302,
+  "core_triangles": 12000,
+  "core_projection_error_mm": {
+    "mean": 0.008373210029642152,
+    "p95": 0.026402830357188975,
+    "max": 0.07301516860834417
+  },
+  "flow_paths": 10,
+  "hair_filament_vertices": 10500,
   "seed": 834
 }

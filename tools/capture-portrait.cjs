@@ -18,7 +18,7 @@ try {
  await page.waitForFunction(()=>window.portraitDev?.stats().introElapsed>=1.55,{timeout:20000});
  let first=await page.evaluate(()=>portraitDev.stats());assert.equal(first.introState,'forming');
  await page.screenshot({scale:'css',path:path.join(output,'intro-forming.png')});
- await page.waitForFunction(()=>portraitDev.stats().introElapsed>=2.97);
+ await page.waitForFunction(()=>portraitDev.stats().introElapsed>=3.65);
  await page.screenshot({scale:'css',path:path.join(output,'intro-complete.png')});
  await page.waitForFunction(()=>document.documentElement.dataset.intro==='hero');
  assert.equal(await page.locator('canvas').count(),1);
@@ -48,7 +48,7 @@ try {
  assert.equal(await page.evaluate(()=>document.documentElement.dataset.intro),'hero');await page.waitForFunction(()=>document.documentElement.dataset.portrait==='ready');
  assert.equal(await page.evaluate(()=>portraitDev.stats().introState),'hero');
  report.checks.push({mode:'skip-during-loading',passed:true});
- await page.goto('http://localhost:8081/?portraitDev=1&intro=1');await page.locator('#motionToggle').click();
+ await page.goto('http://localhost:8081/?portraitDev=1&intro=1');await page.evaluate(()=>document.querySelector('#motionToggle').click());
  await page.waitForFunction(()=>document.documentElement.dataset.portrait==='ready');assert.equal(await page.evaluate(()=>portraitDev.stats().enabled),false);
  report.checks.push({mode:'pause-during-buffer-loading',passed:true});
  await context.close();

@@ -5,7 +5,9 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const fs=require('node:fs');const path=require('node:path');const assert=require('node:assert/strict');
 const base=process.env.BASE_URL||'http://localhost:8080';
 const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{recursive:true});
+ const targetWidth=Number(process.env.VIEWPORT_WIDTH)||0;
  const report={browser:'Chromium 131.0.6778.204',environment:'Headless software WebGL; mobile viewport emulation, not a physical phone. Optional external GitHub pulse is stubbed with an empty successful response to keep the static count.',checks:[]};
+if(targetWidth){const previous=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../docs/browser-validation.json')));report.checks=previous.checks.filter(c=>c.viewport&&!c.viewport.startsWith(targetWidth+'x'));}
 (async()=>{
  let server;
  if(!process.env.BASE_URL){
@@ -21,6 +23,7 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH,args:['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader']});
  try {
   for(const [width,height] of [[1920,1080],[1440,900],[1366,768],[390,844]]) {
+   if(targetWidth&&width!==targetWidth)continue;
    const mobile=width<940;const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:mobile?3:2,isMobile:mobile,hasTouch:mobile});
    const page=await context.newPage();const errors=[],failed=[];
    await page.route('https://api.github.com/users/qz-jo/repos?*',r=>r.fulfill({contentType:'application/json',body:'[]'}));
@@ -30,7 +33,7 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
    await page.waitForFunction(()=>document.documentElement.dataset.intro==='hero',{timeout:20000});
    await page.waitForTimeout(1200);
    const top=await page.evaluate(()=>({status:document.documentElement.dataset.portrait,canvas:document.querySelectorAll('canvas').length,overflow:document.documentElement.scrollWidth>innerWidth,stats:window.portraitDev.stats(),stage:document.querySelector('#heroPortraitStage').getBoundingClientRect().toJSON(),heroHeight:document.querySelector('#home').offsetHeight}));
-   assert.equal(top.canvas,1);assert.equal(top.overflow,false);assert.ok(top.stats.dpr<=(mobile?1:1.25));
+   assert.equal(top.stats.hybrid,true);assert.equal(top.stats.coreTriangles,12000);assert.equal(top.canvas,1);assert.equal(top.overflow,false);assert.ok(top.stats.dpr<=(mobile?1:1.25));
    assert.ok(mobile?Math.abs(top.stage.x+top.stage.width/2-width/2)<2:top.stage.x>width*.43,'final Hero composition');
 
    // Let the frame-timing quality controller settle before measuring steady rendering.
@@ -40,6 +43,26 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
     await new Promise(resolve=>{function tick(now){gaps.push(now-prev);prev=now;if(now-start>2500)resolve();else requestAnimationFrame(tick);}requestAnimationFrame(tick);});
     gaps.sort((a,b)=>a-b);return {durationMs:prev-start,renderedFrames:window.portraitDev.stats().renderCount-initial,medianRafMs:gaps[Math.floor(gaps.length*.5)],p95RafMs:gaps[Math.floor(gaps.length*.95)],stats:window.portraitDev.stats()};
    });
+   if(width===1440){
+    // A ready canvas is insufficient: independently prove BOTH portrait layers
+    // contain actual central-face pixels. Catches silent GLSL opacity shadowing.
+    const layers=await page.evaluate(async()=>{
+      const cfg={coreOpacity:portraitDev.config.coreOpacity,particleOpacity:portraitDev.config.particleOpacity,streamStrength:portraitDev.config.streamStrength};
+      async function pixels(settings){portraitDev.set(settings);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+        const img=new Image();img.src=portraitDev.snapshot();await img.decode();
+        const c=new OffscreenCanvas(900,1080),ctx=c.getContext('2d');ctx.drawImage(img,0,0,900,1080);
+        const d=ctx.getImageData(430,425,230,260).data;let count=0;
+        for(let i=0;i<d.length;i+=4)if(Math.max(d[i],d[i+1],d[i+2])>50&&d[i+3]>20)count++;
+        return count/(d.length/4);
+      }
+      const particleSkin=await pixels({coreOpacity:0,particleOpacity:cfg.particleOpacity,streamStrength:0});
+      const shadedCore=await pixels({coreOpacity:cfg.coreOpacity,particleOpacity:0,streamStrength:0});
+      portraitDev.set(cfg);return {particleSkin,shadedCore};
+    });
+    assert.ok(layers.particleSkin>.03,'Actual particle skin must remain visible with core disabled');
+    assert.ok(layers.shadedCore>.30,'Actual shaded core must remain visible with particles disabled');
+    report.checks.push({mode:'independent-hybrid-layer-pixels',...layers,passed:true});await page.waitForTimeout(300);
+   }
    await page.addStyleTag({content:'#portraitDiagnostics { display:none; }'});
    await page.screenshot({scale:'css',path:path.join(output,mobile?'mobile-hero.png':`desktop-${width}.png`)});
    assert.equal(performance.stats.portraitStatic,false);
@@ -53,7 +76,7 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
    await page.evaluate(()=>window.scrollTo({top:260,behavior:'instant'}));await page.waitForTimeout(700);
    if(width===1440)await page.screenshot({scale:'css',path:path.join(output,'hero-scrolled.png')});
    await page.locator('#capabilities').scrollIntoViewIfNeeded();await page.waitForTimeout(800);
-   const middle=await page.evaluate(()=>window.portraitDev.stats());assert.equal(middle.visible,false);assert.equal(middle.drawCalls,1);
+   const middle=await page.evaluate(()=>window.portraitDev.stats());assert.equal(middle.visible,false);assert.equal(middle.drawCalls,2);
    if(width===1440)await page.screenshot({scale:'css',path:path.join(output,'middle-transition.png')});
    // Native project matcher and details continue to work.
    await page.locator('[data-match="automation"]').click();
@@ -86,11 +109,13 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
    report.checks.push({viewport:`${width}x${height}`,top,performance,middle,local404s:failed,consoleErrors:errors,interactions:'matcher, details, language, motion, navigation / command palette passed'});
    console.log('PASS',width,height);await context.close();
   }
-  for(const mode of ['reduced','fallback','no-webgl','asset-failure','module-failure']) {
+  for(const mode of ['reduced','fallback','no-webgl','asset-failure','core-failure','texture-failure','module-failure']) {
    const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:mode==='reduced'?'reduce':'no-preference'});const page=await context.newPage();
    await page.route('https://api.github.com/users/qz-jo/repos?*',r=>r.fulfill({contentType:'application/json',body:'[]'}));
    if(mode==='no-webgl')await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type.startsWith('webgl')?null:get.call(this,type,...args);};});
    if(mode==='asset-failure')await page.route('**/saif-particles*.bin*',r=>r.fulfill({status:404,body:'missing'}));
+   if(mode==='core-failure')await page.route('**/saif-face-core.bin*',r=>r.fulfill({status:404,body:'missing'}));
+   if(mode==='texture-failure')await page.route('**/saif-face-albedo.webp*',r=>r.fulfill({status:404,body:'missing'}));
    if(mode==='module-failure')await page.route('**/vendor/three.js',r=>r.abort());
    await page.goto(base+`/?portraitDev=1${mode==='fallback'?'&portraitFallback=1':''}`);
    await page.waitForFunction(()=>['ready','fallback'].includes(document.documentElement.dataset.portrait));await page.waitForTimeout(1200);
