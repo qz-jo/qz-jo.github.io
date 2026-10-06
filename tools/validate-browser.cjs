@@ -27,10 +27,12 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
    page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
    page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)failed.push({url:r.url(),status:r.status()});});
    await page.goto(base+'/?portraitDev=1');await page.waitForFunction(()=>document.documentElement.dataset.portrait==='ready',{timeout:20000});
-   await page.waitForTimeout(1700);
+   await page.waitForFunction(()=>document.documentElement.dataset.intro==='hero',{timeout:20000});
+   await page.waitForTimeout(1200);
    const top=await page.evaluate(()=>({status:document.documentElement.dataset.portrait,canvas:document.querySelectorAll('canvas').length,overflow:document.documentElement.scrollWidth>innerWidth,stats:window.portraitDev.stats(),stage:document.querySelector('#heroPortraitStage').getBoundingClientRect().toJSON(),heroHeight:document.querySelector('#home').offsetHeight}));
-   assert.equal(top.canvas,1);assert.equal(top.overflow,false);assert.ok(top.stats.dpr<=(mobile?1:1.5));
-   await page.screenshot({scale:'css',path:path.join(output,mobile?'mobile-hero.png':`desktop-${width}.png`)});
+   assert.equal(top.canvas,1);assert.equal(top.overflow,false);assert.ok(top.stats.dpr<=(mobile?1:1.25));
+   assert.ok(mobile?Math.abs(top.stage.x+top.stage.width/2-width/2)<2:top.stage.x>width*.43,'final Hero composition');
+
    // Let the frame-timing quality controller settle before measuring steady rendering.
    await page.waitForTimeout(3000);
    const performance=await page.evaluate(async()=>{
@@ -38,6 +40,16 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
     await new Promise(resolve=>{function tick(now){gaps.push(now-prev);prev=now;if(now-start>2500)resolve();else requestAnimationFrame(tick);}requestAnimationFrame(tick);});
     gaps.sort((a,b)=>a-b);return {durationMs:prev-start,renderedFrames:window.portraitDev.stats().renderCount-initial,medianRafMs:gaps[Math.floor(gaps.length*.5)],p95RafMs:gaps[Math.floor(gaps.length*.95)],stats:window.portraitDev.stats()};
    });
+   await page.addStyleTag({content:'#portraitDiagnostics { display:none; }'});
+   await page.screenshot({scale:'css',path:path.join(output,mobile?'mobile-hero.png':`desktop-${width}.png`)});
+   assert.equal(performance.stats.portraitStatic,false);
+   assert.ok(performance.stats.time>top.stats.time+.5,'animation clock advances');
+   assert.ok(performance.renderedFrames>10,'face keeps rendering after adaptation');
+   // Pointer influence changes yaw smoothly without moving the mesh landmarks.
+   if(!mobile){
+    const yaw=performance.stats.yaw;await page.mouse.move(width*.88,height*.3);
+    await page.waitForTimeout(550);assert.ok(Math.abs((await page.evaluate(()=>portraitDev.stats().yaw))-yaw)>.005);
+   }
    await page.evaluate(()=>window.scrollTo({top:260,behavior:'instant'}));await page.waitForTimeout(700);
    if(width===1440)await page.screenshot({scale:'css',path:path.join(output,'hero-scrolled.png')});
    await page.locator('#capabilities').scrollIntoViewIfNeeded();await page.waitForTimeout(800);
@@ -54,11 +66,13 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
    if(width===1440)await page.screenshot({scale:'css',path:path.join(output,'arabic-hero.png')});
    await page.locator('#languageToggle').click();
+   await page.locator('.assistant-fab').click();assert.equal(await page.locator('#assistantPanel').getAttribute('aria-hidden'),'false');
+   const beforeMessages=await page.locator('#assistantLog .assistant-message').count();await page.locator('#assistantPanel [data-question=automation]').click();await page.waitForTimeout(500);assert.ok(await page.locator('#assistantLog .assistant-message').count()>beforeMessages);await page.locator('#assistantClose').click();
    if(mobile){await page.locator('#menuToggle').click();assert.equal(await page.locator('#menuToggle').getAttribute('aria-expanded'),'true');await page.locator('#primaryNav a[href="#about"]').click();assert.equal(await page.locator('#menuToggle').getAttribute('aria-expanded'),'false');}
    else{await page.keyboard.press('Control+k');assert.equal(await page.locator('#commandPalette').evaluate(el=>el.open),true);await page.keyboard.press('Escape');}
    await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.waitForTimeout(500);
    await page.locator('#motionToggle').click();await page.waitForTimeout(200);
-   const paused=await page.evaluate(()=>window.portraitDev.stats().renderCount);await page.waitForTimeout(400);
+   await page.waitForTimeout(700);const paused=await page.evaluate(()=>window.portraitDev.stats().renderCount);await page.waitForTimeout(400);
    assert.equal(await page.evaluate(()=>window.portraitDev.stats().renderCount),paused);
    await page.locator('#motionToggle').click();
    if(width===1440){
@@ -76,7 +90,7 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
    const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:mode==='reduced'?'reduce':'no-preference'});const page=await context.newPage();
    await page.route('https://api.github.com/users/qz-jo/repos?*',r=>r.fulfill({contentType:'application/json',body:'[]'}));
    if(mode==='no-webgl')await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type.startsWith('webgl')?null:get.call(this,type,...args);};});
-   if(mode==='asset-failure')await page.route('**/saif-particles*.bin',r=>r.fulfill({status:404,body:'missing'}));
+   if(mode==='asset-failure')await page.route('**/saif-particles*.bin*',r=>r.fulfill({status:404,body:'missing'}));
    if(mode==='module-failure')await page.route('**/vendor/three.js',r=>r.abort());
    await page.goto(base+`/?portraitDev=1${mode==='fallback'?'&portraitFallback=1':''}`);
    await page.waitForFunction(()=>['ready','fallback'].includes(document.documentElement.dataset.portrait));await page.waitForTimeout(1200);
@@ -93,6 +107,6 @@ const output=path.resolve(__dirname,'../docs/screenshots');fs.mkdirSync(output,{
   await page.route('https://api.github.com/users/qz-jo/repos?*',r=>r.fulfill({contentType:'application/json',body:'[]'}));
   await page.route('https://preview.example/**',async route=>{const u=new URL(route.request().url());const response=await route.fetch({url:base+u.pathname.replace(/^\/review\//,'/')+u.search});await route.fulfill({response});});
   await page.goto('https://preview.example/review/?portraitDev=1');await page.waitForFunction(()=>document.documentElement.dataset.portrait==='ready');
-  assert.equal(await page.evaluate(()=>typeof window.portraitDev),'undefined');assert.deepEqual(prefixFailures,[]);report.checks.push({mode:'production-debug-disabled-and-pages-subpath',passed:true});await context.close();
+  assert.equal(await page.evaluate(()=>typeof window.portraitDev),'undefined');assert.equal(await page.locator('#portraitDiagnostics').count(),0);assert.deepEqual(prefixFailures,[]);report.checks.push({mode:'production-debug-disabled-and-pages-subpath',passed:true});await context.close();
  } finally {await browser.close();server?.close();fs.writeFileSync(path.resolve(__dirname,'../docs/browser-validation.json'),JSON.stringify(report,null,2)+'\n');}
 })().catch(e=>{console.error(e);process.exitCode=1;});

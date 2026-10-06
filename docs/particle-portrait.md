@@ -19,6 +19,45 @@ proof section, journey/education, contact email draft, meeting link, footer, SEI
 command palette, translations, and clock remain. Existing card/reveal/marquee effects
 remain lightweight CSS. Lighting is harmonized toward silver with restrained gold.
 
+## Cinematic revision (review feedback)
+
+The initial version had two concrete faults: it kept the reconstruction's camera
+**+Y-down** convention while displaying it in a +Y-up scene, and its quality controller
+could stop the portrait after a single short economy sample below 20 FPS. The user's
+screenshot showed the incorrect pose; their machine's original renderer/FPS state was
+not recorded, so the static switch is an identified causal path, not a verified GPU log.
+Both paths were removed. Mesh3 is rigidly oriented with a right-handed frame derived
+from the supplied UV eye centers and chin. Automated geometric checks assert level
+eyes, chin below eyes and nose forward. No facial proportions were edited.
+
+The revised opening is one continuous scene: darkness, staggered particle arrival,
+assembled centered face, then the same Points object translates/scales/rotates into the
+right-side Hero while the original bilingual copy appears on the left. On mobile it
+settles into the dedicated stacked portrait area. Formation resolves the central face
+first; hair and peripheral particles arrive later. A shader computes curved initial
+positions and per-particle delays from packed attributes and seeds. There is no second
+face, canvas, reload or fade-to-black swap. The complete sequence lasts about 4.6 seconds
+after buffers and shaders are ready. Skip, wheel, touch and navigation keys release it.
+The skip action also works while the binary is loading. Session storage remembers the
+intro; `?intro=1` forces replay. Reduced motion skips particle flight immediately.
+
+The full geodesic boundary is now faded to zero rather than retaining an opacity floor.
+Directed escape particles originate throughout an interior geodesic band, avoiding
+concentric echoes of the perimeter. Hair uses curved clusters rooted at the actual
+forehead/temple geometry, with varied depth and backward flow; the old hemisphere is
+gone. Jaw-rooted ribbons suggest neck/shoulder direction and dissolve downward. Eight
+restrained curved paths connect the head gesture to the page-level streams. These
+extensions remain artistic abstractions, not a reconstructed authentic skull.
+
+About 74% of the 76,000 high-tier samples come directly from the real facial surface;
+this ratio is retained in smaller prefixes so low quality spends its budget on identity.
+Particle size, opacity, texture luminance, surface normals and region behavior vary.
+Core points remain almost attached, middle regions breathe, and edges/hair/streams move
+more visibly. Frame scheduling now honors the render cap during native scrolling too.
+
+Visual acceptance remains subject to the user's real browser review. The software
+captures show the actual renderer, not generated mockups or the reference person's face.
+
 ## Mesh comparison and choice
 
 All four supplied OBJ files have 28,588 vertices and 56,572 triangles. Their camera
@@ -50,8 +89,8 @@ The reference image guided palette and dissolution only. No new face was generat
 - Surface samples use triangle area plus eye/brow/nose/mouth importance weights.
   Source texture luminance and sampled normals retain facial shading and landmarks.
 - Geodesic distance from the actual 604-vertex mesh boundary controls density/opacity.
-  Perimeter echoes dissolve outward, rather than revealing a clipped mask.
-- Curl-like hair volume, sparse rear/side contours, and a fading neck/shoulder ghost
+  The perimeter reaches zero opacity; interior-band emission disrupts the outline.
+- Rooted curved hair clusters, interior-band escape streams, and a fading jaw/neck ribbon
   are procedural abstractions. They do not replace or fabricate the facial geometry.
 - Shader uniforms handle tiny breathing, brightness, peripheral movement, scroll,
   and interpolated pointer rotation. No per-particle JavaScript objects are animated.
@@ -72,23 +111,28 @@ The reference image guided palette and dissolution only. No new face was generat
 
 | Tier | Portrait draw budget | DPR ceiling | Ambient budget | Active target |
 |---|---:|---:|---:|---:|
-| High | 76,000 | 1.5 | 720 | 60 FPS |
+| High | 76,000 | 1.25 | 720 | 60 FPS |
 | Balanced | 43,000 | 1 | 420 | 30 FPS |
-| Economy | 21,000 | 0.7 | 240 | 30 FPS |
+| Economy | 21,000 | 0.75 | 240 | 30 FPS |
 | Mobile | 22,500 | 1 | 180 | 30 FPS |
+| Tiny | 14,000 | 0.65 | 180 | 30 FPS |
+| Micro | 8,000 | 0.5 | 90 | 30 FPS |
 
-Device hints select the initial tier; software WebGL starts balanced. Sustained
-slow frame intervals and render submission cost lower resolution and draw ranges.
-If economy cannot sustain 20 FPS, the mesh-derived static poster becomes the portrait
-and only the quiet background renders at 8 FPS. This floor prevents a permanently
-choppy face. Quality steps downward without oscillation.
-
+Device hints select the initial tier; detected software WebGL starts economy.
+The intro and a 2.5-second settling interval are excluded from quality decisions.
+Two consecutive slow two-second measurement windows are required before each downgrade.
+Desktop requests the performance adapter; mobile requests the low-power adapter.
+DPR and point count decrease through the tiny and micro tiers while the face keeps
+animating. This controller never automatically turns the portrait into a static image.
+A real WebGL/context/asset failure retains the supplied-mesh poster; deliberate pause
+and reduced motion retain a still WebGL portrait. Physical GPUs are not classified from
+SwiftShader measurements. Quality only moves downward within a page load.
 Each point is stored in a deterministic 16-byte packed record, decoded into typed
-arrays once. Only one tier asset is requested: high 1,303,480 bytes, balanced 688,008,
+arrays once. Only one tier asset is requested: high 1,216,008 bytes, balanced 688,008,
 or mobile 360,008. The original 5.6 MB OBJ, other OBJ files, source photos, checkpoints,
-and reconstruction renders are not shipped. The static poster is 199,664 bytes;
+and reconstruction renders are not shipped. The static poster is 171,112 bytes;
 the local Three.js bundle is 531,251 bytes. No CDN or runtime OBJ parser is needed.
-The optional production staging is 3.50 MiB across 28 files, including all quality
+The optional production staging is 3.40 MiB across 28 files, including all quality
 variants; a visitor does not download every variant. Historical video is omitted.
 
 ## Validation and performance scope
@@ -103,14 +147,24 @@ errors occurred in the normal layout runs. The optional external GitHub reposito
 count is isolated with an empty successful fixture, preserving its static count.
 
 `browser-validation.json` contains the exact measurements and quality decisions.
-The browser uses **software SwiftShader**, so these are compatibility and fallback
-observations, not claims about a physical desktop GPU or phone. Full unoptimized
-desktop quality measured roughly 7–9 FPS here; reducing raster work and adding the
-static quality floor prevents keeping that workload active. When the floor engages,
-the face scrolls as a native static image and measured background FPS is intentionally
-low. Mobile emulation keeps the live portrait with DPR 1 and a much smaller download.
-Physical device GPU FPS, thermal behavior, battery use, and Safari remain unmeasured.
+The browser uses **software SwiftShader**, so these are compatibility observations,
+not claims about a physical desktop GPU or phone. The revised controller preserves
+animation even at its lowest tier. Exact settled render rates and selected budgets are
+stored in the JSON report. The final software run measured 20.7 render FPS at 1920×1080 (tiny, 14k, DPR .65),
+25.6 at 1440×900 and 26.7 at 1366×768 (economy, 21k, DPR .75), and 29.9 at
+390×844 (mobile, 22.5k, DPR 1). Every portrait remained live. A five-second idle
+capture comparison changed 24.2% of portrait-region pixels by more than five channel
+levels, and mouse input changed the damped yaw. These are visible-motion checks,
+not merely a running RAF counter.
 
+Physical GPU FPS, battery/thermal behavior and Safari remain
+unmeasured. The user will judge the artistic result on their actual machine.
+
+`motion-validation.json` records the natural intro, same-canvas transition, five-second
+idle interval, mouse response, session replay, explicit skip and skip-during-loading.
+`portrait-motion.mp4` is a timestamp-preserving Chromium screencast. It includes actual
+formation, settling, idle, pointer response and scrolling. It is not a hardware benchmark.
+The diagnostics panel is hidden for clean screenshots/recording only.
 The screenshot captures are actual browser output. Desktop software quality can
 step downward during the run; a capable GPU starts with the full portrait budget.
 
@@ -145,10 +199,19 @@ portraitDev.set({ particleSize: 1.8, goldStrength: .2, headRotation: .045 });
 portraitDev.stats();
 ```
 
+The localhost query also shows a collapsible diagnostics panel: browser RAF FPS,
+render FPS, tier, points, DPR, enabled/visible/reduced/hidden state, time, pointer,
+scroll, intro phase and WebGL renderer. No panel or API exists on production hosts.
+Open `http://localhost:8000/?portraitDev=1&intro=1` to replay with diagnostics.
+`portraitDev.replay()` and `portraitDev.skip()` are available locally.
+`?portraitDev=1&portraitTier=high` can force the initial tier for artistic inspection;
+it still adapts, and should not be confused with a measured physical GPU.
+
 All tunable keys are in `portraitDev.config`: `faceDensity`, `particleSize`,
 `faceBrightness`, `goldStrength`, `dissolveThreshold`, `dissolveDistance`, `edgeNoise`,
 `ambientCount`, `flowSpeed`, `mouseSensitivity`, `headRotation`, `scrollInfluence`,
-and `idleStrength`. No debug UI or control API is exposed on production hosts.
+`idleStrength`, `dispersionStrength`, `dispersionDistance`, `hairDensity`, `hairFlow`,
+and `formationSpeed`. No debug UI or control API is exposed on production hosts.
 `?portraitFallback=1` provides a reviewable fallback mode on any host.
 
 Regenerate the assets with Python, NumPy, SciPy, and Pillow:
@@ -172,7 +235,8 @@ tests and their HTTP server share the same environment even in isolated workspac
 - Source reconstruction quality limits likeness; there is no authentic rear skull,
   ear, hair, or neck mesh. Those regions are intentionally abstract and fade away.
 - The default view is curated and pointer rotation is limited. It is not a 360° head.
-- Unsupported or very slow WebGL hardware receives a static portrait.
+- Unavailable/lost WebGL or failed required assets receive a static portrait; slow
+  devices progressively reduce live quality. Lowest tiers contain less facial detail.
 - Actual GitHub Pages branch deployment was not activated; root/subpath asset serving
   was tested locally. Physical hardware/Safari performance needs review on those devices.
 
@@ -186,3 +250,6 @@ tests and their HTTP server share the same environment even in isolated workspac
 - [Arabic](screenshots/arabic-hero.png) / [Reduced motion](screenshots/reduced.png)
 - [Fallback](screenshots/fallback.png) / [WebGL unavailable](screenshots/no-webgl.png)
 - [Missing binary](screenshots/asset-failure.png) / [Missing module](screenshots/module-failure.png)
+
+- [Intro forming](screenshots/intro-forming.png) / [Assembled centered face](screenshots/intro-complete.png)
+- [Actual motion recording](screenshots/portrait-motion.mp4)

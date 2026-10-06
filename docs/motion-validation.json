@@ -1,0 +1,585 @@
+{
+  "environment": "Actual Chromium software WebGL screencast; not a physical GPU benchmark.",
+  "frames": [
+    {
+      "file": "00000.jpg",
+      "time": 1791321102.557074
+    },
+    {
+      "file": "00001.jpg",
+      "time": 1791321102.650132
+    },
+    {
+      "file": "00002.jpg",
+      "time": 1791321102.848099
+    },
+    {
+      "file": "00003.jpg",
+      "time": 1791321102.931714
+    },
+    {
+      "file": "00004.jpg",
+      "time": 1791321103.01211
+    },
+    {
+      "file": "00005.jpg",
+      "time": 1791321103.085943
+    },
+    {
+      "file": "00006.jpg",
+      "time": 1791321103.191381
+    },
+    {
+      "file": "00007.jpg",
+      "time": 1791321103.257532
+    },
+    {
+      "file": "00008.jpg",
+      "time": 1791321103.34141
+    },
+    {
+      "file": "00009.jpg",
+      "time": 1791321103.448081
+    },
+    {
+      "file": "00010.jpg",
+      "time": 1791321103.510479
+    },
+    {
+      "file": "00011.jpg",
+      "time": 1791321103.601017
+    },
+    {
+      "file": "00012.jpg",
+      "time": 1791321103.70806
+    },
+    {
+      "file": "00013.jpg",
+      "time": 1791321103.777383
+    },
+    {
+      "file": "00014.jpg",
+      "time": 1791321103.856938
+    },
+    {
+      "file": "00015.jpg",
+      "time": 1791321103.992805
+    },
+    {
+      "file": "00016.jpg",
+      "time": 1791321104.065056
+    },
+    {
+      "file": "00017.jpg",
+      "time": 1791321104.220663
+    },
+    {
+      "file": "00018.jpg",
+      "time": 1791321104.328062
+    },
+    {
+      "file": "00019.jpg",
+      "time": 1791321104.407231
+    },
+    {
+      "file": "00020.jpg",
+      "time": 1791321104.481377
+    },
+    {
+      "file": "00021.jpg",
+      "time": 1791321104.585744
+    },
+    {
+      "file": "00022.jpg",
+      "time": 1791321104.659442
+    },
+    {
+      "file": "00023.jpg",
+      "time": 1791321104.798617
+    },
+    {
+      "file": "00024.jpg",
+      "time": 1791321104.868074
+    },
+    {
+      "file": "00025.jpg",
+      "time": 1791321104.935565
+    },
+    {
+      "file": "00026.jpg",
+      "time": 1791321105.015459
+    },
+    {
+      "file": "00027.jpg",
+      "time": 1791321105.1368
+    },
+    {
+      "file": "00028.jpg",
+      "time": 1791321105.200753
+    },
+    {
+      "file": "00029.jpg",
+      "time": 1791321105.296942
+    },
+    {
+      "file": "00030.jpg",
+      "time": 1791321105.408086
+    },
+    {
+      "file": "00031.jpg",
+      "time": 1791321105.47939
+    },
+    {
+      "file": "00032.jpg",
+      "time": 1791321105.580659
+    },
+    {
+      "file": "00033.jpg",
+      "time": 1791321105.692345
+    },
+    {
+      "file": "00034.jpg",
+      "time": 1791321105.756828
+    },
+    {
+      "file": "00035.jpg",
+      "time": 1791321105.839327
+    },
+    {
+      "file": "00036.jpg",
+      "time": 1791321105.956089
+    },
+    {
+      "file": "00037.jpg",
+      "time": 1791321106.016301
+    },
+    {
+      "file": "00038.jpg",
+      "time": 1791321106.202704
+    },
+    {
+      "file": "00039.jpg",
+      "time": 1791321106.24807
+    },
+    {
+      "file": "00040.jpg",
+      "time": 1791321106.333102
+    },
+    {
+      "file": "00041.jpg",
+      "time": 1791321106.500132
+    },
+    {
+      "file": "00042.jpg",
+      "time": 1791321106.66411
+    },
+    {
+      "file": "00043.jpg",
+      "time": 1791321106.802219
+    },
+    {
+      "file": "00044.jpg",
+      "time": 1791321106.933484
+    },
+    {
+      "file": "00045.jpg",
+      "time": 1791321107.049936
+    },
+    {
+      "file": "00046.jpg",
+      "time": 1791321107.17417
+    },
+    {
+      "file": "00047.jpg",
+      "time": 1791321107.399171
+    },
+    {
+      "file": "00048.jpg",
+      "time": 1791321107.896692
+    },
+    {
+      "file": "00049.jpg",
+      "time": 1791321108.018367
+    },
+    {
+      "file": "00050.jpg",
+      "time": 1791321108.132081
+    },
+    {
+      "file": "00051.jpg",
+      "time": 1791321108.246929
+    },
+    {
+      "file": "00052.jpg",
+      "time": 1791321108.360765
+    },
+    {
+      "file": "00053.jpg",
+      "time": 1791321108.47558
+    },
+    {
+      "file": "00054.jpg",
+      "time": 1791321108.591157
+    },
+    {
+      "file": "00055.jpg",
+      "time": 1791321108.707013
+    },
+    {
+      "file": "00056.jpg",
+      "time": 1791321108.827521
+    },
+    {
+      "file": "00057.jpg",
+      "time": 1791321108.934045
+    },
+    {
+      "file": "00058.jpg",
+      "time": 1791321109.047757
+    },
+    {
+      "file": "00059.jpg",
+      "time": 1791321109.153275
+    },
+    {
+      "file": "00060.jpg",
+      "time": 1791321109.316085
+    },
+    {
+      "file": "00061.jpg",
+      "time": 1791321109.438928
+    },
+    {
+      "file": "00062.jpg",
+      "time": 1791321109.533847
+    },
+    {
+      "file": "00063.jpg",
+      "time": 1791321109.631831
+    },
+    {
+      "file": "00064.jpg",
+      "time": 1791321109.764126
+    },
+    {
+      "file": "00065.jpg",
+      "time": 1791321109.858179
+    },
+    {
+      "file": "00066.jpg",
+      "time": 1791321109.983528
+    },
+    {
+      "file": "00067.jpg",
+      "time": 1791321110.090594
+    },
+    {
+      "file": "00068.jpg",
+      "time": 1791321110.212341
+    },
+    {
+      "file": "00069.jpg",
+      "time": 1791321110.309598
+    },
+    {
+      "file": "00070.jpg",
+      "time": 1791321110.424077
+    },
+    {
+      "file": "00071.jpg",
+      "time": 1791321110.523421
+    },
+    {
+      "file": "00072.jpg",
+      "time": 1791321110.626193
+    },
+    {
+      "file": "00073.jpg",
+      "time": 1791321110.740887
+    },
+    {
+      "file": "00074.jpg",
+      "time": 1791321110.851001
+    },
+    {
+      "file": "00075.jpg",
+      "time": 1791321110.968216
+    },
+    {
+      "file": "00076.jpg",
+      "time": 1791321111.059479
+    },
+    {
+      "file": "00077.jpg",
+      "time": 1791321111.22028
+    },
+    {
+      "file": "00078.jpg",
+      "time": 1791321111.412983
+    },
+    {
+      "file": "00079.jpg",
+      "time": 1791321111.544686
+    },
+    {
+      "file": "00080.jpg",
+      "time": 1791321111.671939
+    },
+    {
+      "file": "00081.jpg",
+      "time": 1791321111.800078
+    },
+    {
+      "file": "00082.jpg",
+      "time": 1791321112.020401
+    },
+    {
+      "file": "00083.jpg",
+      "time": 1791321112.226931
+    },
+    {
+      "file": "00084.jpg",
+      "time": 1791321112.336519
+    },
+    {
+      "file": "00085.jpg",
+      "time": 1791321112.459558
+    },
+    {
+      "file": "00086.jpg",
+      "time": 1791321112.567404
+    },
+    {
+      "file": "00087.jpg",
+      "time": 1791321112.84672
+    },
+    {
+      "file": "00088.jpg",
+      "time": 1791321113.237388
+    },
+    {
+      "file": "00089.jpg",
+      "time": 1791321113.35449
+    },
+    {
+      "file": "00090.jpg",
+      "time": 1791321113.499853
+    },
+    {
+      "file": "00091.jpg",
+      "time": 1791321113.609733
+    },
+    {
+      "file": "00092.jpg",
+      "time": 1791321113.728533
+    },
+    {
+      "file": "00093.jpg",
+      "time": 1791321113.829438
+    },
+    {
+      "file": "00094.jpg",
+      "time": 1791321113.946236
+    },
+    {
+      "file": "00095.jpg",
+      "time": 1791321114.042181
+    },
+    {
+      "file": "00096.jpg",
+      "time": 1791321114.187448
+    },
+    {
+      "file": "00097.jpg",
+      "time": 1791321114.299508
+    },
+    {
+      "file": "00098.jpg",
+      "time": 1791321114.394519
+    },
+    {
+      "file": "00099.jpg",
+      "time": 1791321114.488845
+    },
+    {
+      "file": "00100.jpg",
+      "time": 1791321114.591023
+    },
+    {
+      "file": "00101.jpg",
+      "time": 1791321114.681784
+    },
+    {
+      "file": "00102.jpg",
+      "time": 1791321114.782514
+    },
+    {
+      "file": "00103.jpg",
+      "time": 1791321114.858336
+    },
+    {
+      "file": "00104.jpg",
+      "time": 1791321115.091322
+    },
+    {
+      "file": "00105.jpg",
+      "time": 1791321115.267594
+    },
+    {
+      "file": "00106.jpg",
+      "time": 1791321115.472935
+    },
+    {
+      "file": "00107.jpg",
+      "time": 1791321115.572107
+    },
+    {
+      "file": "00108.jpg",
+      "time": 1791321115.766988
+    },
+    {
+      "file": "00109.jpg",
+      "time": 1791321115.911469
+    },
+    {
+      "file": "00110.jpg",
+      "time": 1791321116.113155
+    },
+    {
+      "file": "00111.jpg",
+      "time": 1791321116.261923
+    }
+  ],
+  "checks": [
+    {
+      "mode": "formation-to-Hero-single-canvas",
+      "first": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 25.162102003290435,
+        "rafFPS": 28.065421465208562,
+        "time": 1.6332666666666666,
+        "yaw": 0.06674388094993838,
+        "points": 21000,
+        "allocatedPoints": 21000,
+        "dpr": 0.75,
+        "drawCalls": 2,
+        "renderCount": 37,
+        "lastRenderMs": 0.2999999998137355,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "forming",
+        "introElapsed": 1.6174000000003725,
+        "pointer": [
+          0,
+          0
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "idleStart": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 15.938496156009744,
+        "rafFPS": 15.938496156009744,
+        "time": 4.999766666666664,
+        "yaw": 0.42001079558240784,
+        "points": 21000,
+        "allocatedPoints": 21000,
+        "dpr": 0.75,
+        "drawCalls": 2,
+        "renderCount": 104,
+        "lastRenderMs": 0.20000000018626451,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "hero",
+        "introElapsed": 5,
+        "pointer": [
+          0,
+          0
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "idleEnd": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 17.707820954254796,
+        "rafFPS": 49.18839153959666,
+        "time": 10.432866666666671,
+        "yaw": 0.3422436884877768,
+        "points": 21000,
+        "allocatedPoints": 21000,
+        "dpr": 0.75,
+        "drawCalls": 2,
+        "renderCount": 196,
+        "lastRenderMs": 0.5,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "hero",
+        "introElapsed": 5,
+        "pointer": [
+          0,
+          0
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "mouse": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 17.707820954254796,
+        "rafFPS": 49.18839153959666,
+        "time": 11.182966666666672,
+        "yaw": 0.4000737488017976,
+        "points": 21000,
+        "allocatedPoints": 21000,
+        "dpr": 0.75,
+        "drawCalls": 2,
+        "renderCount": 208,
+        "lastRenderMs": 0.40000000037252903,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "hero",
+        "introElapsed": 5,
+        "pointer": [
+          0.8974421290061017,
+          -0.31674428082568296
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "consoleErrors": []
+    },
+    {
+      "mode": "session-replay-and-explicit-skip",
+      "passed": true
+    },
+    {
+      "mode": "skip-during-loading",
+      "passed": true
+    },
+    {
+      "mode": "pause-during-buffer-loading",
+      "passed": true,
+      "result": "enabled=false, intro=hero, animation time=0 after delayed binary response"
+    }
+  ],
+  "visibleMotionComparison": {
+    "meanPixelChannelDifference": 11.06097435897436,
+    "percentPixelsChangingByMoreThan5": 24.1685618729097,
+    "note": "Actual portrait-only captures five seconds apart with no pointer movement. Includes idle head drift and particle motion."
+  }
+}
