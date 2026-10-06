@@ -1,0 +1,42 @@
+{
+  "selected": "mesh3.obj",
+  "selection_reason": "Calm closed-mouth source expression; clear three-quarter nose and jaw. Selection combines pose-aligned geometry inspection with supplied landmark/render images, not residual ranking.",
+  "meshes": [
+    {
+      "mesh": "mesh0.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5622793,
+      "mean_pose_aligned_difference_mm": 0.0,
+      "sha256": "2ebac2e199afae975d85eed8c78dbf6746108e2cb3692d269c0e162f7b94e392"
+    },
+    {
+      "mesh": "mesh1.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5678241,
+      "mean_pose_aligned_difference_mm": 1.3855,
+      "sha256": "d69166d5b1d9f9200a9b96dda17b1e4c274ad0221ec657056e2c22fe082b71cd"
+    },
+    {
+      "mesh": "mesh2.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5608050,
+      "mean_pose_aligned_difference_mm": 0.8738,
+      "sha256": "e694b120a4f4ee80f090eef0870ee0b43124cfa13e3841700095c7df22b03ceb"
+    },
+    {
+      "mesh": "mesh3.obj",
+      "vertices": 28588,
+      "triangles": 56572,
+      "source_bytes": 5592406,
+      "mean_pose_aligned_difference_mm": 1.6078,
+      "sha256": "72b826d1b013d83764adc803589f0e277eba5a71c6d93beac3821b91982e00b0"
+    }
+  ],
+  "boundary_vertices": 604,
+  "point_count": 81467,
+  "bytes_per_point": 16,
+  "seed": 834
+}
