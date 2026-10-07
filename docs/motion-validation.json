@@ -1,0 +1,387 @@
+{
+  "environment": "Actual Chromium software WebGL screencast; not a physical GPU benchmark.",
+  "frames": [
+    {
+      "file": "00000.jpg",
+      "time": 1791325655.275225
+    },
+    {
+      "file": "00001.jpg",
+      "time": 1791325657.468178
+    },
+    {
+      "file": "00002.jpg",
+      "time": 1791325657.702688
+    },
+    {
+      "file": "00003.jpg",
+      "time": 1791325658.087122
+    },
+    {
+      "file": "00004.jpg",
+      "time": 1791325658.542086
+    },
+    {
+      "file": "00005.jpg",
+      "time": 1791325658.877304
+    },
+    {
+      "file": "00006.jpg",
+      "time": 1791325659.050574
+    },
+    {
+      "file": "00007.jpg",
+      "time": 1791325659.41444
+    },
+    {
+      "file": "00008.jpg",
+      "time": 1791325659.65403
+    },
+    {
+      "file": "00009.jpg",
+      "time": 1791325659.832013
+    },
+    {
+      "file": "00010.jpg",
+      "time": 1791325660.100911
+    },
+    {
+      "file": "00011.jpg",
+      "time": 1791325660.502309
+    },
+    {
+      "file": "00012.jpg",
+      "time": 1791325660.862088
+    },
+    {
+      "file": "00013.jpg",
+      "time": 1791325661.008027
+    },
+    {
+      "file": "00014.jpg",
+      "time": 1791325661.198682
+    },
+    {
+      "file": "00015.jpg",
+      "time": 1791325661.354422
+    },
+    {
+      "file": "00016.jpg",
+      "time": 1791325661.547024
+    },
+    {
+      "file": "00017.jpg",
+      "time": 1791325661.691168
+    },
+    {
+      "file": "00018.jpg",
+      "time": 1791325661.862068
+    },
+    {
+      "file": "00019.jpg",
+      "time": 1791325662.056265
+    },
+    {
+      "file": "00020.jpg",
+      "time": 1791325662.204702
+    },
+    {
+      "file": "00021.jpg",
+      "time": 1791325662.400437
+    },
+    {
+      "file": "00022.jpg",
+      "time": 1791325662.544912
+    },
+    {
+      "file": "00023.jpg",
+      "time": 1791325662.741774
+    },
+    {
+      "file": "00024.jpg",
+      "time": 1791325662.909156
+    },
+    {
+      "file": "00025.jpg",
+      "time": 1791325663.053285
+    },
+    {
+      "file": "00026.jpg",
+      "time": 1791325663.223947
+    },
+    {
+      "file": "00027.jpg",
+      "time": 1791325663.414456
+    },
+    {
+      "file": "00028.jpg",
+      "time": 1791325663.632818
+    },
+    {
+      "file": "00029.jpg",
+      "time": 1791325663.827209
+    },
+    {
+      "file": "00030.jpg",
+      "time": 1791325663.995457
+    },
+    {
+      "file": "00031.jpg",
+      "time": 1791325664.16568
+    },
+    {
+      "file": "00032.jpg",
+      "time": 1791325664.342976
+    },
+    {
+      "file": "00033.jpg",
+      "time": 1791325664.523418
+    },
+    {
+      "file": "00034.jpg",
+      "time": 1791325664.694182
+    },
+    {
+      "file": "00035.jpg",
+      "time": 1791325664.84998
+    },
+    {
+      "file": "00036.jpg",
+      "time": 1791325665.103438
+    },
+    {
+      "file": "00037.jpg",
+      "time": 1791325665.318074
+    },
+    {
+      "file": "00038.jpg",
+      "time": 1791325665.564748
+    },
+    {
+      "file": "00039.jpg",
+      "time": 1791325665.84548
+    },
+    {
+      "file": "00040.jpg",
+      "time": 1791325666.202271
+    },
+    {
+      "file": "00041.jpg",
+      "time": 1791325666.676127
+    },
+    {
+      "file": "00042.jpg",
+      "time": 1791325666.847645
+    },
+    {
+      "file": "00043.jpg",
+      "time": 1791325667.028894
+    },
+    {
+      "file": "00044.jpg",
+      "time": 1791325667.152462
+    },
+    {
+      "file": "00045.jpg",
+      "time": 1791325667.316041
+    },
+    {
+      "file": "00046.jpg",
+      "time": 1791325667.476664
+    },
+    {
+      "file": "00047.jpg",
+      "time": 1791325667.639746
+    },
+    {
+      "file": "00048.jpg",
+      "time": 1791325667.805892
+    },
+    {
+      "file": "00049.jpg",
+      "time": 1791325667.973239
+    },
+    {
+      "file": "00050.jpg",
+      "time": 1791325668.14371
+    },
+    {
+      "file": "00051.jpg",
+      "time": 1791325668.344228
+    },
+    {
+      "file": "00052.jpg",
+      "time": 1791325668.599359
+    },
+    {
+      "file": "00053.jpg",
+      "time": 1791325668.80818
+    },
+    {
+      "file": "00054.jpg",
+      "time": 1791325669.022107
+    },
+    {
+      "file": "00055.jpg",
+      "time": 1791325669.193783
+    },
+    {
+      "file": "00056.jpg",
+      "time": 1791325669.416179
+    },
+    {
+      "file": "00057.jpg",
+      "time": 1791325669.632649
+    },
+    {
+      "file": "00058.jpg",
+      "time": 1791325670.11679
+    },
+    {
+      "file": "00059.jpg",
+      "time": 1791325670.498974
+    },
+    {
+      "file": "00060.jpg",
+      "time": 1791325670.678003
+    },
+    {
+      "file": "00061.jpg",
+      "time": 1791325670.95341
+    },
+    {
+      "file": "00062.jpg",
+      "time": 1791325671.135999
+    }
+  ],
+  "checks": [
+    {
+      "mode": "formation-to-Hero-single-canvas",
+      "first": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 2.1053739670508973,
+        "rafFPS": 2.631717458813622,
+        "time": 0.4666666666666667,
+        "yaw": 0.048165718192400966,
+        "points": 21000,
+        "coreTriangles": 14000,
+        "allocatedPoints": 21000,
+        "dpr": 0.75,
+        "drawCalls": 3,
+        "renderCount": 5,
+        "lastRenderMs": 4.6000000005587935,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "forming",
+        "introElapsed": 1.9162000000003727,
+        "pointer": [
+          0,
+          0
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "idleStart": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 9.83574309039048,
+        "rafFPS": 19.67148618078096,
+        "time": 3.6665666666666663,
+        "yaw": 0.4237614868009476,
+        "points": 21000,
+        "coreTriangles": 14000,
+        "allocatedPoints": 21000,
+        "dpr": 0.75,
+        "drawCalls": 3,
+        "renderCount": 30,
+        "lastRenderMs": 0.30000000074505806,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "hero",
+        "introElapsed": 5,
+        "pointer": [
+          0,
+          0
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "idleEnd": {
+        "tier": "economy",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 8.060182697474474,
+        "rafFPS": 16.120365394948948,
+        "time": 9.383066666666666,
+        "yaw": 0.3547349355465117,
+        "points": 21000,
+        "coreTriangles": 14000,
+        "allocatedPoints": 21000,
+        "dpr": 0.75,
+        "drawCalls": 3,
+        "renderCount": 92,
+        "lastRenderMs": 0.20000000018626451,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "hero",
+        "introElapsed": 5,
+        "pointer": [
+          0,
+          0
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "mouse": {
+        "tier": "tiny",
+        "portraitStatic": false,
+        "staticFallback": false,
+        "renderFPS": 9.70616782846555,
+        "rafFPS": 22.941851230918573,
+        "time": 10.149666666666665,
+        "yaw": 0.4080706777344816,
+        "points": 14000,
+        "coreTriangles": 14000,
+        "allocatedPoints": 21000,
+        "dpr": 0.65,
+        "drawCalls": 3,
+        "renderCount": 99,
+        "lastRenderMs": 0.20000000018626451,
+        "visible": true,
+        "enabled": true,
+        "reducedMotion": false,
+        "documentHidden": false,
+        "introState": "hero",
+        "introElapsed": 5,
+        "pointer": [
+          0.9004441262694409,
+          -0.3178038092715675
+        ],
+        "scrollMix": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "consoleErrors": []
+    },
+    {
+      "mode": "session-replay-and-explicit-skip",
+      "passed": true
+    },
+    {
+      "mode": "skip-during-loading",
+      "passed": true
+    },
+    {
+      "mode": "pause-during-buffer-loading",
+      "passed": true
+    }
+  ]
+}
