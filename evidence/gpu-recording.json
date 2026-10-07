@@ -1,0 +1,21 @@
+{
+  "frames": 1540,
+  "seconds": 18,
+  "method": "Live 60fps GPU canvas composited over a raster of the actual page; separate viewport video provided",
+  "stats": {
+    "fps": 72,
+    "renderer": "WebGL2 / GPU surface buffers",
+    "dpr": 1,
+    "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "quality": "HIGH",
+    "face": 82000,
+    "hair": 23200,
+    "atmosphere": 1800,
+    "introState": "SCROLL_DISSOLVE",
+    "introProgress": 1,
+    "cursorInfluence": 1,
+    "scrollProgress": 0.63,
+    "fallback": false,
+    "reducedMotion": false
+  }
+}

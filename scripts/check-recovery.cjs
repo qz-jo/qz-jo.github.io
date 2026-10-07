@@ -1,0 +1,7 @@
+const {chromium}=require('C:/Users/saifn/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+(async()=>{const b=await chromium.launch({channel:'msedge',headless:true});const p=await b.newPage({viewport:{width:1440,height:900}});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://127.0.0.1:8093/');await p.waitForFunction(()=>window.portraitStats?.introProgress===1);
+ const supported=await p.evaluate(()=>{const gl=document.querySelector('#portraitCanvas').getContext('webgl2');window.lose=gl.getExtension('WEBGL_lose_context');if(lose)lose.loseContext();return !!lose;});
+ assert.ok(supported,'Context loss extension');await p.waitForFunction(()=>window.portraitStats?.fallback);await p.screenshot({path:path.resolve(__dirname,'../evidence/context-lost.png')});
+ await p.evaluate(()=>lose.restoreContext());await p.waitForFunction(()=>document.querySelector('#portraitCanvas').hidden===false&&window.portraitStats?.fallback===false);await p.screenshot({path:path.resolve(__dirname,'../evidence/context-restored.png')});
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.resolve(__dirname,'../evidence/recovery.json'),JSON.stringify({supported,errors,restored:true},null,2));console.log('Context loss and restore passed');await b.close();})();

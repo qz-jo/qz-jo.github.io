@@ -1,0 +1,21 @@
+{
+  "frames": 77,
+  "elapsed": 17.957,
+  "errors": [],
+  "gpu": {
+    "fps": 129,
+    "renderer": "WebGL2 / GPU surface buffers",
+    "dpr": 1,
+    "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "quality": "HIGH",
+    "face": 82000,
+    "hair": 23200,
+    "atmosphere": 1800,
+    "introState": "SCROLL_DISSOLVE",
+    "introProgress": 1,
+    "cursorInfluence": 1,
+    "scrollProgress": 0.62,
+    "fallback": false,
+    "reducedMotion": false
+  }
+}
