@@ -1,0 +1,142 @@
+{
+  "results": [
+    {
+      "name": "desktop-1440",
+      "stats": {
+        "fps": 111,
+        "renderer": "WebGL2 / GPU surface buffers",
+        "dpr": 1,
+        "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "quality": "HIGH",
+        "face": 82000,
+        "hair": 23200,
+        "atmosphere": 1800,
+        "introState": "HERO_IDLE",
+        "introProgress": 1,
+        "cursorInfluence": 0,
+        "scrollProgress": 0,
+        "fallback": false,
+        "reducedMotion": false
+      },
+      "overflow": false,
+      "state": "HERO_IDLE"
+    },
+    {
+      "name": "desktop-1920",
+      "stats": {
+        "fps": 92,
+        "renderer": "WebGL2 / GPU surface buffers",
+        "dpr": 1,
+        "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "quality": "HIGH",
+        "face": 82000,
+        "hair": 23200,
+        "atmosphere": 1800,
+        "introState": "HERO_IDLE",
+        "introProgress": 1,
+        "cursorInfluence": 0,
+        "scrollProgress": 0,
+        "fallback": false,
+        "reducedMotion": false
+      },
+      "overflow": false,
+      "state": "HERO_IDLE"
+    },
+    {
+      "name": "desktop-1366",
+      "stats": {
+        "fps": 123,
+        "renderer": "WebGL2 / GPU surface buffers",
+        "dpr": 1,
+        "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "quality": "HIGH",
+        "face": 82000,
+        "hair": 23200,
+        "atmosphere": 1800,
+        "introState": "HERO_IDLE",
+        "introProgress": 1,
+        "cursorInfluence": 0,
+        "scrollProgress": 0,
+        "fallback": false,
+        "reducedMotion": false
+      },
+      "overflow": false,
+      "state": "HERO_IDLE"
+    },
+    {
+      "name": "mobile",
+      "stats": {
+        "fps": 144,
+        "renderer": "WebGL2 / GPU surface buffers",
+        "dpr": 1.15,
+        "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "quality": "LOW",
+        "face": 27333,
+        "hair": 7733,
+        "atmosphere": 600,
+        "introState": "HERO_IDLE",
+        "introProgress": 1,
+        "cursorInfluence": 0,
+        "scrollProgress": 0,
+        "fallback": false,
+        "reducedMotion": false
+      },
+      "overflow": false,
+      "state": "HERO_IDLE"
+    },
+    {
+      "name": "mobile-small",
+      "stats": {
+        "fps": 144,
+        "renderer": "WebGL2 / GPU surface buffers",
+        "dpr": 1.15,
+        "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "quality": "LOW",
+        "face": 27333,
+        "hair": 7733,
+        "atmosphere": 600,
+        "introState": "HERO_IDLE",
+        "introProgress": 1,
+        "cursorInfluence": 0,
+        "scrollProgress": 0,
+        "fallback": false,
+        "reducedMotion": false
+      },
+      "overflow": false,
+      "state": "HERO_IDLE"
+    },
+    {
+      "name": "reduced-motion",
+      "stats": {
+        "fps": 0,
+        "renderer": "WebGL2 / GPU surface buffers",
+        "dpr": 1,
+        "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "quality": "HIGH",
+        "face": 82000,
+        "hair": 23200,
+        "atmosphere": 1800,
+        "introState": "HERO_IDLE",
+        "introProgress": 1,
+        "cursorInfluence": 0,
+        "scrollProgress": 0,
+        "fallback": false,
+        "reducedMotion": true
+      },
+      "overflow": false,
+      "state": "HERO_IDLE"
+    },
+    {
+      "name": "fallback",
+      "stats": {
+        "fallback": true,
+        "reason": "WebGL2 unavailable",
+        "reducedMotion": false
+      },
+      "overflow": false,
+      "state": "FALLBACK"
+    }
+  ],
+  "errors": [],
+  "bad": []
+}

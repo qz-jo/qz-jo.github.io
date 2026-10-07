@@ -1,0 +1,60 @@
+:root{--bg:#05070a;--cyan:#aabed1;--cyan-bright:#dce7ef;--violet:#b3bac7;--lime:#c3ad87;--line:rgba(191,206,221,.12)}
+body{background:radial-gradient(ellipse at 76% 8%,#10192255,transparent 30%),#05070a}
+.hero{min-height:900px;height:100svh;max-height:1150px;overflow:hidden;background:radial-gradient(ellipse at 67% 39%,#14202c55,transparent 48%),#05070a}
+.hero-content{position:relative;display:block;padding-top:140px;padding-bottom:100px;height:100%;z-index:2;pointer-events:none}
+.hero-intro{position:absolute;top:150px;left:0;width:35%;z-index:3}
+.hero-message{position:absolute;top:340px;left:0;width:34%;z-index:3}
+.hero-intro a,.hero-intro button,.hero-message a,.hero-message button{pointer-events:auto}
+.hero-name{font-size:clamp(21px,2vw,32px);font-weight:500;letter-spacing:-.05em}
+.hero-name .name-ar{font-size:15px;color:#718090;margin-top:7px}
+.hero h1{font-size:clamp(38px,3.65vw,65px);line-height:1.07;letter-spacing:-.055em;margin-bottom:26px}
+.gradient-text{background:linear-gradient(100deg,#f1f5f8,#91a5b8);background-clip:text;-webkit-text-fill-color:transparent}
+.hero-lead{font-size:14px;line-height:1.9;max-width:370px;color:#8996a4}
+.hero-role{letter-spacing:.19em;font-size:10px;color:#9aa9b8}
+.hero-actions{flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero-actions .button{min-height:45px;padding:12px 15px;font-size:11px;border-radius:3px}
+.button-primary{background:#cfdae4;color:#0c1117;box-shadow:none}
+.role-track{font-size:8px;letter-spacing:.07em;flex-wrap:wrap;gap:9px;max-width:340px}
+.status-pill{font-size:9px;letter-spacing:.04em;border:0;padding:0;background:none}
+.status-pulse{background:#b8a27e;box-shadow:0 0 12px #b8a27e55}
+.hero-portrait{position:absolute;width:auto;left:29%;right:-4%;top:0;bottom:0;border:0;background:none;box-shadow:none;margin:0;padding:0;min-height:0;animation:none;opacity:1;transform:none;pointer-events:none;clip-path:none;backdrop-filter:none;overflow:visible}
+.hero-portrait::before{display:none}
+.portrait-stage{position:absolute;inset:0;min-height:0;height:100%;background:none;overflow:visible}
+#portraitCanvas,#portraitFallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#portraitFallback{object-fit:cover}
+[hidden]{display:none!important}
+.portrait-caption{position:absolute;bottom:65px;left:48%;color:#72808e;font:9px var(--mono);letter-spacing:.2em;z-index:3;border-left:1px solid #b59a7144;padding-left:14px}
+.scroll-cue{z-index:4;font-size:9px;bottom:24px}
+.hero-meta{font-size:10px;gap:18px;flex-wrap:wrap}
+.site-header{background:#05070ae8;backdrop-filter:blur(20px);border-bottom:1px solid #ffffff08}
+.technology-strip{background:#080b10;border-color:#ffffff0c}
+.technology-track span{color:#8997a5;font-size:13px}.technology-track i{color:#aa987c}
+.section{position:relative;background:transparent}
+.section::before{content:"";position:absolute;left:4%;right:4%;top:0;height:1px;background:linear-gradient(90deg,transparent,#aec7dd26,transparent);pointer-events:none}
+.section-heading h2,.section-title{letter-spacing:-.045em}
+.project-card,.capability-card,.assistant-preview,.matcher-panel{border-radius:5px;background:linear-gradient(145deg,#101720aa,#080c12);box-shadow:none;border-color:#acbed21a}
+.project-card:hover,.capability-card:hover{border-color:#c0ab8055;box-shadow:0 12px 50px #0004}
+.portrait-card{filter:saturate(.45);border-radius:4px}
+.signal-section,.about-section,.work-section,.contact-section{background:none}
+.portrait-debug{position:fixed;z-index:10000;right:8px;bottom:8px;background:#060a10ed;color:#d3e1ef;padding:12px;font:10px monospace;width:280px;border:1px solid #536579;direction:ltr}
+.portrait-debug pre{white-space:pre-wrap;margin:0 0 8px}.portrait-debug input{width:150px}.portrait-debug button,.portrait-debug select{background:#15202b;margin:5px;padding:4px;border:1px solid #657586}
+html[dir=rtl] .hero-intro,html[dir=rtl] .hero-message{left:0;right:auto;text-align:right}
+html[dir=rtl] .hero h1{font-size:clamp(34px,3.2vw,58px);line-height:1.5;letter-spacing:0}
+@media(min-width:1600px){.hero-intro{top:190px}.hero-message{top:390px}.hero-portrait{left:25%;right:0}}
+@media(max-width:1100px) and (min-width:701px){.hero-intro{width:36%}.hero-message{width:36%;top:300px}.hero-portrait{left:26%;right:-10%}.hero h1{font-size:42px}.nav-links{gap:13px}.hero{min-height:820px}}
+@media(max-width:700px){
+ .hero{height:auto;min-height:1150px;max-height:none}
+ .hero-content{padding:0;height:1150px;width:calc(100% - 40px)}
+ .hero-intro{top:100px;width:100%;text-align:left}
+ .hero-name{font-size:26px;margin:14px 0 4px}.hero-name .name-ar{display:inline;font-size:12px;margin-left:10px}
+ .hero-role{font-size:8px}.status-pill{font-size:8px}
+ .hero-portrait{left:-45px;right:-45px;top:170px;bottom:auto;height:590px}
+ .hero-message{top:775px;width:100%}.hero h1{font-size:40px;margin-bottom:16px}
+ .hero-lead{font-size:12px;line-height:1.8;max-width:none}
+ .hero-actions{margin-top:20px;gap:8px}.hero-actions .button{font-size:10px;padding:10px;min-height:42px}
+ .hero-meta{margin-top:20px;font-size:9px;gap:15px}.role-track{font-size:7px;margin-top:14px}
+ .portrait-caption{bottom:17px;left:32%;font-size:7px}.scroll-cue{display:none}
+ html[dir=rtl] .hero h1{font-size:33px;line-height:1.45}
+ .portrait-debug{width:235px;font-size:9px}
+}
+@media(max-width:360px){.hero h1{font-size:34px}.hero{min-height:1210px}.hero-content{height:1210px}.hero-actions .button{font-size:9px}.hero-portrait{height:565px}}

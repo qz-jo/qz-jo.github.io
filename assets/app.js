@@ -583,89 +583,16 @@ function setupMotion() {
     : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>';
   button.setAttribute("aria-label", isOff ? "Resume motion" : "Pause motion");
   button.title = isOff ? "Resume motion" : "Pause motion";
-  if (isOff) video.pause();
-  else video.play().catch(() => {});
+  if (isOff) video?.pause();
+  else video?.play().catch(() => {});
 }
 
-const canvas = $("#neuralCanvas");
-const canvasContext = canvas.getContext("2d");
-let neuralNodes = [];
-let animationFrame = 0;
+// Portrait rendering is owned by the persistent 3D scene in portrait.js.
 let canvasActive = true;
 let pointer = { x: 0, y: 0, active: false };
-
-function resizeCanvas() {
-  const rect = canvas.getBoundingClientRect();
-  const dpr = Math.min(devicePixelRatio || 1, 1.5);
-  canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-  canvas.height = Math.max(1, Math.floor(rect.height * dpr));
-  canvasContext.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const count = rect.width < 700 ? 20 : 38;
-  neuralNodes = Array.from({ length: count }, () => ({
-    x: Math.random() * rect.width,
-    y: Math.random() * rect.height,
-    vx: (Math.random() - 0.5) * 0.18,
-    vy: (Math.random() - 0.5) * 0.18,
-    size: 0.6 + Math.random() * 1.2,
-  }));
-}
-
-function drawNeuralField() {
-  if (!canvasActive || state.motion === "off") {
-    animationFrame = 0;
-    return;
-  }
-  const width = canvas.clientWidth;
-  const height = canvas.clientHeight;
-  canvasContext.clearRect(0, 0, width, height);
-
-  for (let index = 0; index < neuralNodes.length; index += 1) {
-    const node = neuralNodes[index];
-    node.x += node.vx;
-    node.y += node.vy;
-    if (node.x < -10 || node.x > width + 10) node.vx *= -1;
-    if (node.y < -10 || node.y > height + 10) node.vy *= -1;
-
-    if (pointer.active) {
-      const dx = pointer.x - node.x;
-      const dy = pointer.y - node.y;
-      const distance = Math.hypot(dx, dy);
-      if (distance < 190 && distance > 0) {
-        node.x -= (dx / distance) * 0.08;
-        node.y -= (dy / distance) * 0.08;
-      }
-    }
-
-    for (let next = index + 1; next < neuralNodes.length; next += 1) {
-      const other = neuralNodes[next];
-      const distance = Math.hypot(node.x - other.x, node.y - other.y);
-      if (distance < 145) {
-        canvasContext.beginPath();
-        canvasContext.strokeStyle = `rgba(97, 232, 255, ${(1 - distance / 145) * 0.18})`;
-        canvasContext.lineWidth = 0.6;
-        canvasContext.moveTo(node.x, node.y);
-        canvasContext.lineTo(other.x, other.y);
-        canvasContext.stroke();
-      }
-    }
-
-    canvasContext.beginPath();
-    canvasContext.fillStyle = "rgba(166, 244, 255, 0.48)";
-    canvasContext.arc(node.x, node.y, node.size, 0, Math.PI * 2);
-    canvasContext.fill();
-  }
-  animationFrame = requestAnimationFrame(drawNeuralField);
-}
-
-function startNeuralField() {
-  if (!animationFrame && state.motion === "on") animationFrame = requestAnimationFrame(drawNeuralField);
-}
-
-function stopNeuralField() {
-  if (animationFrame) cancelAnimationFrame(animationFrame);
-  animationFrame = 0;
-  canvasContext.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-}
+function resizeCanvas() {}
+function startNeuralField() {}
+function stopNeuralField() {}
 
 function initObservers() {
   const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -681,10 +608,10 @@ function initObservers() {
   const heroObserver = new IntersectionObserver(([entry]) => {
     canvasActive = entry.isIntersecting;
     if (entry.isIntersecting && state.motion === "on") {
-      $("#heroVideo").play().catch(() => {});
+      $("#heroVideo")?.play().catch(() => {});
       startNeuralField();
     } else {
-      $("#heroVideo").pause();
+      $("#heroVideo")?.pause();
       stopNeuralField();
     }
   }, { threshold: 0.08 });
@@ -859,18 +786,6 @@ function setupInteractions() {
   hero.addEventListener("pointerleave", () => { pointer.active = false; });
 
   if (matchMedia("(pointer: fine)").matches) {
-    const portraitPicture = $("#heroPortraitStage picture");
-    hero.addEventListener("pointermove", (event) => {
-      if (state.motion === "off" || !portraitPicture) return;
-      const rect = hero.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 8;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 6;
-      portraitPicture.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1.012)`;
-    });
-    hero.addEventListener("pointerleave", () => {
-      if (portraitPicture) portraitPicture.style.transform = "";
-    });
-
     $$(".magnetic").forEach((button) => {
       button.addEventListener("pointermove", (event) => {
         if (state.motion === "off") return;

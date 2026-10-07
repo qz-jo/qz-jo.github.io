@@ -1,0 +1,17 @@
+{
+  "source": "mesh3.obj",
+  "sourceSHA256": "72b826d1b013d83764adc803589f0e277eba5a71c6d93beac3821b91982e00b0",
+  "vertices": 28588,
+  "triangles": 56572,
+  "stride": 16,
+  "counts": {
+    "face": 82000,
+    "rear": 14000,
+    "hair": 23200,
+    "bust": 56000,
+    "streams": 5590,
+    "atmosphere": 1800
+  },
+  "pose": "Source 3 three-quarter orientation; y/z axes corrected; no frontal intro",
+  "extensions": "Procedural directional hair, neck, clothed shoulders, streams; not reconstructed anatomy"
+}
