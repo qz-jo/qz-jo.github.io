@@ -1,0 +1,78 @@
+.hero {background:#05070b;min-height:max(820px,100svh)}
+.shell {width:min(1800px,calc(100% - 8vw))}
+.site-header .nav {justify-content:space-between}
+.site-header .menu-toggle {display:grid;place-content:center;gap:4px;margin-inline-start:0}
+.site-header .menu-toggle span {display:block;width:19px;height:1px;background:currentColor;transform:none}
+.side-navigation {inset-block:0;inset-inline-start:auto;inset-inline-end:0;width:min(400px,calc(100vw - 24px));height:100svh;max-width:none;max-height:none;margin:0;padding:1.6rem 2rem 2rem;border:0;border-inline-start:1px solid var(--line);background:var(--bg-soft);color:var(--text);overflow-y:auto}
+.side-navigation[open] {display:flex;flex-direction:column;animation:sideNavEnter .3s var(--ease)}
+.side-navigation::backdrop {background:rgba(0,0,0,.55)}
+.side-navigation-heading {display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem}
+.side-navigation-heading h2 {margin:0;font-size:1.2rem}
+.side-navigation-heading button {font-size:1.5rem}
+.side-nav-links {display:flex;flex-direction:column;margin-bottom:2rem}
+.side-nav-links a {padding:1rem 0;border-bottom:1px solid var(--line);font-size:1.15rem;color:var(--muted)}
+.side-nav-links a:hover,.side-nav-links a.active {color:var(--cyan)}
+.side-navigation>.button {margin-top:auto;justify-content:space-between}
+@keyframes sideNavEnter {from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+html[dir="rtl"] .side-navigation[open] {animation-name:sideNavEnterRTL}
+@keyframes sideNavEnterRTL {from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.side-navigation[open]{animation:none}}
+.brand-logo {display:block;width:50px;height:42px;object-fit:contain;flex-shrink:0}
+.experience-points {margin:0;padding-inline-start:1.1rem;max-width:850px;color:var(--muted);font-size:.91rem;line-height:1.75}
+.experience-points li+li {margin-top:.45rem}
+.experience-points li::marker {color:var(--cyan)}
+.experience-tools {display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.3rem}
+.experience-tools span {padding:.4rem .65rem;border:1px solid var(--line);border-radius:5px;color:var(--muted);font:500 .65rem/1.4 var(--mono)}
+@media(max-width:640px){.site-header .brand-logo {width:44px;height:38px}}
+.hero-media video,#neuralCanvas {display:none}
+.hero-color {opacity:.25;background:radial-gradient(ellipse at 70% 40%,#28325750,transparent 48%);mix-blend-mode:normal}
+html[dir="rtl"] .hero-color {background:radial-gradient(ellipse at 30% 40%,#28325750,transparent 48%)}
+.hero-grid {opacity:.06}
+.hero .status-pill {border-color:rgba(230,176,88,.3);background:rgba(48,34,17,.44);color:#efd5a4}
+.hero .status-pulse {background:#e6b058;box-shadow:0 0 12px rgba(230,176,88,.6)}
+.hero .status-pulse::after {border-color:rgba(230,176,88,.5)}
+.hero-content {position:relative;z-index:3;direction:ltr;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);grid-template-areas:"intro portrait" "message portrait";gap:1.4rem 3rem}
+html[dir="rtl"] .hero-content {grid-template-columns:minmax(360px,.95fr) minmax(0,1.05fr);grid-template-areas:"portrait intro" "portrait message"}
+html[dir="rtl"] .hero-intro,html[dir="rtl"] .hero-message {direction:rtl;text-align:right}
+.hero-portrait {width:100%;height:min(720px,78svh);border:0;background:none;box-shadow:none;clip-path:none;backdrop-filter:none;overflow:visible;margin:0;opacity:1;transform-origin:center}
+.hero-portrait::before {display:none}
+.master-reveal {position:absolute;inset:0}
+.master-portrait {position:absolute;height:100%;width:100%;object-fit:contain;object-position:center;opacity:0}
+body[data-hero-portrait="formed"] .master-portrait {opacity:1}
+html[dir="rtl"] .master-portrait {transform:scaleX(-1)}
+body[data-hero-layout="moving"] .master-portrait {opacity:0}
+#portraitParticles {position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
+.hero .reveal-up,.hero .reveal-scale {animation:none!important;opacity:1;transform:none}
+.hero-intro,.hero-message {position:relative;z-index:4;transition:opacity .65s ease,transform .65s cubic-bezier(.22,.75,.25,1)}
+body.hero-opening .hero-intro,body.hero-opening .hero-message {opacity:0;transform:translateY(16px);pointer-events:none;visibility:hidden}
+.site-header {transition:opacity .55s ease,visibility .55s,background .3s ease,border-color .3s ease,transform .4s var(--ease)}
+body.hero-nav-pending .site-header {opacity:0;visibility:hidden;pointer-events:none}
+body.hero-nav-pending .assistant-fab,body.hero-nav-pending .scroll-cue {opacity:0;visibility:hidden;pointer-events:none}
+.assistant-fab,.scroll-cue {transition:opacity .8s ease}
+.hero h1 {font-size:clamp(3.4rem,5.8vw,6.75rem)}
+html[dir="rtl"] .hero h1 {font-size:clamp(3rem,5.2vw,5rem);line-height:1.45}
+.hero-lead {max-width:710px}
+.hero-name .name-ar {display:none}
+html[dir="rtl"] .hero-name .name-en {display:none}
+html[dir="rtl"] .hero-name .name-ar {display:inline-block;margin-inline-start:0;font-size:1em}
+.hero-actions {margin-top:1.5rem}
+.hero-actions {flex-wrap:wrap}
+.hero .scroll-cue {z-index:5}
+@media(max-width:940px){
+ .shell {width:min(calc(100% - 2.5rem),800px)}
+ body[data-hero-visible="true"] .assistant-fab {opacity:0;visibility:hidden;pointer-events:none}
+ .hero {min-height:auto}
+ .hero-content,html[dir="rtl"] .hero-content {padding-top:95px;padding-bottom:100px;grid-template-columns:1fr;grid-template-areas:"portrait" "intro" "message";gap:1.25rem}
+ .hero-portrait {height:470px;width:100%;max-width:450px;justify-self:center}
+ .hero-intro,.hero-message {align-self:auto}
+ .status-pill {margin-bottom:1.2rem}
+ .hero h1 {font-size:clamp(2.9rem,9vw,5rem)}
+ html[dir="rtl"] .hero h1 {font-size:clamp(2.4rem,7.5vw,3.4rem)}
+}
+@media(max-width:540px){
+ .shell {width:calc(100% - 1.5rem)}
+ .hero-content,html[dir="rtl"] .hero-content {padding-top:80px}
+ .hero-portrait {height:400px}
+ .hero-name {font-size:1.4rem}.hero-role {font-size:.65rem}.hero-lead {font-size:.94rem}
+}
+@media(prefers-reduced-motion:reduce){.hero-intro,.hero-message,.site-header {transition:none}}

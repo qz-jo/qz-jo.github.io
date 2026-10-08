@@ -1,25 +1,28 @@
-# Saif AL-Moghrabi — Data Engineering Portfolio
+# Saif AL-Moghrabi — Data Analytics & BI Portfolio
 
-A cinematic, bilingual portfolio for **Saif AL-Moghrabi**, an Artificial Intelligence student building a data engineering foundation in Amman, Jordan. The portfolio leads with Power BI modeling and analysis, then shows PostgreSQL, API, and n8n automation work.
+A bilingual portfolio for **Saif AL-Moghrabi / سيف المغربي**, a Data Analytics & BI Intern and Artificial Intelligence student in Amman. It presents professional experience, Power BI reporting and data modeling, PostgreSQL, APIs, and n8n automation.
 
 ## Live site
 
 - Portfolio: https://saif.codes
 - GitHub: https://github.com/qz-jo
-- LinkedIn: https://www.linkedin.com/in/saif-al-moghrabi-8847723aa/
+- Arabic portfolio: https://saif.codes/ar/
+- LinkedIn: https://www.linkedin.com/in/saif-al-moghrabi/
 
 ## Experience highlights
 
-- Cinematic, self-hosted circuit-board hero video with a lightweight neural-canvas layer
-- Responsive portrait-led Hero using Saif's supplied photo and optimized WebP sources
+- Particle formation Hero with an immediate lightweight particle set and a 2.2-second introduction
+- Lossless WebP portrait matching the supplied master PNG pixel for pixel
 - Premium monochrome meeting CTA controlled by one `MEETING_URL` constant
-- English and Arabic interfaces with full RTL support
+- Static English and Arabic pages, full RTL support, and seamless particle transitions when switching languages
+- Accessible side navigation on desktop and mobile
+- Three professional experience entries from the LinkedIn profile
 - SEIF.OS portfolio assistant grounded in verified project and profile content
 - Project matcher leading with Power BI analytics, with paths into PostgreSQL, APIs, automation, and supporting web projects
 - Documented data and software case studies and a source-linked Proof of Work section
 - Command palette with keyboard navigation (`Ctrl/Cmd + K`)
-- Live Amman clock and optional GitHub public-repository count
-- Motion controls, reduced-motion support, keyboard accessibility, and responsive layouts
+- Optional GitHub public-repository count
+- Reduced-motion support, keyboard accessibility, and responsive layouts
 - Privacy-friendly contact flow that prepares a local email draft without sending data to a form service
 - SEO metadata, structured data, sitemap, robots file, social preview, PWA manifest, and custom 404 page
 
@@ -46,10 +49,14 @@ No package installation is required. With Node.js 20 or newer:
 
 ```sh
 node --check assets/app.js
-node --test tests/portfolio.test.mjs
+node --test tests/portfolio.test.mjs tests/seo.test.mjs
 ```
 
-The unit tests cover bilingual round trips, project matching and pressed states, assistant routing, case-study counts, and static link integrity. They do not replace browser or visual testing.
+The tests cover bilingual round trips, project matching, assistant routing, case-study counts, static links, indexable Arabic content, reciprocal language links, profile schema, asset references, and lossless compressed particle samples. They complement browser checks of the sidebar, portrait formation, language transitions, and responsive layout.
+
+## Localized content
+
+`index.html` contains the English source. Arabic strings live in `assets/app.js`. After changing either, regenerate the static Arabic document with `python scripts/build-locales.py` (requires Python with `lxml` and Node.js). This also preserves the English strings needed to switch languages without reloading the portrait. Each locale has its own canonical URL and reciprocal `hreflang` links, and both URLs are listed in `sitemap.xml`.
 
 ## Technical approach
 

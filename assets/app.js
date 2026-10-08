@@ -5,7 +5,7 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const MEETING_URL = "https://cal.com/qz-jo/30min";
 
 const state = {
-  language: localStorage.getItem("saif-language") === "ar" ? "ar" : "en",
+  language: document.documentElement.lang === "ar" ? "ar" : "en",
   motion: localStorage.getItem("saif-motion") || (matchMedia("(prefers-reduced-motion: reduce)").matches ? "off" : "on"),
   lastFocus: null,
   toastTimer: null,
@@ -13,7 +13,33 @@ const state = {
 
 const arabic = {
   skip: "انتقل إلى المحتوى",
-  brandRole: "هندسة بيانات · تحليل",
+  brandRole: "تحليل بيانات · ذكاء أعمال",
+  heroRole: "متدرب تحليل بيانات وذكاء أعمال",
+  navExperience: "الخبرات",
+  navEducation: "التعليم والشهادات",
+  navigationTitle: "القائمة",
+  commandExperience: "استكشف الخبرات المهنية",
+  viewExperience: "استكشف خبراتي",
+  experienceTitle: "خبرات تدعم مشاريعي.",
+  markaziaDate: "سبتمبر 2026 — الآن",
+  markaziaMeta: "مجموعة المركزية · تدريب · عمّان، حضوري",
+  markaziaRole: "متدرب تحليل بيانات وذكاء أعمال",
+  markaziaPoint1: "تحويل متطلبات تقارير قطاع السيارات إلى تحليلات في Power BI.",
+  markaziaPoint2: "تنظيف البيانات باستخدام Power Query وبناء العلاقات ونماذج بأسلوب المخطط النجمي.",
+  markaziaPoint3: "إنشاء مقاييس DAX ولوحات تفاعلية لتوضيح أداء الأعمال.",
+  markaziaPoint4: "توثيق مشكلات البيانات وقرارات النمذجة ومراجعة الأسئلة المفتوحة مع المشرف.",
+  experienceModeling: "نمذجة البيانات",
+  batDate: "يوليو — سبتمبر 2026",
+  batMeta: "bat techno · تدريب · عمّان",
+  batRole: "متدرب ميداني",
+  batBody: "أتممت التدريب الميداني الجامعي واكتسبت احتكاكًا عمليًا بالبيانات وتحليلها في بيئة مهنية، بما مهّد لتركيزي الحالي على تحليل البيانات وذكاء الأعمال.",
+  freelanceDate: "ديسمبر 2025 — مايو 2026",
+  freelanceMeta: "عمل مستقل · عمل حر · عمّان",
+  freelanceRole: "مطور Backend للويب — عمل حر",
+  freelancePoint1: "تطوير وظائف الخادم وربط قواعد PostgreSQL وواجهات REST API.",
+  freelancePoint2: "تنفيذ المصادقة والصلاحيات والتحقق والتعامل الآمن مع البيانات.",
+  freelancePoint3: "اختبار واجهات API وتصحيحها وتوثيقها باستخدام Postman وGit/GitHub.",
+  freelancePoint4: "تنفيذ المشاريع باستقلالية من التخطيط إلى التطبيق.",
   navAbout: "عني",
   navCapabilities: "قدراتي",
   navWork: "المشاريع",
@@ -21,11 +47,11 @@ const arabic = {
   navContact: "تواصل",
   scheduleMeetingShort: "احجز اجتماعًا",
   command: "تنقّل",
-  available: "متاح للتدريب والعمل الحر والتعاون التقني",
+  available: "مشغول حاليًا بالتدريب",
   intro: "مرحبًا، أنا سيف — من عمّان، الأردن.",
   heroLine1: "من البيانات الخام",
   heroLine2: "إلى قرارات واضحة.",
-  heroLead: "طالب ذكاء اصطناعي أبني أساسًا في هندسة البيانات عبر SQL وPostgreSQL وPower Query وPower BI وواجهات APIs والأتمتة القابلة للتكرار.",
+  heroLead: "أعمل على Power BI وSQL ونمذجة البيانات وأطوّر مساري نحو هندسة البيانات.",
   exploreWork: "استكشف أبرز المشاريع",
   askPortfolio: "اسأل SEIF.OS",
   scheduleMeeting: "احجز اجتماعًا",
@@ -44,19 +70,19 @@ const arabic = {
   featuredSystems: "دراسات مشاريع",
   capabilityTracks: "مسارات تقنية",
   verifiedCredential: "شهادة موثقة",
-  aboutTitle: "أبني أساسًا عمليًا في هندسة البيانات.",
+  aboutTitle: "من أسئلة الأعمال إلى تقارير واضحة.",
   location: "عمّان · الأردن",
-  aboutLead: "أنا طالب ذكاء اصطناعي أركز على تحويل البيانات إلى نماذج موثوقة وتحليل واضح وتقارير مفيدة.",
-  aboutBody1: "أربط تنظيف البيانات ونمذجتها في Power BI بمهارات SQL وPostgreSQL وتطوير APIs والأتمتة عبر n8n. هذه المشاريع هي أساس عملي لمسار هندسة البيانات.",
-  aboutBody2: "أعمل حاليًا على مشروع تدريبي في Auto Finance & Cards وأتعلم كيف أوضح علاقات الجداول والمقاييس وقرارات جودة البيانات. خطوتي التالية تقوية SQL وبناء تدفقات بيانات قابلة لإعادة التشغيل.",
+  aboutLead: "أنا طالب ذكاء اصطناعي في جامعة الطفيلة التقنية ومتدرب تحليل بيانات وذكاء أعمال بعمّان.",
+  aboutBody1: "أحوّل متطلبات تقارير الأعمال إلى تحليلات في Power BI، بدءًا من تحضير البيانات في Power Query ونمذجة العلاقات، وصولًا إلى مقاييس DAX واللوحات التفاعلية. أوثّق مشكلات البيانات والقرارات وأراجع الأسئلة المفتوحة مع المشرف.",
+  aboutBody2: "إلى جانب التقارير، أبني تطبيقات تعتمد على PostgreSQL وواجهات REST API وتدفقات n8n. أركز على قواعد تحقق واضحة ومخرجات مفيدة وتوثيق يسهل فهم كل مشروع.",
   study: "الدراسة",
-  studyValue: "بكالوريوس الذكاء الاصطناعي وعلم البيانات",
+  studyValue: "بكالوريوس الذكاء الاصطناعي",
   workMode: "مجال العمل",
-  workModeValue: "هندسة بيانات · ذكاء أعمال · أتمتة",
+  workModeValue: "تحليل بيانات · ذكاء أعمال · نمذجة بيانات",
   languages: "اللغات",
   languagesValue: "العربية · اللغة الأم / الإنجليزية · ممتازة",
-  availability: "التوفر",
-  availabilityValue: "تدريب · عمل حر · تعاون تقني",
+  availability: "تركيزي الحالي",
+  availabilityValue: "مشغول حاليًا بالتدريب",
   viewLinkedIn: "عرض ملف LinkedIn",
   viewCv: "عرض الملف المهني",
   capTitle: "مهارات بيانات موثقة بالمشاريع.",
@@ -93,7 +119,7 @@ const arabic = {
   readCaseStudy: "اقرأ دراسة المشروع",
   typeAnalytics: "تطبيق عملي في تحليل البيانات",
   timelineAnalyticsTitle: "نمذجة البيانات والتقارير في Power BI",
-  timelineAnalyticsBody: "أنجزت تقارير تحليلية لمعرض سيارات والموارد البشرية، وأطوّر مشروع تدريب Auto Finance & Cards باستخدام Power Query ونمذجة البيانات وDAX.",
+  timelineAnalyticsBody: "أنجزت تقارير تحليلية لمعرض سيارات والموارد البشرية باستخدام Power Query ونمذجة البيانات وDAX، مع فلاتر تفاعلية ومشاهد تفصيلية للتقارير.",
   recommended: "الأنسب لك",
   inspectCase: "افتح المشروع",
   labelBackendSecurity: "BACKEND · أمان",
@@ -188,7 +214,9 @@ const arabic = {
   stepValidateBody: "أفحص جودة البيانات والمجاميع والفلاتر والحالات الطرفية.",
   stepShip: "أنشر وأتعلّم",
   stepShipBody: "أوثق الافتراضات وأوضح الأسئلة التي يجيب عنها التقرير.",
-  journeyTitle: "أتعلم هندسة البيانات عبر المشاريع العملية.",
+  journeyTitle: "التعليم والشهادات.",
+  educationDate: "2022 — يوليو 2027 (متوقع)",
+  viewCredential: "اعرض الشهادة",
   dateCurrent: "2025 — الآن",
   typeWork: "عمل مستقل",
   timelineWorkTitle: "عمل Backend وقواعد البيانات",
@@ -198,13 +226,13 @@ const arabic = {
   timelineProjectsBody: "مشاريع عامة تشمل تطبيقات PostgreSQL وREST APIs وتدفقات n8n وأدوات المتصفح وواجهات React.",
   date2027: "متوقع 2027",
   typeEducation: "التعليم",
-  timelineEducationTitle: "بكالوريوس الذكاء الاصطناعي وعلم البيانات",
-  timelineEducationBody: "جامعة الطفيلة التقنية — أبني خبرة برمجية عملية بالتوازي مع الدراسة الأكاديمية في الذكاء الاصطناعي والبيانات.",
+  timelineEducationTitle: "بكالوريوس الذكاء الاصطناعي",
+  timelineEducationBody: "جامعة الطفيلة التقنية. أبني خبرة عملية في تحليل البيانات وذكاء الأعمال عبر Power BI وExcel وPower Query وDAX ونمذجة البيانات، بالتوازي مع Python وقواعد البيانات وREST APIs وأساسيات الذكاء الاصطناعي.",
   dateMay2026: "مايو 2026",
   typeCredential: "شهادة",
-  timelineCredentialBody: "شهادة Google برقم اعتماد 24563886، ومدرجة في السيرة الذاتية المثبتة على LinkedIn.",
+  timelineCredentialBody: "شهادة Google الصادرة في مايو 2026، برقم اعتماد 24563886.",
   contactTitle: "لنبنِ شيئًا مفيدًا.",
-  contactBody: "أبحث عن فرص تدريب في هندسة البيانات والتحليل، ومشاريع تتعلق بـSQL أو Power BI أو APIs أو الأتمتة.",
+  contactBody: "أركز حاليًا على التدريب. للاستفسارات المهنية المتعلقة بتحليل البيانات أو Power BI أو SQL أو الأتمتة، أرسل لي نطاق العمل والجدول الزمني.",
   copyEmail: "انسخ البريد",
   formName: "اسمك",
   formEmail: "بريدك الإلكتروني",
@@ -243,24 +271,30 @@ const arabic = {
   commandHint: "↑ ↓ للتنقل · Enter للاختيار · Esc للإغلاق",
 };
 
+const pageCopy = $("#english-content");
+const englishCopy = pageCopy ? JSON.parse(pageCopy.textContent) : { text: {}, placeholders: {} };
 const originalText = new Map();
 $$('[data-i18n]').forEach((element) => {
   const key = element.dataset.i18n;
-  if (!originalText.has(key)) originalText.set(key, element.textContent.trim());
+  if (!originalText.has(key)) originalText.set(key, englishCopy.text[key] || element.textContent.trim());
 });
 
 const originalPlaceholders = new Map();
 $$('[data-i18n-placeholder]').forEach((element) => {
   const key = element.dataset.i18nPlaceholder;
-  if (!originalPlaceholders.has(key)) originalPlaceholders.set(key, element.getAttribute("placeholder") || "");
+  if (!originalPlaceholders.has(key)) originalPlaceholders.set(key, englishCopy.placeholders[key] || element.getAttribute("placeholder") || "");
 });
 
 function setLanguage(language, persist = true) {
+  if (persist && typeof window !== "undefined" && window.heroExperience?.changeLanguage(() => setLanguage(language, false))) {
+    localStorage.setItem("saif-language", language);
+    return;
+  }
   state.language = language;
   const isArabic = language === "ar";
   document.documentElement.lang = language;
   document.documentElement.dir = isArabic ? "rtl" : "ltr";
-  document.title = isArabic ? "Saif AL-Moghrabi — الذكاء الاصطناعي والـBackend والأتمتة" : "Saif AL-Moghrabi — AI, Backend & Automation";
+  document.title = isArabic ? "سيف المغربي | Saif AL-Moghrabi — تحليل البيانات وذكاء الأعمال" : "Saif AL-Moghrabi | سيف المغربي — Data Analytics & BI";
 
   $$('[data-i18n]').forEach((element) => {
     const key = element.dataset.i18n;
@@ -274,8 +308,30 @@ function setLanguage(language, persist = true) {
 
   const toggle = $("#languageToggle");
   toggle.textContent = isArabic ? "EN" : "AR";
+  toggle.setAttribute("href", isArabic ? "/" : "/ar/");
+  toggle.setAttribute("hreflang", isArabic ? "en" : "ar");
+  toggle.setAttribute("lang", isArabic ? "en" : "ar");
   toggle.setAttribute("aria-label", isArabic ? "Switch to English" : "التبديل إلى العربية");
+  $("#menuToggle")?.setAttribute("aria-label", isArabic ? "فتح القائمة" : "Open navigation");
+  $("#menuClose")?.setAttribute("aria-label", isArabic ? "إغلاق القائمة" : "Close navigation");
   if (persist) localStorage.setItem("saif-language", language);
+  if (typeof window !== "undefined") {
+    const path = isArabic ? "/ar/" : "/";
+    const pageURL = `https://saif.codes${path}`;
+    const description = isArabic
+      ? "سيف المغربي، متدرب تحليل بيانات وذكاء أعمال وطالب ذكاء اصطناعي. استكشف خبراته ومشاريعه في Power BI وSQL ونمذجة البيانات والأتمتة."
+      : "Saif AL-Moghrabi, Data Analytics & BI Intern and AI student. Explore his experience, Power BI dashboards, SQL, data modeling, and automation projects.";
+    $('link[rel="canonical"]')?.setAttribute("href", pageURL);
+    $('meta[name="description"]')?.setAttribute("content", description);
+    $('meta[property="og:url"]')?.setAttribute("content", pageURL);
+    $('meta[property="og:locale"]')?.setAttribute("content", isArabic ? "ar_JO" : "en_US");
+    $('meta[property="og:locale:alternate"]')?.setAttribute("content", isArabic ? "en_US" : "ar_JO");
+    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) $(selector)?.setAttribute("content", document.title);
+    for (const selector of ['meta[property="og:description"]', 'meta[name="twitter:description"]']) $(selector)?.setAttribute("content", description);
+    if (["/", "/index.html", "/ar/", "/ar/index.html"].includes(window.location.pathname)) {
+      window.history.replaceState(window.history.state, "", path + window.location.search + window.location.hash);
+    }
+  }
   updateClock();
 }
 
@@ -304,6 +360,11 @@ function chooseProject(type) {
 
 const answers = {
   en: {
+    experience: {
+      text: "Saif is a Data Analytics & BI Intern at Markazia Group (September 2026–present). He completed field training at bat techno (July–September 2026) and worked as a freelance Backend Web Developer (December 2025–May 2026). His current internship covers Power Query, data modeling, DAX, Power BI reporting, and documenting data issues and decisions.",
+      label: "Explore professional experience",
+      href: "#experience",
+    },
     frontend: {
       text: "Nova Tech is Saif's React + Vite storefront: 20 demo products, search, filters, sorting, a persistent cart, checkout, and customer/admin flows. It is published on GitHub Pages. It uses mock data; API, database, and payment integration are not included.",
       label: "Explore Nova Tech",
@@ -345,7 +406,7 @@ const answers = {
       href: "#about",
     },
     education: {
-      text: "Saif is pursuing a B.Sc. in Artificial Intelligence & Data Science at Tafila Technical University, with expected graduation in 2027. He also holds Google’s Introduction to Generative AI credential.",
+      text: "Saif is pursuing a B.Sc. in Artificial Intelligence at Tafila Technical University (2022–July 2027, expected). He also holds Google’s Introduction to Generative AI credential, issued in May 2026.",
       label: "View the journey",
       href: "#journey",
     },
@@ -355,7 +416,7 @@ const answers = {
       href: "#work",
     },
     contact: {
-      text: "Saif is interested in data engineering and analytics internships, and collaborations involving SQL, Power BI, APIs, or automation. Use the contact section, LinkedIn, or GitHub.",
+      text: "Saif is currently busy with training. For professional enquiries about data analysis, Power BI, SQL, or automation, share the scope and timeline through the contact section or LinkedIn.",
       label: "Go to contact",
       href: "#contact",
     },
@@ -365,17 +426,22 @@ const answers = {
       href: MEETING_URL || "#contact",
     },
     projects: {
-      text: "Start with two Power BI case studies: automotive showroom analysis using training data and an HR headcount and attrition dashboard. The other projects show PostgreSQL, API, and automation foundations. Auto Finance & Cards remains in development.",
+      text: "Start with two Power BI case studies: automotive showroom analysis using training data and an HR headcount and attrition dashboard. Then explore the PostgreSQL applications, secure REST API, and n8n ticket-triage workflow.",
       label: "Explore selected work",
       href: "#work",
     },
     fallback: {
-      text: "Ask about Saif’s Power BI reports, data modeling, SQL and PostgreSQL, automation, current Auto Finance & Cards training project, or how the software projects support his data engineering path.",
+      text: "Ask about Saif’s professional experience, field training, freelance Backend work, Power BI reports, SQL, PostgreSQL, or automation projects.",
       label: "Explore the portfolio",
       href: "#work",
     },
   },
   ar: {
+    experience: {
+      text: "سيف متدرب تحليل بيانات وذكاء أعمال في مجموعة المركزية منذ سبتمبر 2026. أتمّ تدريبًا ميدانيًا في bat techno من يوليو إلى سبتمبر 2026، وعمل مطور Backend مستقلًا من ديسمبر 2025 إلى مايو 2026. يشمل تدريبه الحالي Power Query ونمذجة البيانات وDAX وتقارير Power BI وتوثيق مشكلات البيانات والقرارات.",
+      label: "استكشف الخبرات المهنية",
+      href: "#experience",
+    },
     frontend: {
       text: "Nova Tech هو متجر React وVite لسيف: 20 منتجًا تجريبيًا وبحث وفلاتر وترتيب وسلة محفوظة وإتمام طلب ومسارات عميل ومشرف. منشور على GitHub Pages ويستخدم بيانات تجريبية، دون ربط API أو قاعدة بيانات أو بوابة دفع.",
       label: "استكشف Nova Tech",
@@ -417,7 +483,7 @@ const answers = {
       href: "#about",
     },
     education: {
-      text: "يدرس سيف بكالوريوس الذكاء الاصطناعي وعلم البيانات في جامعة الطفيلة التقنية، والتخرج المتوقع عام 2027. ويحمل أيضًا شهادة Introduction to Generative AI من Google.",
+      text: "يدرس سيف بكالوريوس الذكاء الاصطناعي في جامعة الطفيلة التقنية منذ 2022، والتخرج المتوقع في يوليو 2027. ويحمل شهادة Introduction to Generative AI من Google، الصادرة في مايو 2026.",
       label: "اعرض المسيرة",
       href: "#journey",
     },
@@ -427,7 +493,7 @@ const answers = {
       href: "#work",
     },
     contact: {
-      text: "يهتم سيف بتدريب هندسة البيانات والتحليل والتعاون في مشاريع SQL وPower BI وAPIs والأتمتة. يمكنك التواصل بالبريد أو LinkedIn أو GitHub.",
+      text: "سيف مشغول حاليًا بالتدريب. للاستفسارات المهنية عن تحليل البيانات أو Power BI أو SQL أو الأتمتة، شارك نطاق العمل والجدول الزمني عبر قسم التواصل أو LinkedIn.",
       label: "اذهب للتواصل",
       href: "#contact",
     },
@@ -437,12 +503,12 @@ const answers = {
       href: MEETING_URL || "#contact",
     },
     projects: {
-      text: "ابدأ بدراستي Power BI: تحليل معرض سيارات ببيانات تدريبية وتقرير الموارد البشرية. وتظهر بقية المشاريع أساس PostgreSQL وAPIs والأتمتة. مشروع Auto Finance & Cards لا يزال قيد التطوير.",
+      text: "ابدأ بدراستي Power BI: تحليل معرض سيارات ببيانات تدريبية وتقرير الموارد البشرية. ثم استكشف تطبيقات PostgreSQL وواجهة REST API الآمنة وتدفق n8n لفرز تذاكر الدعم.",
       label: "استكشف المشاريع",
       href: "#work",
     },
     fallback: {
-      text: "اسأل عن تقارير Power BI ونمذجة البيانات وSQL وPostgreSQL والأتمتة أو مشروع Auto Finance & Cards التدريبي ومسار سيف نحو هندسة البيانات.",
+      text: "اسأل عن خبرات سيف المهنية أو التدريب الميداني أو عمله الحر في Backend أو تقارير Power BI ومشاريع SQL وPostgreSQL والأتمتة.",
       label: "استكشف الموقع",
       href: "#work",
     },
@@ -453,6 +519,7 @@ function classifyQuestion(value) {
   const query = value.toLowerCase().trim();
   if (/proctor[\s-]?lab|proctoring|assessment|clipboard|fullscreen|screenshot|بروكتور|مراقبة|محاكاة|لصق|لقطات الشاشة|اختبار المتصفح/.test(query)) return "browser";
   if (/nova[\s-]?tech|front.?end|react|storefront|shopping|checkout|cart|نوفا|رياكت|ريأكت|متجر|تسوق|سلة|واجهة/.test(query)) return "frontend";
+  if (/experience|career|markazia|bat techno|خبرات|خبرة|مركزية|المركزية|تدريب ميداني/.test(query)) return "experience";
   if (/backend|api|security|secure|auth|jwt|rbac|ecommerce|أمان|امن|باك|خلفي|مصادقة/.test(query)) return "backend";
   if (/automat|n8n|workflow|ticket|triage|sla|أتمت|اتمت|تذكرة|تذاكر/.test(query)) return "automation";
   if (/full.?stack|task|manager|مهام|فول/.test(query)) return "fullstack";
@@ -578,11 +645,13 @@ function setupMotion() {
   root.dataset.motion = state.motion;
   const button = $("#motionToggle");
   const isOff = state.motion === "off";
+  if(button) {
   button.innerHTML = isOff
     ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z" /></svg>'
     : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>';
   button.setAttribute("aria-label", isOff ? "Resume motion" : "Pause motion");
   button.title = isOff ? "Resume motion" : "Pause motion";
+  }
   if (isOff) video.pause();
   else video.play().catch(() => {});
 }
@@ -658,6 +727,7 @@ function drawNeuralField() {
 }
 
 function startNeuralField() {
+  return; // The portrait WebGL module owns Hero motion.
   if (!animationFrame && state.motion === "on") animationFrame = requestAnimationFrame(drawNeuralField);
 }
 
@@ -693,7 +763,7 @@ function initObservers() {
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      $$(".nav-links a").forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
+      $$(".side-nav-links a").forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
     });
   }, { rootMargin: "-30% 0px -60%", threshold: 0 });
   $$("main section[id]").forEach((section) => sectionObserver.observe(section));
@@ -747,8 +817,11 @@ function executeCommand(button) {
 }
 
 function setupInteractions() {
-  $("#languageToggle").addEventListener("click", () => setLanguage(state.language === "en" ? "ar" : "en"));
-  $("#motionToggle").addEventListener("click", () => {
+  $("#languageToggle").addEventListener("click", event => {
+    event.preventDefault();
+    setLanguage(state.language === "en" ? "ar" : "en");
+  });
+  $("#motionToggle")?.addEventListener("click", () => {
     state.motion = state.motion === "on" ? "off" : "on";
     localStorage.setItem("saif-motion", state.motion);
     setupMotion();
@@ -759,16 +832,24 @@ function setupInteractions() {
   const menuToggle = $("#menuToggle");
   const nav = $("#primaryNav");
   menuToggle.addEventListener("click", () => {
-    const open = !nav.classList.contains("open");
-    nav.classList.toggle("open", open);
-    menuToggle.setAttribute("aria-expanded", String(open));
-    document.body.classList.toggle("panel-open", open);
+    nav.showModal();
+    nav.classList.add("open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    document.body.classList.add("panel-open");
   });
-  $$("#primaryNav a").forEach((link) => link.addEventListener("click", () => {
+  nav.addEventListener("close", () => {
     nav.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
     document.body.classList.remove("panel-open");
-  }));
+    menuToggle.focus({preventScroll:true});
+  });
+  $("#menuClose").addEventListener("click", () => nav.close());
+  $$("#primaryNav a").forEach((link) => link.addEventListener("click", () => nav.close()));
+  nav.addEventListener("click", event => {
+    if(event.target!==nav)return;
+    const r=nav.getBoundingClientRect();
+    if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)nav.close();
+  });
 
   $$("[data-match]").forEach((button) => button.addEventListener("click", () => chooseProject(button.dataset.match)));
 
@@ -783,7 +864,7 @@ function setupInteractions() {
     input.value = "";
   });
 
-  $("#commandTrigger").addEventListener("click", openCommandPalette);
+  $("#commandTrigger")?.addEventListener("click", openCommandPalette);
   $("#commandClose").addEventListener("click", closeCommandPalette);
   $("#commandBackdrop").addEventListener("click", closeCommandPalette);
   $("#commandPalette").addEventListener("click", (event) => {
@@ -807,10 +888,7 @@ function setupInteractions() {
     }
     if (event.key === "Escape" && $("#assistantPanel").classList.contains("open")) closeAssistant();
     if (event.key === "Escape" && nav.classList.contains("open")) {
-      nav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("panel-open");
-      menuToggle.focus();
+      nav.close();
     }
     if (!$("#commandPalette").open || !["ArrowDown", "ArrowUp", "Enter"].includes(event.key)) return;
     const visible = $$(".command-list button").filter((button) => !button.hidden);

@@ -1,0 +1,16 @@
+{
+  "source": "Untitled design (2).png",
+  "alphaCrop": [
+    2087,
+    92,
+    4267,
+    2950
+  ],
+  "size": [
+    2180,
+    2858
+  ],
+  "particles": 28931,
+  "edgeParticles": 1471,
+  "processing": "Lossless native-size alpha-bounds crop. No resizing, recoloring, facial edits, or mirroring of the master PNG."
+}
