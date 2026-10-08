@@ -11,7 +11,7 @@ const seedData=new Float32Array(Uint8Array.from(atob('i2wnPxA5Mj7p6Gg+2djYPeHgYD
 
 let masterDecoded=false;
 const masterReady=image.decode().then(()=>{masterDecoded=true;startup.imageReadyAt=performance.now()});
-const samplesReady=gl?fetch('/assets/portrait-front-v2.bin.gz').then(async response=>{if(!response.ok)throw Error('Particle samples unavailable');return new Float32Array(await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer())}):null;
+const samplesReady=gl?fetch('/assets/portrait-front-v2.bin.gz?v=balanced-r2').then(async response=>{if(!response.ok)throw Error('Particle samples unavailable');return new Float32Array(await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer())}):null;
 let elapsed=0,last=0,raf=0,visible=true,formed=false,settled=false,transitioning=false,frame=0,rect;
 let render=()=>{},resize=()=>{},animations=[],queued=null,transfer=null,glReady=false;
 const pointer={x:-1000,y:-1000,strength:0,target:0};
